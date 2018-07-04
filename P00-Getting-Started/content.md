@@ -3,26 +3,34 @@ title: "Get started with this tutorial."
 slug: getting-started
 ---
 
-A client wants to build a simple wrapper around Product Hunt using the PH API. The first feature the client wants you to implement is a feed that displays all of today's featured products. The client wants to keep the project lean and asks you explicitly not to use any dependencies or third party libraries.
+Imagine that you're a developer who is hired to create a Product Hunt reader that shows the currently featured apps on Product Hunt.
 
-# The App
+The first feature the client wants you to implement is the feed, which displays all of today's featured products on the Product Hunt. The client wants to keep the project lean and asks you explicitly not to use any dependencies or third party libraries.
+
+# What We're Building
+
+![Preview final product](assets/final-product.png)
+
+## User Stories
 
 **As a user...**
 
-- I can browse the products featured today on Product Hunt by scrolling through the app’s main screen.
-  - I see the product’s name, tagline, number of votes, and thumbnail.
+- I can browse products featured today on Product Hunt by scrolling through the app’s main screen.
+- I see each product’s name, tagline, number of votes, and a preview image.
 - I can tap on each post to see its comments in descending order.
 
-**As a client...**
+# Implementation Plan
 
-- I can easily adjust what parts of the API are accessed by adjusting the parameters of a composable URL.
-- I have a lean project that has no dependencies or third party libraries.
+We're going to building this app outside in; starting with the UI of the app and ending with the networking layer that communicated with the Product Hunt API.
+
+This makes it quick and easy to build out the app and test some of its features before making requests to the API.
 
 # What You'll Learn
 
 - How to work wih API's.
-- How to build a network layer in swift.
-- How to decode JSON into swift models
-- How to use different data types to make your URL composable.
+- How to build a network layer in Swift.
+- How to decode JSON into Swift models.
+- How to take advantage of mock data.
+- How to use different data types to make your **URL composable**—allowing you to easily add more features.
 - How to display data in tableviews with custom ui.
-- Use delegation for view-to-view communication.
+- How to use delegation for view-to-view communication.
