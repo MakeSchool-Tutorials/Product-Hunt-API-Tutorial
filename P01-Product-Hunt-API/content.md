@@ -35,7 +35,7 @@ Postman is an API Development Environment (ADE), an awesome tool for any develop
 1. Download the [Postman desktop app](https://www.getpostman.com/) from their website if you don't have it already. You don't need an account to use Postmam.
 2. Upon opening Postman, you should see this welcome screen:
 
-![Postman welcome screen](assets/postman-welcome)
+![Postman welcome screen](assets/postman-welcome-screen.png)
 
 1. Choose **Request** under building blocks to create a new request.
     - You can name the request whatever you want and save it whichever collection you choose; For this tutorial I'll be naming the request **Get Posts** and saving it in the **Product Hunt** collection.
@@ -49,12 +49,18 @@ Postman is an API Development Environment (ADE), an awesome tool for any develop
       - `per_page=20` limits the amount of posts we get to only 20. There are thousands of products listed on product hunt, we'll only need to get 20 at a time for our app.
 4. Hit send. You should receive JSON data as a response to your request. This is what you should see:
 
-![JSON response](assets/json-response)
+![JSON response](assets/postman-get-request.png)
 
 # Analyze Response
 
 What you received from your request is known as JSON (Javascript Object Notation), a text format that is completely language independent and easy to read.
 
-How the data in the JSON response is organized is extremely important, especially for our app. We'll need to understand the hierarcy of the data so that we can pull out the right information.
+How the data in the JSON response is organized is extremely important, especially for our app. We'll need to understand the hierarcy of the data so that we can accuretly model the data in Swift.
 
-See if you can find the first product's name, tagline, number of votes, and screenshot URL.
+**See if you can find a product's name, tagline, number of votes, and screenshot URL.** Take note of where these are located:
+
+![Structure of response](assets/response-structure.png)
+
+1. The beginning of the JSON response objects is indicated by the opening bracket `{` and ends with the closeing bracket `}` on the same level. This object only contains one object which is an arry of posts, where we will get all the information we need to display today's featured posts on our app.
+2. The `posts` array contains the products that match the parameters given in our request. We asked for 20 of today's featured products in desending order of vote count, so we received an array with the first post being today's featured product with the highest votes.
+3. The properties of the post object also has a hierarcy of objects. We are only consercened with `comments_count`, `id`, `name`, `tagline`, and `screenshot_url`. You can search up these terms in Postman by using the shortcut `CMD + F` and typing the name of the property in the searchfield that appears.
