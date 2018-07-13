@@ -19,49 +19,72 @@ Here's what the result will look like:
 
 ![Preview FeedView](assets/feedview-preview.png)
 
-Simple, but quick and easy to make.
+This view is intentionally simple to make it quick to make.
 
-Open Main.storyboard and click on the view controller.
+We'll be using a navigation controller for this app.
+>[action]
+>Open Main.storyboard and click on the view controller.
 
-1. On the menu bar select `Editor`, then `Embed in` and finally `Navigation Controller` to quickly wrap the view controller in a navigation controller.
-    ![Embedded controller](assets/embed-controller.png)
-2. Set the view controller's title to `Feed`.
-    ![Set title](assets/set-controller-title.png)
-3. Add a table view to the view controller and pin it to all 4 sides.
-    ![Add table view](assets/pin-table-view.png)
+1. A shortcut for adding a navigation controller in storyboard is to **embed** a viewcontroller in one.
+    >[action]
+    >On the menu bar select `Editor`, then `Embed in` and finally `Navigation Controller` to quickly wrap the view controller in a navigation controller.
+    >![Embedded controller](assets/embed-controller.png)
+1. >[action]
+   >Set the view controller's title to `Feed`.
+   >![Set title](assets/set-controller-title.png)
+1. A perk of keeping things simple in the beginning is that you don't have to spend a lot of time configuring the UI.
+   >[action]
+   >Add a table view to the view controller and pin it to all 4 sides.
+    >![Add table view](assets/pin-table-view.png)
 
 ## Prepare the Swift file
 
-1. To adhere to doing conventions, rename the view controller to `FeedViewController`. Change the name in the file inspector, for the class, and in the comments at the top of your file.
-    ![Rename view controller](assets/rename-viewcontroller.png)
-2. Add an extension for UITableViewDataSource to seperate code needed to fill the table view with data.
-    ``` swift
-    // MARK: UITableViewDataSource
-    extension FeedViewController: UITableViewDataSource {
-        /// Determines how many cells will be shown on the table view.
-        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return 1
-        }
+1. To adhere to good coding conventions, rename the view controller to `FeedViewController` to better reflect what its for.
+    >[action]
+    >Change the name in the file inspector, for the class, and in the comments at the top of your file.
+    > ![Rename view controller](assets/rename-viewcontroller.png)
+2. We don't have any data yet, but let's add the code we'll need to update the cells.
+    >[action]
+    >Add an **extension** for UITableViewDataSource at the bottom of `FeedViewController` to seperate code needed to fill the table view with data.
+    >``` swift
+    >// MARK: UITableViewDataSource
+    >extension FeedViewController: UITableViewDataSource {
+    >    /// Determines how many cells will be shown on the table view.
+    >    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    >        return 1
+    >    }
+    >
+    >    /// Creates and configures each cell.
+    >    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    >        return UITableViewCell()
+    >    }
+    >}
+    >```
 
-        /// Creates and configures each cell.
-        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            return UITableViewCell()
-        }
-    }
-    ```
-3. Add the extension for UITableViewDelegate without any code inside. We'll use this later to setup deleting and selecting cells.
-    ``` swift
-    // MARK: UITableViewDelegate
-    extension FeedViewController: UITableViewDelegate {
-    }
-    ```
-4. Connect the table view to `FeedViewController`.
-    ![Connect outlet](assets/connect-outlet.png)
-5. Set the delegate and datasource for the table view by typing the following code in your `viewDidLoad`:
-    ```swift
-    feedTableView.dataSource = self
-    feedTableView.delegate = self
-    ```
+    >[info]
+    >Extensions add new functionality to an existing class, structure, enumeration, or protocol type.
+    >This includes the ability to extend types for which you do not have access to the original source code (known as retroactive modeling).
+    >Extensions are similar to categories in Objective-C. (Unlike Objective-C categories, Swift extensions do not have names.)
+
+3. >[action]
+    >Add the extension for UITableViewDelegate without any code inside.
+    >``` swift
+    >// MARK: UITableViewDelegate
+    >extension FeedViewController: UITableViewDelegate {
+    >}
+    >```
+    >We'll use this later to setup selecting and deleting cells.
+
+4. >[action]
+    >Connect the table view to `FeedViewController`.
+    >![Connect outlet](assets/connect-outlet.png)
+
+5. >[action]
+    >Set the delegate and datasource for the table view by typing the following code in your `viewDidLoad`:
+    >```swift
+    >feedTableView.dataSource = self
+    >feedTableView.delegate = self
+    >```
 
 # Create Post Model
 
