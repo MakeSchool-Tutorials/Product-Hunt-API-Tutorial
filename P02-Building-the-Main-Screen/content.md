@@ -9,7 +9,7 @@ We will use the Storyboard in order to create the UI with very simple constraint
 
 **Your first goal should be to get a working prototype**. The client wants the feed screen working first, so let's start with that.
 
-# Create Feed View
+# Creating the Main Screen
 
 The `FeedView` consists of a table view with custom cells that display information about products retreived from Product Hunt.
 
@@ -39,14 +39,18 @@ We'll be using a navigation controller for this app.
 
 ## Prepare the Swift file
 
-1. To adhere to good coding conventions, rename the view controller to `FeedViewController` to better reflect what its for.
+1. To adhere to good coding conventions, rename the view controller to `FeedViewController` to better reflect what its used for.
     >[action]
     >Change the name in the file inspector, for the class, and in the comments at the top of your file.
     > ![Rename view controller](assets/rename-viewcontroller.png)
-2. We don't have any data yet, but let's add the code we'll need to update the cells.
+2. We don't have any data yet, but let's add the functions we be using to update cells.
     >[action]
     >Add an **extension** for UITableViewDataSource at the bottom of `FeedViewController` to seperate code needed to fill the table view with data.
     >``` swift
+    > class FeedViewController: UIViewController {
+    >   ...
+    >}
+    >
     >// MARK: UITableViewDataSource
     >extension FeedViewController: UITableViewDataSource {
     >    /// Determines how many cells will be shown on the table view.
@@ -67,10 +71,13 @@ We'll be using a navigation controller for this app.
     >Extensions are similar to categories in Objective-C. (Unlike Objective-C categories, Swift extensions do not have names.)
 
 3. >[action]
-    >Add the extension for UITableViewDelegate without any code inside.
+    >Add an **extension** for `UITableViewDelegate` right below that.
     >``` swift
+    >...
+    >
     >// MARK: UITableViewDelegate
     >extension FeedViewController: UITableViewDelegate {
+    >   // Code to handle cell events goes here...
     >}
     >```
     >We'll use this later to setup selecting and deleting cells.
@@ -79,20 +86,45 @@ We'll be using a navigation controller for this app.
     >Connect the table view to `FeedViewController`.
     >![Connect outlet](assets/connect-outlet.png)
 
-5. >[action]
+5. Because we **subclassed** `UITableViewDataSource` and `UITableViewDelegate` in **extentions** for the `FeedViewController`, we can set the `feedTableView`'s data source to be the `FeedViewController`.
+    >[action]
     >Set the delegate and datasource for the table view by typing the following code in your `viewDidLoad`:
     >```swift
     >feedTableView.dataSource = self
     >feedTableView.delegate = self
     >```
 
+The table view is fully connected and working. You can run the app to see the one cell created thanks to the lines of code we put in the UITableViewDataSource.
+
 # Create Post Model
 
-We will model the information we will be getting for each posting. The properties we need are the products id, name, tagline, number of votes, and number of comments.
+We will model the information we will be getting for each posting. The properties we need are the product's id, name, tagline, number of votes, and number of comments.
 
-1. Create a new swift file called `Post.swift`.
-2. Create a struct called `Post`.
-3. Give it an `id: Int`, `name: String`, `tagline: String`, `votesCount: Int`, and `commentsCount: Int`.
+1. >[action]
+    >Create a new Swift file and call it `Post.swift`.
+2. We'll use a Struct to define the variables we want to get from the Product Hunt API.
+    >[action]
+    >Create a Struct called `Post`.
+    >```
+    >/// A product retreived from the Product Hunt API.
+    >struct Post {
+    >
+    >}
+    >```s
+3. >[action]
+    >Give `Post` variables to hold a product's id, name, tagline, number of votes, number of comments, and screenshot url.
+    >```swift
+    >struct Post {
+    >    let id: Int
+    >    let name: String
+    >    let tagline: String
+    >    let votesCount: Int
+    >    let commentsCount: Int
+    >    let previewImageUrl: URL
+    >}
+    >```
+
+There's more we will need to add to this file to allow it to work effortlessly with network calls. We'll leave it like this for now and move on to create the UI that will show this data.
 
 # Create Custom Cell
 
