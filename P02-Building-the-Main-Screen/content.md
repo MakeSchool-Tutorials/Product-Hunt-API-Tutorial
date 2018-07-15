@@ -125,37 +125,3 @@ We will model the information we will be getting for each posting. The propertie
     >```
 
 There's more we will need to add to this file to allow it to work effortlessly with network calls. We'll leave it like this for now and move on to create the UI that will show this data.
-
-# Create Custom Cell
-
-The default cell only has room for a string of text. We need it to display more than that.
-
-We will need 4 labels, for the name and tagline and the number of voutes and comments, which will be grouped together in a stack view. We'll also add an image view to display the screenshot of each product.
-
-1. Add one prototype cell
-2. Get placeholder image
-3. Add a container view and pin to sides
-4. Add imageView with placeholder image
-5. Add name label
-6. Add tagline label with reduced font size
-7. Add horizontal stack view with comments and votes label with reduce font size and pin to top and right
-8. Set identifier to postCell.
-
-# Configure Tableview to Use Custom Cell
-
-1. Set number of cells to 3 for testing purposes.
-2. Guard let to dequeue post cells.
-3. Run to see how it looks!
-
-# Create Post Tableview Cell
-
-1. Set custom class to PostTableViewCell.swift for custom cell in storyboard.
-2. Connect IBOutlets.
-3. Run!
-
-# Use Mock Data to Test Feed View
-
-1. Create list of Posts with mock data.
-2. Set tableview to use mock data count.
-3. Cast dequed cell as PostTableViewCell.
-4. Use didSet to set to easily update labels.
