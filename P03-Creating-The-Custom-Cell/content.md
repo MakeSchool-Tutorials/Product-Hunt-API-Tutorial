@@ -7,18 +7,35 @@ The default cell only has room for a string of text. We need it to display more 
 
 We will need 4 labels, for the name, tagline, number of votes, and comments, which will be grouped together in a stack view. We'll also add an image view to display the screenshot of each product.
 
-1. >[action]Open storyboard and open the table view's Attribute Inspector to give it a Dynamic Prototype Cell.
-    > ![Prototype Cell](assets/dynamic-prototype-cell.png)
-2. We'll use the view that comes with the cell, the `Content View`, as cell's **background**; and a new UIView as the **container** for all the views that will display information.
+1. >[action]
+    >Open storyboard and open the table view's `Attribute Inspector` to give it a Dynamic Prototype Cell.
+    >![Prototype Cell](assets/dynamic-prototype-cell.png)
+2. >[action]
+    >Increase the size of the cell to 250 in the **Size Inspector**
+    >![Increase Cell Size](assets/cell-size.png)
+3. We'll use the view that comes with the cell, the `Content View`, as cell's **background**; and a new UIView as the **container** for all the views that will display information.
     >[action]
     >Drag a UIView into the prototype cell and Pin it on all 4 sides of the `Content View`.
-3. >[action]
-    >Add a UILabel pinned to the top and left of the `Container View`.
-4. Add imageView. You can get one from https://placeholder.com/
-5. Add name label
-6. Add tagline label with reduced font size
-7. Add horizontal stack view with comments and votes label with reduce font size and pin to top and right
-8. Set identifier to postCell.
+4. >[action]
+    >Add a UILabel pinned to the top and left of the `Container View`. This will be the **name** label.
+5. >[action]
+    >Add an UIImageView to the center of the cell and pin it to all 4 sides of the `Container View` with these constraints:
+    >![Pin Image View](assets/pin-image.png)
+
+    You can set the image to whatever you want. Free placeholder images [here](https://placeholder.com/)
+6. >[action]
+    >Add a label pinned to the left, bottom, and right of the `Container View` for the **tagline**.
+
+    >[action]
+    >Set the font size of this label to 13.
+7. >[action]
+    >Pin a horizontal UIStackView to the top right with 2 labels inside of font size 13. These will be for the number of **comments** and **votes**.
+8. To be able to use this custom cell in code an **identifier** is needed.
+    >[action]
+    >Set `Identifier` of the cel to  `postCell` in the `Identity Inspector`.
+
+>[solution]
+>![Completed custom cell](assets/custom-cell.png)
 
 # Configure Tableview to Use Custom Cell
 
