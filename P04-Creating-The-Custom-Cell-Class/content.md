@@ -107,7 +107,6 @@ Now the custom cell is ready to be used by a UITableView.
 >    }
 >
 >    func updatePreviewImage() {
->      guard let post = post else { return }
 >      previewImageView.image = UIImage(named: "placeholder")
 >    }
 >  }
