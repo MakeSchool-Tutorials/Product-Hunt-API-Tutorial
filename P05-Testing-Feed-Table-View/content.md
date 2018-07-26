@@ -32,9 +32,20 @@ We dequeue a cell using the "postCell" identifier we provided in Storyboard earl
 and returns it as the table-view cell associated with the identifier provided,
 > skipping a lot of the overhead needed to create an entirely new cell.
 
+We also need to update the size of the cell in code.
+
+> [action]
+> Go to the `UITableViewDelegate` extension and add the following method
+>
+> ```swift
+> func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+>    return 250
+> }
+>```
+
 Run the app to see how it looks 👌
 
-Should be something cool like this:
+You should see something awesome like this:
 ![Feed without data](assets/feed-without-data.png)
 
 # Use Mock Data To Display Information
