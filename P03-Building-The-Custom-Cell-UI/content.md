@@ -1,7 +1,7 @@
 ---
 
-title: "Creating the Custom Cell UI"
-slug: creating-the-custom-cell
+title: "Building The Custom Cell UI"
+slug: custom-cell-ui
 
 ---
 
