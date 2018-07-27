@@ -138,4 +138,4 @@ The products we retrieve from the API are inside the array called "posts". We ca
 > }
 > ```
 
-Next up will be creating the networking layer that will use
+Next up will be creating the networking layer.
