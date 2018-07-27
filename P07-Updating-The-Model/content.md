@@ -48,7 +48,7 @@ We'll need to define **coding keys** to tell Swift exactly where to find the inf
 >     case tagline
 >     case votesCount = "votes_count"
 >     case commentsCount = "comments_count"
->     case previewImageUrl = "screenshot_url"
+>     case previewImageURL = "screenshot_url"
 > }
 > ```
 >
@@ -72,3 +72,70 @@ Also, there are cases where you simply what to rename the property differently, 
 > ![Preview Keys](assets/preview-coding-keys.png)
 
 # Initializing A Decodable
+
+Now that we have all our necessary coding keys, the next step will be to setup the initializer for our model.
+
+> [action]
+> Add this initializer to the Decodable extension:
+>
+> ```swift
+> init(from decoder: Decoder) throws {
+>
+> }
+> ```
+
+We'll first need to _enter_ the post object in order to access its properties. This is done using **containers** which uses `CodingKeys`:
+
+> [action]
+> Add this to the initializer:
+>
+> ```swift
+> let postsContainer = try decoder.container(keyedBy: PostKeys.self)
+> ```
+
+Now we can grab all the information we need.
+
+> [action]
+> Set the variables of the `Post` using the container.
+>
+> ```swift
+>    ...
+>    id = try postsContainer.decode(Int.self, forKey: .id)
+>    name = try postsContainer.decode(String.self, forKey: .name)
+>    tagline = try postsContainer.decode(String.self, forKey: .tagline)
+>    votesCount = try postsContainer.decode(Int.self, forKey: .votesCount)
+>    commentsCount = try postsContainer.decode(Int.self, forKey: .commentsCount)
+> }
+> ```
+>
+> ![Posts container](assets/post-container.png)
+
+The screenshot URL inside an object, so we'll need to access it through a **nested container** using the `PreviewImageURLKeys`:
+
+> [action]
+> Add this add the bottom of the initializer:
+>
+> ```swift
+>     ...
+>
+>     let screenshotURLContainer = try postsContainer.nestedContainer(keyedBy: PreviewImageURLKeys.self, forKey: .previewImageURL)
+>     previewImageURL = try screenshotURLContainer.decode(URL.self, forKey: .imageURL)
+>  }
+> ```
+>
+> ![Screenshot container](assets/screenshot-container.png)
+
+Now the model is ready to go! But there's one more thing we need to add to make things easier.
+
+The products we retrieve from the API are inside the array called "posts". We can model this using a Struct:
+
+> [action]
+> Add this below your `Post` Struct:
+>
+> ```swift
+> struct PostList: Decodable {
+>     var posts: [Post]?
+> }
+> ```
+
+Next up will be creating the networking layer that will use
