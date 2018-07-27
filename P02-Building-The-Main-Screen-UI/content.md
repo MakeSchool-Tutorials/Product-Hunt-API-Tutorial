@@ -57,7 +57,7 @@ We'll be using a navigation controller for this app.
     >extension FeedViewController: UITableViewDataSource {
     >    /// Determines how many cells will be shown on the table view.
     >    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    >        return 1
+    >        return 3
     >    }
     >
     >    /// Creates and configures each cell.
