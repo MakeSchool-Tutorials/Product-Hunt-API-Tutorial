@@ -177,7 +177,7 @@ That's the networking layer completed 👌
 >
 >   func getPosts(completion: @escaping ([Post]) -> Void) {
 >     // Construct the URL to get posts from API.
->     let query = "post/all?sort_by=votes_count&order=desc&search[featured]=true&per_page=20"
+>     let query = "posts/all?sort_by=votes_count&order=desc&search[featured]=true&per_page=20"
 >     let fullURL = URL(string: baseURL + query)!
 >     var request = URLRequest(url: fullURL)
 >
