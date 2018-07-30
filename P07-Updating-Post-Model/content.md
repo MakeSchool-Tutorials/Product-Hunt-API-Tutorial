@@ -1,7 +1,7 @@
 ---
 
-title: "Updating The Model"
-slug: update-model
+title: "Updating Post Model"
+slug: update-post-model
 
 ---
 

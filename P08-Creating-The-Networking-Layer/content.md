@@ -212,7 +212,7 @@ That's the networking layer completed 👌
 >         return
 >       }
 >
->       // Return the result with the completion handler.
+>       // Ret  urn the result with the completion handler.
 >       completion(posts)
 >     }.resume()
 >   }

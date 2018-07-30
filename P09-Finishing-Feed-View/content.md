@@ -1,7 +1,7 @@
 ---
 
-title: "Creating The Networking Layer"
-slug: create-networking-layer
+title: "Finishing Feed View"
+slug: finish-feed-view
 
 ---
 
@@ -118,3 +118,10 @@ All we have to do is update the `posts` list with the data retrieved from a requ
 > ```
 
 That's it 👏 Run the app to see it in action.
+
+We have completed the first 2 user stories
+
+> - I can browse products featured today on Product Hunt by scrolling through the app’s main screen.
+> - I see each product’s name, tagline, number of votes.
+
+Let's move on to the final user story.

@@ -1,7 +1,7 @@
 ---
 
-title: "Creating The Custom Cell Class"
-slug: custom-cell-class
+title: "Creating the Post Cell Class"
+slug: create-post-cell-class
 
 ---
 

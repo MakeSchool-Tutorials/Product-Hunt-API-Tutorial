@@ -16,7 +16,7 @@ The first feature the client wants you to implement is the feed, which displays 
 **As a user...**
 
 - I can browse products featured today on Product Hunt by scrolling through the app’s main screen.
-- I see each product’s name, tagline, number of votes, and a preview image.
+- I see each product’s name, tagline, number of votes.
 - I can tap on each post to see its comments in descending order.
 
 # Implementation Plan

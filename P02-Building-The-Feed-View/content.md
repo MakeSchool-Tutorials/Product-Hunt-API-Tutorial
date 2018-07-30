@@ -1,7 +1,7 @@
 ---
 
-title: "Building the Main Screen UI"
-slug: main-screen-UI
+title: "Building the Feed View"
+slug: build-feed-view
 
 ---
 

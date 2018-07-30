@@ -1,7 +1,7 @@
 ---
 
-title: "Building The Custom Cell UI"
-slug: custom-cell-ui
+title: "Building The Post Cell"
+slug: build-post-cell
 
 ---
 
