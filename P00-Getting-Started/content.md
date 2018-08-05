@@ -1,11 +1,13 @@
 ---
-title: "Get started with this tutorial."
+
+title: "Get Started."
 slug: getting-started
+
 ---
 
 Imagine that you're a developer who is hired to create a Product Hunt reader that shows the currently featured apps on Product Hunt.
 
-The first feature the client wants you to implement is the feed, which displays all of today's featured products on the Product Hunt. The client wants to keep the project lean and asks you explicitly not to use any dependencies or third party libraries.
+The first feature the client wants you to implement is the feed, which displays all of today's featured products on the Product Hunt. Build a quick prototype to shows the client all the core features in action.
 
 # What We're Building
 
@@ -27,7 +29,7 @@ This makes it quick and easy to build out the app and test some of its features 
 
 # What You'll Learn
 
-- How to work wih API's.
+- How to work with API's.
 - How to build a network layer in Swift.
 - How to decode JSON into Swift models.
 - How to take advantage of mock data.

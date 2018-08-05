@@ -50,10 +50,10 @@ Connect the table-view to the class.
 > [action]
 > Create an IBOutlet for the `UITableView` named `commentsTableView` and set its `delegate` and `dataSource` to `self`
 
-Create an optional array of strings to hold the comments.
+Create an optional array of strings to hold the comments and updates the table-view.
 
 > [action]
-> Add variable `comments: [String]?` to `CommentsViewController`
+> Add variable `comments: [String]?` to `CommentsViewController` with a `didSet` property observer to **reload** `commentsTableView`.
 
 Next we setup the necessary methods for our `commentsTableView` to work.
 
@@ -101,3 +101,39 @@ This cell is much simpler and requires very little code.
 > All this cell class needs is one line for the `IBOutlet`.
 
 Now we can test it with mock data.
+
+# Connect The Views
+
+> [action]
+> Add `didSelect` method to `UITableViewDelegate` extension to handle cell tapping.
+>
+> ```swift
+>  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+>
+> }
+> ```
+
+> [action]
+> Add code to retrieve the post that was tapped
+>
+> ```swift
+> guard let posts = posts else {
+>   return
+> }
+> let post = posts[indexPath.row]
+> ```
+
+> [action]
+> Add code to present a `CommentsViewController` with comments.
+>
+> ```swift
+>   ...
+>
+>   let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+>   guard let commentsView = storyboard.instantiateViewController(withIdentifier: "commentsView") as? CommentsViewController else {
+>     return
+>   }
+>   commentsView.comments = ["Blah blah blah!", "Good app.", "Wow."]
+>   navigationController?.pushViewController(commentsView, animated: true)
+> }
+> ```

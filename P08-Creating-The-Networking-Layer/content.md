@@ -28,6 +28,7 @@ We'll keep everything in a class called `NetworkManager`
 > ```swift
 > let urlSession = URLSession.shared
 > var baseURL = "https://api.producthunt.com/v1/"
+> var token = "eb715e9a4c4dd4f7randomt0ken61e49aaa0randomt0kenc0cac1c6"
 > ```
 
 This is what we'll use to create the network request.
@@ -174,6 +175,7 @@ That's the networking layer completed 👌
 > class NetworkManager {
 >   let urlSession = URLSession.shared
 >   var baseURL = "https://api.producthunt.com/v1/"
+>   var token = "eb715e9a4c4dd4f7randomt0ken61e49aaa0randomt0kenc0cac1c6"
 >
 >   func getPosts(completion: @escaping ([Post]) -> Void) {
 >     // Construct the URL to get posts from API.
@@ -186,7 +188,7 @@ That's the networking layer completed 👌
 >     request.allHTTPHeaderFields = [
 >       "Accept": "application/json",
 >       "Content-Type": "application/json",
->       "Authorization": "Bearer eb715e9a4c4dd4f7randomt0ken61e49aaa0randomt0kenc0cac1c6",
+>       "Authorization": "Bearer \(token)",
 >       "Host": "api.producthunt.com"
 >     ]
 >
@@ -212,7 +214,7 @@ That's the networking layer completed 👌
 >         return
 >       }
 >
->       // Ret  urn the result with the completion handler.
+>       // Return the result with the completion handler.
 >       completion(posts)
 >     }.resume()
 >   }
