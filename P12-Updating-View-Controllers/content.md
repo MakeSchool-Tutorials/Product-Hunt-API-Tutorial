@@ -41,3 +41,56 @@ Instead of setting the `comments` list to mock data when pushing a `CommentsView
 >     navigationController?.pushViewController(commentsView, animated: true)
 > }
 > ```
+
+# Update CommentsViewController
+
+> [action]
+> Add `Int` var below `comments` and add a `NetworkManager`
+>
+> ```swift
+>   ...
+> }
+>
+> var postID: Int!
+>
+> var networkManager: NetworkManager!
+> ```
+
+> [action]
+> Initialize `networkManager` in `viewDidLoad`
+>
+> ```swift
+> ...
+>
+> networkManager = NetworkManager()
+> ```
+
+> [action]
+> Add method to pull comments from `networkManager` called `updateComments`
+>
+> ```swift
+> func updateComments() {
+>     networkManager.getComments(postID) { result in
+>         switch result {
+>         case let .success(comments):
+>           self.comments = comments
+>         case let .failure(error):
+>           dump(error)
+>         }
+>     }
+> }
+> ```
+
+> [action]
+> Update tableView `cellForRowAt` method.
+>
+> ```swift
+>     ...
+>
+>     let comment = comments[indexPath.row]
+>     cell.commentTextView.text = comment.body
+>     return cell
+> }
+> ```
+
+Done! Now you have a completed product ready to show the client
