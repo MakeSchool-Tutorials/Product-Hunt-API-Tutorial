@@ -26,7 +26,7 @@ This view is intentionally simple to make it quick to make.
 We'll be using a navigation controller for this app.
 
 > [action]
-> Open Main.storyboard and click on the view controller.
+> Open `Main.storyboard` and click on the view-controller.
 
 A shortcut for adding a navigation controller in storyboard is to **embed** a view-controller in one.
 
@@ -75,9 +75,8 @@ We don't have any data yet, but let's add the functions we be using to update ce
 >  ```
 
 > [info]
-> Extensions add new functionality to an existing class, structure, enumeration, or protocol type.
+> Extensions add new functionality to an existing `class`, `struct`, `enum`, or `protocol` type.
 > This includes the ability to extend types for which you do not have access to the original source code (known as retroactive modeling).
-> Extensions are similar to categories in Objective-C. (Unlike Objective-C categories, Swift extensions do not have names.)
 
 > [action]
 > Add an **extension** for `UITableViewDelegate` right below that.
@@ -100,11 +99,11 @@ We'll use this later to setup selecting and deleting cells.
 Because we **subclassed** `UITableViewDataSource` and `UITableViewDelegate` in **extensions** for the `FeedViewController`, we can set the `feedTableView`'s data source to be the `FeedViewController`.
 
 > [action]
-> Set the delegate and datasource for the table view by typing the following code in your `viewDidLoad`:
+> Set the `delegate` and `dataSource` for the table-view by typing the following code in your `viewDidLoad`:
 >
 > ```swift
 > feedTableView.dataSource = self
 > feedTableView.delegate = self
 > ```
 
-The table view is fully connected and working. You can run the app to see the one cell created thanks to the lines of code we put in the UITableViewDataSource.
+The table view is fully connected and working. You can run the app to see the one cell created thanks to the lines of code we put in the `UITableViewDataSource`.

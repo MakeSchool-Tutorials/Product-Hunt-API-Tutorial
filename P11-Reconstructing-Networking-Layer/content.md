@@ -5,9 +5,16 @@ slug: networking-layer
 
 ---
 
+Now that we have a working `CommentsViewController` the next step will be to build the methods necessary to pull data from the API.
+
+Going back to the API documentation you'll find how to send a pull request to retrieve a specific post's comments.
+
 > [action]
 > Open Postman and send a **GET** request with this URL
 > `https://api.producthunt.com/v1/comments?sory_by=votes&order=asc&per_page=20&search[post_id]=1`
+>
+
+# Create Comment Model
 
 Let's start by creating the model that will hold the **id** and **body** of a comment retrieved from the API.
 
@@ -21,8 +28,10 @@ Let's start by creating the model that will hold the **id** and **body** of a co
 > }
 > ```
 
+And the `struct` to represent the API response from the pull request.
+
 > [action]
-> Create `commentApiResponse` that has a list of `Comment` objects to model the JSON we will retrieve from the API.
+> Create `CommentApiResponse` that has a list of `Comment` objects to model the JSON we will retrieve from the API.
 >
 > ```swift
 > struct CommentApiResponse: Decodable {
@@ -30,7 +39,15 @@ Let's start by creating the model that will hold the **id** and **body** of a co
 > }
 > ```
 
+Because our variables match the properties of the JSON retrieved from the API we do not need to set up coding keys or an initializer. The Comment model is ready to go 👍
+
 # EndPoints
+
+We'll do some major refactoring to the networking layer to improve the overall quality of the code and reduce repetitive code.
+
+Using `enums` is a great way to do this. An enumeration defines a common type for a group of related values and gives us access to those values in a way that is type-safe.
+
+We'll have a case for each endpoint from the API that we want to access.
 
 > [action]
 > Create enum `EndPoints` with case for `posts` and `comments`
@@ -42,8 +59,10 @@ Let's start by creating the model that will hold the **id** and **body** of a co
 > }
 > ```
 
+We'll have a method for each part of the `URLRequest` necessary to building the pull request to get posts and comments.
+
 > [action]
-> Create method to get **http method**.
+> Create method to get the **http method** in a type-safe way.
 >
 > ```swift
 > func getHTTPMethod() -> String {
@@ -69,7 +88,7 @@ Let's start by creating the model that will hold the **id** and **body** of a co
 > Create method to get **parameters**
 >
 > ```swift
-> func getParams(id: Int? = nil) -> String {
+> func getParams() -> String {
 >   switch self {
 >   case .posts:
 >      return [
@@ -93,7 +112,7 @@ Let's start by creating the model that will hold the **id** and **body** of a co
 > ```
 
 > [action]
-> Create method to convert params into a string
+> Create method to convert params array into a connected string.
 >
 > ```swift
 > func paramsToString() -> String {
@@ -109,8 +128,10 @@ Now you can use this to quickly and efficiently create a network request to the 
 
 # Use EndPoints To Construct Request
 
+Now we can clean up the code in `NetworkManager`
+
 > [action]
-> Open `ProductHuntNetworkRequest` and add private method `makeRequest`
+> Add private method `makeRequest` to `NetworkManager` class.
 >
 > ```swift
 > private func makeRequest(for endPoint: EndPoints) -> URLRequest {
@@ -126,8 +147,10 @@ Now you can use this to quickly and efficiently create a network request to the 
 > }
 > ```
 
+We'll also use an `enum` to create `Result` type that allows use to easily handle different responses from the API.
+
 > [action]
-> Create enum `Result`
+> Create enum `Result` with `success` case for returning decoded data, and `failure` case for returning error messages from the response.
 >
 > ```swift
 > enum Result<T> {
@@ -136,6 +159,8 @@ Now you can use this to quickly and efficiently create a network request to the 
 > }
 > ```
 
+And an enum to define all the errors we wish to handle in code.
+
 > [action]
 > Create enum `EndPointError`
 >
@@ -143,12 +168,12 @@ Now you can use this to quickly and efficiently create a network request to the 
 > enum EndPointError: Error {
 >    case couldNotParse
 >    case noData
->    case noPosts
->    case noComments
 > }
 > ```
 
 # Update Get Posts Method
+
+Now we can update the `getPosts` method to use the enums we created to build requests and handle from the API.
 
 > [action]
 > Update `getPosts` method parameters to use the `Result` type.
@@ -167,7 +192,10 @@ Now you can use this to quickly and efficiently create a network request to the 
 
 # Create Get Comments Method
 
+Now it should be relatively easier to send a request to get a posts comments> [action]
+
 > [action]
+> Create method to get comments for a post.
 >
 > ```swift
 > func getComments(_ postId: Int, completion: @escaping (Result<[Comment]>) -> Void) {

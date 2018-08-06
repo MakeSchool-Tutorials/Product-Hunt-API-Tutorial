@@ -35,4 +35,3 @@ This makes it quick and easy to build out the app and test some of its features 
 - How to take advantage of mock data.
 - How to use different data types to make your **URL composable**—allowing you to easily add more features.
 - How to display data in tableviews with custom ui.
-- How to use delegation for view-to-view communication.w

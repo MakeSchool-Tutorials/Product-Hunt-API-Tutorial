@@ -14,7 +14,7 @@ Start by creating the file.
 > [action]
 > Create a new file using the `Cocoa Touch Class` template.
 >
-> Select UITableViewCell from the `Subclass of` dropdown and prepend `Post` to the class name to make the `Class` field say, `PostTableViewCell`.
+> Select `UITableViewCell` from the `Subclass of` dropdown and prepend `Post` to the class name to make the `Class` field say, `PostTableViewCell`.
 >
 > ![Create post cell](assets/post-table-view-cell.png)
 
@@ -27,10 +27,10 @@ Next we'll set the Prototype Cell we created in Storyboard to use this class.
 >
 > In the `Identity Inspector`, change the `Class` field to `PostTableViewCell`.
 
-Now we can connect the IBOutlets to the class we created.
+Now we can connect the `IBOutlets` to the class we created.
 
 > [action]
-> Create weak IBOulets for the labels and image view inside `PostTableViewCell.swift`
+> Create weak `IBOutlets` for the labels and image view inside `PostTableViewCell.swift`
 
 To make updating these views quick and easy, we'll use a property observer on a `Post` object.
 
@@ -38,7 +38,7 @@ To make updating these views quick and easy, we'll use a property observer on a 
 > Property observers watch and respond to changes in a property's value and are called every time a new value is set.
 
 > [action]
-> Below your IBOulets create a new optional `Post` var called `post`
+> Below your `IBOutlets` create a new optional `Post` var called `post`
 
 Now add the property observer `didSet`
 
@@ -88,7 +88,7 @@ Now the custom cell is ready to be used by a UITableView.
 > [solution]
 >
 > ```swift
->  class PostTableViewCell: UITableViewCell {
+> class PostTableViewCell: UITableViewCell {
 >    @IBOutlet weak var nameLabel: UILabel!
 >    @IBOutlet weak var taglineLabel: UILabel!
 >    @IBOutlet weak var commentsCountLabel: UILabel!
@@ -109,5 +109,5 @@ Now the custom cell is ready to be used by a UITableView.
 >    func updatePreviewImage() {
 >      previewImageView.image = UIImage(named: "placeholder")
 >    }
->  }
+> }
 > ```
