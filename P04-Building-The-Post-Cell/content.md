@@ -60,7 +60,9 @@ The last thing we'll add is the UIImageView which will display the product's **s
 > Add an UIImageView to the center of the cell and pin it to all 4 sides of the `Container View` with the following constraints:
 > ![Pin Image View](assets/pin-image.png)
 >
-> You can set the image of the image view to whatever you want. Download free placeholder images [here](https://placeholder.com/).
+> You can set the image of the image view to whatever you want. Download free placeholder images [here](https://placeholder.com/). Add [this](http://via.placeholder.com/350x160) to your **Assets.xcassets** file in your xcode project and rename the file to **placeholder**
+>
+> Lastly, select the image view, go to the **Size Inspector** and scroll down to **Content Hugging Priority** and change the value for **Vertical** from 251 to 250. This allows the image view to take up the extra vertical space the Name label and tagline label didn't take up.
 
 To be able to use this custom cell in code it needs to have an **identifier**.
 
