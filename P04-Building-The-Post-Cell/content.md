@@ -47,6 +47,14 @@ To give the text some room to display information, we can reduce the font size o
 > [action]
 >  Select both labels in the stack view and change their font size to 12 in the `Attribute Inspector`.
 
+
+For names that have a longer names, we have to constraint the right side of the name label to no extend longer than the stack view containing the comment and vote counts.
+
+> [action]
+>  Select the name label and create a right horizontal spacing constraint with a spacing of 12 from the `Add a Constrant` pop over. This will constraint the label to its nearest neighbor which is the horiztonal stack view.
+> 
+>  Select the name label, go to the **Size Inspector** and scroll down to **Content Hugging Priority** and change the value for **Horizontal** from 251 to 250. This allows the name label to take up the extra horizontal space the comment label and votes label didn't take up.
+
 Next up is the label for the **tagline**.
 
 > [action]
@@ -62,7 +70,7 @@ The last thing we'll add is the UIImageView which will display the product's **s
 >
 > You can set the image of the image view to whatever you want. Download free placeholder images [here](https://placeholder.com/). Add [this](http://via.placeholder.com/350x160) to your **Assets.xcassets** file in your xcode project and rename the file to **placeholder**
 >
-> Lastly, select the image view, go to the **Size Inspector** and scroll down to **Content Hugging Priority** and change the value for **Vertical** from 251 to 250. This allows the image view to take up the extra vertical space the Name label and tagline label didn't take up.
+> Lastly, select the image view update the **Content Hugging Priority** value for **Vertical** from 251 to 250. This allows the image view to take up the extra vertical space the Name label and tagline label didn't take up.
 
 To be able to use this custom cell in code it needs to have an **identifier**.
 
