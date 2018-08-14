@@ -15,17 +15,7 @@ Let's start by adding a `NetworkManager` to `FeedViewController`
 > ```swift
 > ...
 >
-> var networkManager: NetworkManager!
-> ```
-
-And initializing it inside `viewDidLoad()`
-
-> [action]
->
-> ```swift
-> ...
->
-> networkManager = NetworkManager()
+> var networkManager = NetworkManager()
 > ```
 
 # Replace Mock Data
@@ -33,12 +23,12 @@ And initializing it inside `viewDidLoad()`
 Now we can replace `mockData` with the list that will be holding the products retrieved from the API.
 
 > [action]
-> Replace the `mockData` list with optional `posts` list.
+> Replace the `mockData` list with an empty `posts` list.
 >
 > ```swift
 > ...
 >
-> var posts: [Post]?
+> var posts: [Post] = []
 >
 > ...
 > ```
@@ -49,10 +39,10 @@ We can use another property observer here to update the `feedTableView` every ti
 > Add a `didSet` property observer to `posts` to update view.
 >
 > ```swift
-> var posts: [Post]? {
+> var posts: [Post] = [] {
 >     didSet {
 >         feedTableView.reloadData()
-      }
+>     }
 > }
 > ```
 
@@ -63,14 +53,12 @@ Next we'll update the places where `mockData` was used to use our newly created 
 >
 > ```swift
 > func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
->   guard let posts = posts else { return 0 }
 >   return posts.count
 > }
 >
 > func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
->   guard let posts = posts, let cell = tableView.dequeueReusableCell(withIdentifier: "postCell") as? PostTableViewCell else {
->     return UITableViewCell()
->   }
+>   let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as! PostTableViewCell
+> 
 >   let post = posts[indexPath.row]
 >   cell.post = post
 >   return cell
