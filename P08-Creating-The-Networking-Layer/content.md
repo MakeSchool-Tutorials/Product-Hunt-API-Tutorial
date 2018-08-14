@@ -156,9 +156,13 @@ If the `Post` is modeled correctly, `JSONDecoder().decode(...)` will continue on
 >
 >     let posts = result.posts
 >
->     completion(posts)
+>     DispatchQueue.main.async {
+>         completion(posts)
+>     }
 > }
 > ```
+
+Since our `getPosts(...)` method performs a network call on a separate queue, a background queue, we need to execute our completion handler on the main queue since all UI code must execute on the main queue.
 
 One last thing we need to do is resume the data task. By default, task tasks are paused. We'll have to resume it to start the task.
 
@@ -217,7 +221,9 @@ That's the networking layer completed 👌
 >       let posts = result.posts
 >
 >       // Return the result with the completion handler.
->       completion(posts)
+>       DispatchQueue.main.async {
+>           completion(posts)
+>       }
 >     }
 >
 >     task.resume()
