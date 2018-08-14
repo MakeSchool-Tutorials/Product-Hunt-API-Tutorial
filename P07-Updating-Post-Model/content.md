@@ -132,7 +132,7 @@ The products we retrieve from the API are inside the array called "posts". We ca
 >
 > ```swift
 > struct PostList: Decodable {
->     var posts: [Post]?
+>     var posts: [Post]
 > }
 > ```
 
