@@ -167,6 +167,7 @@ Since our `getPosts(...)` method performs a network call on a separate queue, a 
 One last thing we need to do is resume the data task. By default, task tasks are paused. We'll have to resume it to start the task.
 
 > [action]
+>
 > ```swift
 > let task = urlSession.dataTask(with: request) { data, response, error in
 >      ...
