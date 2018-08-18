@@ -62,7 +62,6 @@ We'll have a case for each endpoint from the API that we want to access.
 
 We'll have a method for each part of the `URLRequest` necessary to building the pull request to get posts and comments.
 
-
 > [action]
 >  Create method to get the **getPath**
 >
@@ -73,8 +72,8 @@ We'll have a method for each part of the `URLRequest` necessary to building the 
 >        switch self {
 >        case .posts:
 >            return "posts/all"
->        case .comments(let postId):
->            return ""
+>        case .comments:
+>            return "comments"
 >        }
 >    }
 > }
