@@ -21,7 +21,7 @@ First let's update the `FeedViewController` to use the refactored networking met
 >         case let .success(posts):
 >           self.posts = posts
 >         case let .failure(error):
->           dump(error)
+>           print(error)
 >         }
 >     }
 > }
@@ -30,9 +30,10 @@ First let's update the `FeedViewController` to use the refactored networking met
 Instead of setting the `comments` list to mock data when pushing a `CommentsViewController` onto the `navigationController`, we'll send in the **id** of the post that was tapped.
 
 > [action]
-> Update tapping posts
+> Update the `tableView(tableView: didSelectRowAt:)` in our `FeedViewController.swift`
 >
 > ```swift
+> func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 >     ...
 >     guard let commentsView = storyboard.instantiateViewController(withIdentifier: "commentsView") as? CommentsViewController else {
 >       return
@@ -45,24 +46,19 @@ Instead of setting the `comments` list to mock data when pushing a `CommentsView
 # Update CommentsViewController
 
 > [action]
-> Add `Int` var below `comments` and add a `NetworkManager`
+> Add `Int` var below `comments` and add a `NetworkManager`. Be sure to update the comment var to an array of Comments and not an array of Strings
 >
 > ```swift
+> class CommentsViewController: UIViewController {
 >   ...
+>
+>   var comments: [Comment] = []
+>
+>   var postID: Int!
+>
+>   var networkManager = NetworkManager()
+>
 > }
->
-> var postID: Int!
->
-> var networkManager: NetworkManager!
-> ```
-
-> [action]
-> Initialize `networkManager` in `viewDidLoad`
->
-> ```swift
-> ...
->
-> networkManager = NetworkManager()
 > ```
 
 > [action]
@@ -75,9 +71,19 @@ Instead of setting the `comments` list to mock data when pushing a `CommentsView
 >         case let .success(comments):
 >           self.comments = comments
 >         case let .failure(error):
->           dump(error)
+>           print(error)
 >         }
 >     }
+> }
+> ```
+
+> [action]
+> Add the `updateComments()` method to the `CommentsViewController`'s `viewDidLoad()`
+>
+> ```swift
+> override func viewDidLoad() {
+>     
+>     updateComments()
 > }
 > ```
 
@@ -85,12 +91,13 @@ Instead of setting the `comments` list to mock data when pushing a `CommentsView
 > Update tableView `cellForRowAt` method.
 >
 > ```swift
+>  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 >     ...
 >
 >     let comment = comments[indexPath.row]
 >     cell.commentTextView.text = comment.body
 >     return cell
-> }
+>  }
 > ```
 
 Done! Now you have a completed product ready to show the client

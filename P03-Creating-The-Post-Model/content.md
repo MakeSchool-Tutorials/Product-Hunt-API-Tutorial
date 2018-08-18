@@ -32,7 +32,6 @@ We'll use a Struct to define the variables we want to get from the Product Hunt 
 >     let tagline: String
 >     let votesCount: Int
 >     let commentsCount: Int
->     let previewImageUrl: URL
 > }
 >```
 

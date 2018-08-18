@@ -9,16 +9,14 @@ With our custom cell setup, we now have all the UI elements we need to see the `
 
 # Test Without UI Without Data
 
-First let's test things without using any data source.
+First let's test things without using any real data from Product Hunt's API.
 
 > [action]
 > Open `FeedViewController.swift` and go to the `UITableViewDataSource` extension to update the following method:
 >
 > ```swift
 > func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
->     guard let cell = tableView.dequeueReusableCell(withIdentifier: "postCell") as? PostTableViewCell else {
->       return UITableViewCell()
->     }
+>     let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as! PostTableViewCell
 >
 >     return cell
 > }
@@ -81,9 +79,7 @@ We can now use this array as a datasource for the table view, allowing us to pro
 > }
 >
 > func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
->    guard let cell = tableView.dequeueReusableCell(withIdentifier: "postCell") as? PostTableViewCell else {
->      return UITableViewCell()
->    }
+>    let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as! PostTableViewCell
 >
 >    let post = mockData[indexPath.row]
 >    cell.post = post

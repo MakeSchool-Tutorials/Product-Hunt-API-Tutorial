@@ -13,7 +13,7 @@ This view is much simpler than the `FeedView` and doesn't require much work to g
 
 The `CommentsView` is also a view which utilizes a `UITableView` with a custom made cell to display an array of information.
 
-We'll start by creating both the view and the cell. You should know how to create these on your own by now.
+We'll start by creating both the view and the cell.
 
 > [action]
 > Open Storyboard and add a new `UIViewController` `UITableView` with a `UITableView` pinned to all sides of its view.
@@ -50,10 +50,10 @@ Connect the table-view to the class.
 > [action]
 > Create an IBOutlet for the `UITableView` named `commentsTableView` and set its `delegate` and `dataSource` to `self`
 
-Create an optional array of strings to hold the comments and updates the table-view.
+Create an implicitly unwrapped optional array of strings to hold the comments and updates the table-view.
 
 > [action]
-> Add variable `comments: [String]?` to `CommentsViewController` with a `didSet` property observer to **reload** `commentsTableView`.
+> Add variable `var comments: [String]!` to `CommentsViewController` with a `didSet` property observer to **reload** `commentsTableView`.
 
 Next we setup the necessary methods for our `commentsTableView` to work.
 
@@ -64,16 +64,11 @@ Next we setup the necessary methods for our `commentsTableView` to work.
 >  // MARK: UITableViewDatasource
 >  extension CommentsViewController: UITableViewDataSource {
 >  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
->     guard let comments = comments else {
->       return 0
->     }
 >     return comments.count
 >   }
 >
 >   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
->     guard let comments = comments, let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell") as? CommentTableViewCell else {
->       return UITableViewCell()
->     }
+>     let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath) as! CommentTableViewCell
 >
 >     let comment = comments[indexPath.row]
 >     cell.commentTextView.text = comment
@@ -108,16 +103,15 @@ Now we can setup the tap handler for our table-view to present the comments of a
 
 The method that allows us to do this is from the `UITableViewDelegate` which gives us access to the cell that a user selects.
 
+Navigate to `FeedViewController.swift` and add the following:
+
 > [action]
-> Add `didSelect` method to `UITableViewDelegate` extension.
+> Add `tableView(tableView: didSelectRowAt:)` method to `UITableViewDelegate` extension.
 >
 > ```swift
 > ...
 >
 > func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
->     guard let posts = posts else {
->       return
->     }
 >     let post = posts[indexPath.row]
 > }
 > ```
@@ -125,7 +119,7 @@ The method that allows us to do this is from the `UITableViewDelegate` which giv
 We don't have the method necessary to get the comments of a post, so instead we'll use mock data to to test how everything looks first.
 
 > [action]
-> Add this to `didSelectRowAt` method to present a `CommentsViewController` with fake comments.
+> Add this to `tableView(tableView: didSelectRowAt:)` method to present a `CommentsViewController` with fake comments.
 >
 > ```swift
 >   ...

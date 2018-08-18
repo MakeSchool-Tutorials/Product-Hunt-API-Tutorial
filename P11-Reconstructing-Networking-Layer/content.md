@@ -13,6 +13,7 @@ Going back to the API documentation you'll find how to send a pull request to re
 > Open Postman and send a **GET** request with this URL
 > `https://api.producthunt.com/v1/comments?sory_by=votes&order=asc&per_page=20&search[post_id]=1`
 >
+> **Note:** be sure to use the same request sent with the correct headers such as authorization or this request will not work
 
 # Create Comment Model
 
@@ -50,7 +51,7 @@ Using `enums` is a great way to do this. An enumeration defines a common type fo
 We'll have a case for each endpoint from the API that we want to access.
 
 > [action]
-> Create enum `EndPoints` with case for `posts` and `comments`
+> Create enum `EndPoints` with case for `posts` and `comments` inside the `NetworkManager` class
 >
 > ```swift
 > enum EndPoints {
@@ -61,12 +62,33 @@ We'll have a case for each endpoint from the API that we want to access.
 
 We'll have a method for each part of the `URLRequest` necessary to building the pull request to get posts and comments.
 
+
+> [action]
+>  Create method to get the **getPath**
+>
+> ```swift
+>  enum EndPoints {
+>    ...
+>    func getPath() -> String {
+>        switch self {
+>        case .posts:
+>            return "posts/all"
+>        case .comments(let postId):
+>            return ""
+>        }
+>    }
+> }
+> ```
+
 > [action]
 > Create method to get the **http method** in a type-safe way.
 >
 > ```swift
-> func getHTTPMethod() -> String {
->   return "GET"
+> enum EndPoints {
+>   ...
+>   func getHTTPMethod() -> String {
+>     return "GET"
+>   }
 > }
 > ```
 
@@ -74,13 +96,16 @@ We'll have a method for each part of the `URLRequest` necessary to building the 
 > Create method to get **headers**.
 >
 > ```swift
-> func getHeaders(token: String) -> [String: String] {
->   return [
->      "Accept": "application/json",
->      "Content-Type": "application/json",
->      "Authorization": "Bearer \(token)",
->      "Host": "api.producthunt.com"
->   ]
+> enum EndPoints {
+>   ...
+>   func getHeaders(token: String) -> [String: String] {
+>     return [
+>        "Accept": "application/json",
+>       "Content-Type": "application/json",
+>       "Authorization": "Bearer \(token)",
+>       "Host": "api.producthunt.com"
+>     ]
+>   }
 > }
 > ```
 
@@ -88,25 +113,28 @@ We'll have a method for each part of the `URLRequest` necessary to building the 
 > Create method to get **parameters**
 >
 > ```swift
-> func getParams() -> String {
->   switch self {
->   case .posts:
->      return [
->        "sort_by": "votes_count",
->        "order": "desc",
->        "per_page": "20",
+> enum EndPoints {
+>   ...
+>   func getParams() -> [String: String] {
+>     switch self {
+>     case .posts:
+>       return [
+>         "sort_by": "votes_count",
+>         "order": "desc",
+>         "per_page": "20",
 >
->        "search[featured]": "true"
->      ]
+>         "search[featured]": "true"
+>       ]
 >
->   case let .comments(postId):
->      return [
->        "sort_by": "votes",
->        "order": "asc",
->        "per_page": "20",
+>     case let .comments(postId):
+>       return [
+>         "sort_by": "votes",
+>         "order": "asc",
+>         "per_page": "20",
 >
->        "search[post_id]": "\(postId)"
->      ]
+>          "search[post_id]": "\(postId)"
+>        ]
+>     }
 >   }
 > }
 > ```
@@ -115,12 +143,15 @@ We'll have a method for each part of the `URLRequest` necessary to building the 
 > Create method to convert params array into a connected string.
 >
 > ```swift
-> func paramsToString() -> String {
->   let parameterArray = getParams().map { key, value in
->     return "\(key)=\(value)"
->   }
+> enum EndPoints {
+>   ...
+>   func paramsToString() -> String {
+>     let parameterArray = getParams().map { key, value in
+>       return "\(key)=\(value)"
+>     }
 >
->   return parameterArray.joined(separator: "&")
+>     return parameterArray.joined(separator: "&")
+>   }
 > }
 > ```
 
@@ -150,7 +181,7 @@ Now we can clean up the code in `NetworkManager`
 We'll also use an `enum` to create `Result` type that allows use to easily handle different responses from the API.
 
 > [action]
-> Create enum `Result` with `success` case for returning decoded data, and `failure` case for returning error messages from the response.
+> Create enum `Result` inside the `NetworkManager` class with `success` case for returning decoded data, and `failure` case for returning error messages from the response.
 >
 > ```swift
 > enum Result<T> {
@@ -162,7 +193,7 @@ We'll also use an `enum` to create `Result` type that allows use to easily handl
 And an enum to define all the errors we wish to handle in code.
 
 > [action]
-> Create enum `EndPointError`
+> Create enum `EndPointError`. Also, add this inside the `NetworkManager` class
 >
 > ```swift
 > enum EndPointError: Error {
@@ -186,8 +217,34 @@ Now we can update the `getPosts` method to use the enums we created to build req
 > Replace everything above `urlSession.dataTask` and with new `postsRequest` variable and use it in the `dataTask` method call.
 >
 > ```swift
-> let postsRequest = makeRequest(for: .posts)
-> urlSession.dataTask(with: postsRequest) { data, response, error in
+> func getPosts(_ completion: @escaping (Result<[Post]>) -> Void) {
+>     let postsRequest = makeRequest(for: .posts)
+>     let task = urlSession.dataTask(with: postsRequest) { data, response, error in
+>         // Check for errors.
+>         if let error = error {
+>             return completion(Result.failure(error))
+>         }
+>         
+>         // Check to see if there is any data that was retrieved.
+>         guard let data = data else {
+>             return completion(Result.failure(EndPointError.noData))
+>         }
+>         
+>         // Attempt to decode the data.
+>         guard let result = try? JSONDecoder().decode(PostList.self, from: data) else {
+>             return completion(Result.failure(EndPointError.couldNotParse))
+>         }
+>         
+>         let posts = result.posts
+>         
+>         // Return the result with the completion handler.
+>         DispatchQueue.main.async {
+>             completion(Result.success(posts))
+>         }
+>     }
+>     
+>     task.resume()
+> }
 > ```
 
 # Create Get Comments Method
@@ -200,7 +257,7 @@ Now it should be relatively easier to send a request to get a posts comments> [a
 > ```swift
 > func getComments(_ postId: Int, completion: @escaping (Result<[Comment]>) -> Void) {
 >    let commentsRequest = makeRequest(for: .comments(postId: postId))
->    urlSession.dataTask(with: commentsRequest) { data, response, error in
+>    let task = urlSession.dataTask(with: commentsRequest) { data, response, error in
 >      if let error = error {
 >        return completion(Result.failure(error))
 >      }
@@ -213,7 +270,11 @@ Now it should be relatively easier to send a request to get a posts comments> [a
 >        return completion(Result.failure(EndPointError.couldNotParse))
 >      }
 >
->      completion(Result.success(result.comments))
->    }.resume()
+>      DispatchQueue.main.async {
+>        completion(Result.success(result.comments))
+>      }
+>    }
+>     
+>    task.resume()
 > }
 > ```

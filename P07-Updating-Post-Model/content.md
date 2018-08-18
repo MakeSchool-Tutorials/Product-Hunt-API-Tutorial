@@ -16,21 +16,19 @@ First, let's add a variable for the preview image url:
 >
 > ```swift
 >   ...
->   let previewImageUrl: URL
+>   let previewImageURL: URL
 > }
 > ```
 
 This will hold the link to the screenshot of the product and will allow us to download the image later on.
 
-Next, let's make `Post` **decodable** by creating an extension:
+Next, let's make `Post` **decodable** by conforming to the `Decodable` protocol.
 
 > [action]
-> Create an extension for `Post` and make it inherit from the `Decodable` protocol.
->
 > ```swift
 > // MARK: Decodable
-> extension Post: Decodable {
->
+> struct Post: Decodable {
+>   ...
 > }
 > ```
 
@@ -39,7 +37,7 @@ Next, let's make `Post` **decodable** by creating an extension:
 We'll need to define **coding keys** to tell Swift exactly where to find the information to fill the model's variables. However, we actually only need this because the Product Hunt API uses a different naming convention for it's properties.
 
 > [action]
-> Create an `enum` called `PostKeys` which inherits from `String` and `CodingKey` and place it inside the `Decodable` extension.
+> Create an `enum` called `PostKeys` with the raw type as `String` and conforms to `CodingKey` and place it inside the `Post` struct.
 >
 > ```swift
 > enum PostKeys: String, CodingKey {
@@ -76,7 +74,7 @@ Also, there are cases where you simply what to rename the property differently, 
 Now that we have all our necessary coding keys, the next step will be to setup the initializer for our model.
 
 > [action]
-> Add this initializer to the Decodable extension:
+> Add this initializer inside the `Post` struct:
 >
 > ```swift
 > init(from decoder: Decoder) throws {
@@ -110,7 +108,7 @@ Now we can grab all the information we need.
 >
 > ![Posts container](assets/post-container.png)
 
-The screenshot URL inside an object, so we'll need to access it through a **nested container** using the `PreviewImageURLKeys`:
+The screenshot URL is inside an object, so we'll need to access it through a **nested container** using the `PreviewImageURLKeys`:
 
 > [action]
 > Add this add the bottom of the initializer:
@@ -134,7 +132,7 @@ The products we retrieve from the API are inside the array called "posts". We ca
 >
 > ```swift
 > struct PostList: Decodable {
->     var posts: [Post]?
+>     var posts: [Post]
 > }
 > ```
 

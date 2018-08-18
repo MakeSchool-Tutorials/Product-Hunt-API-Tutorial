@@ -28,7 +28,7 @@ We'll keep everything in a class called `NetworkManager`
 > ```swift
 > let urlSession = URLSession.shared
 > var baseURL = "https://api.producthunt.com/v1/"
-> var token = "eb715e9a4c4dd4f7randomt0ken61e49aaa0randomt0kenc0cac1c6"
+> var token = "replace-me-with-your-token-from-product-hunt-api-dashboard-🙏"
 > ```
 
 This is what we'll use to create the network request.
@@ -84,7 +84,7 @@ We'll configure the request before we send it off.
 > request.allHTTPHeaderFields = [
 >     "Accept": "application/json",
 >     "Content-Type": "application/json",
->     "Authorization": "Bearer replace-me-with-a-token-🙏",
+>     "Authorization": "Bearer \(token)",
 >     "Host": "api.producthunt.com"
 > ]
 > ```
@@ -98,13 +98,13 @@ To send the request we'll use the `dataTask` method on our `urlSession`
 > ```swift
 >    ...
 >
->    urlSession.dataTask(with: request) { data, response, error in
+>    let task = urlSession.dataTask(with: request) { data, response, error in
 >   
 >    }
 > }
 > ```
 
-The `dataTask` method executes the request provided and the completion handler returns the result as `data`, a `response` and an `error` if there is any reasons for an incomplete request.
+The `dataTask` method executes the request provided and the completion handler returns the result as `data`, a `response` and an `error` if there is any reasons for an incomplete request. This method returns us a `URLSessionDataTask` object which we can invoke `cancel()`, `suspend()` or `resume()`. We can also check its progress.
 
 We'll check to see if there is an error first and then if there is any data to **decode**.
 
@@ -112,12 +112,15 @@ We'll check to see if there is an error first and then if there is any data to *
 > Add the following inside the `dataTask(with:)` completion handler
 >
 > ```swift
-> if let error = error {
->     dump(error)
-> }
+> let task = urlSession.dataTask(with: request) { data, response, error in
+>     if let error = error {
+>         print(error.localizedDescription)
+>         return
+>     }
 >
-> guard let data = data else {
->     return
+>     guard let data = data else {
+>         return
+>     }
 > }
 > ```
 
@@ -129,10 +132,12 @@ Once we get past those checkpoints, we can decode the data.
 > Use `JSONDecoder` to decode the data retrieved into a `PostList`
 >
 > ```swift
-> ...
+> let task = urlSession.dataTask(with: request) { data, response, error in
+>     ...
 >
-> guard let result = try? JSONDecoder().decode(PostList.self, from: data) else {
->     return
+>     guard let result = try? JSONDecoder().decode(PostList.self, from: data) else {
+>         return
+>     }
 > }
 > ```
 
@@ -140,31 +145,35 @@ Once we get past those checkpoints, we can decode the data.
 > `JSONDecoder().decode` automatically decodes any `Decodable`.
 >
 
-If the `Post` is modeled correctly, the code should continue on to the next step; returning the result as an array of posts.
+If the `Post` is modeled correctly, `JSONDecoder().decode(...)` will continue on to the next step; returning the result as an array of posts.
 
 > [action]
 > Add the following to the bottom of the `dataTask` completion Handler
 >
 > ```swift
+> let task = urlSession.dataTask(with: request) { data, response, error in
 >     ...
 >
->     guard let posts = result.posts else {
->         return
->     }
+>     let posts = result.posts
 >
->     completion(posts)
+>     DispatchQueue.main.async {
+>         completion(posts)
+>     }
 > }
 > ```
 
-One last thing we need to add is a method call that allows the dataTask to run continuously.
+Since our `getPosts(...)` method performs a network call on a separate queue, a background queue, we need to execute our completion handler on the main queue since all UI code must execute on the main queue.
+
+One last thing we need to do is resume the data task. By default, task tasks are paused. We'll have to resume it to start the task.
 
 > [action]
-> Append this to the last bracket of the `dataTask` method call.
->
 > ```swift
+> let task = urlSession.dataTask(with: request) { data, response, error in
 >      ...
 >
-> }.resume()
+> }
+>
+> task.resume()
 > ```
 
 That's the networking layer completed 👌
@@ -175,7 +184,7 @@ That's the networking layer completed 👌
 > class NetworkManager {
 >   let urlSession = URLSession.shared
 >   var baseURL = "https://api.producthunt.com/v1/"
->   var token = "eb715e9a4c4dd4f7randomt0ken61e49aaa0randomt0kenc0cac1c6"
+>   var token = "replace-me-with-your-token-from-product-hunt-api-dashboard-🙏"
 >
 >   func getPosts(completion: @escaping ([Post]) -> Void) {
 >     // Construct the URL to get posts from API.
@@ -192,10 +201,10 @@ That's the networking layer completed 👌
 >       "Host": "api.producthunt.com"
 >     ]
 >
->     urlSession.dataTask(with: request) { data, response, error in
+>     let task = urlSession.dataTask(with: request) { data, response, error in
 >       // Check for errors.
 >       if let error = error {
->         dump(error)
+>         print(error)
 >         return
 >       }
 >
@@ -209,16 +218,17 @@ That's the networking layer completed 👌
 >         return
 >       }
 >
->       // Check to see if there is are any posts that were decoded successfully.
->       guard let posts = result.posts else {
->         return
->       }
+>       let posts = result.posts
 >
 >       // Return the result with the completion handler.
->       completion(posts)
->     }.resume()
+>       DispatchQueue.main.async {
+>           completion(posts)
+>       }
+>     }
+>
+>     task.resume()
 >   }
 > }
 > ```
 
-We can now use it in the `FeedViewController`.
+We can now use our `getPosts(...)` method in the `FeedViewController`.

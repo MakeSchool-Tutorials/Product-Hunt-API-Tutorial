@@ -17,7 +17,7 @@ The `FeedView` consists of a table view with custom cells that display informati
 
 The UI itself is simple, with the magic happening in code. For now let's just build the UI and connect it to a Swift file.
 
-Here's what the result will look like:
+By the end of part 4, here's what our storyboard will look like:
 
 ![Preview FeedView](assets/feedview-preview.png)
 
@@ -96,7 +96,7 @@ We'll use this later to setup selecting and deleting cells.
 > Connect the table view to `FeedViewController`.
 > ![Connect outlet](assets/connect-outlet.png)
 
-Because we **subclassed** `UITableViewDataSource` and `UITableViewDelegate` in **extensions** for the `FeedViewController`, we can set the `feedTableView`'s data source to be the `FeedViewController`.
+Because the `FeedViewController` **conforms** to both the `UITableViewDataSource` and `UITableViewDelegate` in the **extensions**, we can set the `feedTableView`'s data source and delegate to be the `FeedViewController`.
 
 > [action]
 > Set the `delegate` and `dataSource` for the table-view by typing the following code in your `viewDidLoad`:

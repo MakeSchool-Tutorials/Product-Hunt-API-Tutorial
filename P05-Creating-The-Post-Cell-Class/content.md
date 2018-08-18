@@ -18,12 +18,12 @@ Start by creating the file.
 >
 > ![Create post cell](assets/post-table-view-cell.png)
 
-We actually won't be needing the `awakeFromNib()` and `setSelected(:, animated:)` methods, so you can delete those (or keep them, there's no harm done).
+In the new file we just created, we won't be needing the `awakeFromNib()` and `setSelected(:, animated:)` methods. So, you can delete those (or keep them, there's no harm done).
 
 Next we'll set the Prototype Cell we created in Storyboard to use this class.
 
 > [action]
-> Go to Storyboard and select the cell we created in the previous chapter.
+> Go to Storyboard and select the cell we created in the previous chapter (be sure to select the UITableViewCell and not the contentView or the container view we created).
 >
 > In the `Identity Inspector`, change the `Class` field to `PostTableViewCell`.
 
