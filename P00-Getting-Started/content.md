@@ -29,7 +29,7 @@ This makes it quick and easy to build out the app and test some of its features 
 
 # What You'll Learn
 
-- How to work with API's.
+- How to work with APIs.
 - How to build a network layer in Swift.
 - How to decode JSON into Swift models.
 - How to take advantage of mock data.
