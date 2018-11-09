@@ -5,12 +5,12 @@ slug: post-model
 
 ---
 
-We will model the information we will be getting for each posting. The properties we need are the product's id, name, tagline, number of votes, and number of comments.
+Let's model the information we will receive for each posting. The properties we need are the product's ID, name, tagline, number of votes, and number of comments.
 
 > [action]
 > Create a new Swift file and call it `Post.swift`.
 
-We'll use a Struct to define the variables we want to get from the Product Hunt API.
+We'll use a `struct` to define the variables we want to get from the Product Hunt API.
 
 > [action]
 > Create a Struct called `Post`.
