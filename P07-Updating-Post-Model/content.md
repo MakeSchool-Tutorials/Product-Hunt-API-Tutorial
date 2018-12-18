@@ -10,25 +10,25 @@ In order for this model to work well with network requests, we will make it **de
 First, let's add a variable for the preview image url:
 
 > [action]
-> Add previewImageUrl variable at the bottom of Post model.
+> Add previewImageUrl variable at the bottom of `Post` model.
 >
-> ```swift
->   ...
->   let previewImageURL: URL
-> }
-> ```
+```swift
+ ...
+ let previewImageURL: URL
+}
+```
 
 This will hold the link to the screenshot of the product and will allow us to download the image later on.
 
 Next, let's make `Post` **decodable** by conforming to the `Decodable` protocol.
 
 > [action]
-> ```swift
-> // MARK: Decodable
-> struct Post: Decodable {
->   ...
-> }
-> ```
+```swift
+// MARK: Decodable
+struct Post: Decodable {
+ ...
+}
+```
 
 ## Add Coding Keys
 
@@ -37,16 +37,16 @@ We'll need to define **coding keys** to tell Swift exactly where to find the inf
 > [action]
 > Create an `enum` called `PostKeys` with the raw type as `String` and conforms to `CodingKey` and place it inside the `Post` struct.
 >
-> ```swift
-> enum PostKeys: String, CodingKey {
->     case id
->     case name
->     case tagline
->     case votesCount = "votes_count"
->     case commentsCount = "comments_count"
->     case previewImageURL = "screenshot_url"
-> }
-> ```
+```swift
+enum PostKeys: String, CodingKey {
+   case id
+   case name
+   case tagline
+   case votesCount = "votes_count"
+   case commentsCount = "comments_count"
+   case previewImageURL = "screenshot_url"
+}
+```
 >
 > ![Post Keys](assets/post-coding-keys.png)
 
@@ -59,11 +59,11 @@ Also, there are cases where you simply what to rename the property differently, 
 > [action]
 > Add a CodingKey for the preview image.
 >
-> ```swift
-> enum PreviewImageURLKeys: String, CodingKey {
->     case imageURL = "850px"
-> }
-> ```
+```swift
+enum PreviewImageURLKeys: String, CodingKey {
+   case imageURL = "850px"
+}
+```
 >
 > ![Preview Keys](assets/preview-coding-keys.png)
 
@@ -74,35 +74,35 @@ Now that we have all our necessary coding keys, the next step will be to setup t
 > [action]
 > Add this initializer inside the `Post` struct:
 >
-> ```swift
-> init(from decoder: Decoder) throws {
+```swift
+init(from decoder: Decoder) throws {
 >
-> }
-> ```
+}
+```
 
 We'll first need to _enter_ the post object in order to access its properties. This is done using **containers** which uses `CodingKeys`:
 
 > [action]
 > Add this to the initializer:
 >
-> ```swift
-> let postsContainer = try decoder.container(keyedBy: PostKeys.self)
-> ```
+```swift
+let postsContainer = try decoder.container(keyedBy: PostKeys.self)
+```
 
 Now we can grab all the information we need.
 
 > [action]
 > Set the variables of the `Post` using the container.
 >
-> ```swift
->    ...
->    id = try postsContainer.decode(Int.self, forKey: .id)
->    name = try postsContainer.decode(String.self, forKey: .name)
->    tagline = try postsContainer.decode(String.self, forKey: .tagline)
->    votesCount = try postsContainer.decode(Int.self, forKey: .votesCount)
->    commentsCount = try postsContainer.decode(Int.self, forKey: .commentsCount)
-> }
-> ```
+```swift
+  ...
+  id = try postsContainer.decode(Int.self, forKey: .id)
+  name = try postsContainer.decode(String.self, forKey: .name)
+  tagline = try postsContainer.decode(String.self, forKey: .tagline)
+  votesCount = try postsContainer.decode(Int.self, forKey: .votesCount)
+  commentsCount = try postsContainer.decode(Int.self, forKey: .commentsCount)
+}
+```
 >
 > ![Posts container](assets/post-container.png)
 
@@ -111,13 +111,13 @@ The screenshot URL is inside an object, so we'll need to access it through a **n
 > [action]
 > Add this add the bottom of the initializer:
 >
-> ```swift
->     ...
+```swift
+   ...
 >
->     let screenshotURLContainer = try postsContainer.nestedContainer(keyedBy: PreviewImageURLKeys.self, forKey: .previewImageURL)
->     previewImageURL = try screenshotURLContainer.decode(URL.self, forKey: .imageURL)
->  }
-> ```
+   let screenshotURLContainer = try postsContainer.nestedContainer(keyedBy: PreviewImageURLKeys.self, forKey: .previewImageURL)
+   previewImageURL = try screenshotURLContainer.decode(URL.self, forKey: .imageURL)
+}
+```
 >
 > ![Screenshot container](assets/screenshot-container.png)
 
@@ -128,10 +128,10 @@ The products we retrieve from the API are inside the array called "posts". We ca
 > [action]
 > Add this below your `Post` Struct:
 >
-> ```swift
-> struct PostList: Decodable {
->     var posts: [Post]
-> }
-> ```
+```swift
+struct PostList: Decodable {
+   var posts: [Post]
+}
+```
 
 Next up will be creating the networking layer.
