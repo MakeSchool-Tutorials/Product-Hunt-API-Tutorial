@@ -23,6 +23,7 @@ This will hold the link to the screenshot of the product and will allow us to do
 Next, let's make `Post` **decodable** by conforming to the `Decodable` protocol.
 
 > [action]
+>
 ```swift
 // MARK: Decodable
 struct Post: Decodable {
