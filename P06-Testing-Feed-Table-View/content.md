@@ -12,13 +12,13 @@ First let's test things without using any real data from Product Hunt's API.
 > [action]
 > Open `FeedViewController.swift` and go to the `UITableViewDataSource` extension to update the following method:
 >
-> ```swift
-> func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
->     let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as! PostTableViewCell
+```swift
+func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+   let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as! PostTableViewCell
 >
->     return cell
-> }
-> ```
+   return cell
+}
+```
 
 We dequeue a cell using the "postCell" identifier we provided in Storyboard earlier and simply return it.
 
@@ -33,11 +33,11 @@ We also need to update the size of the cell in code.
 > [action]
 > Go to the `UITableViewDelegate` extension and add the following method
 >
-> ```swift
-> func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
->    return 250
-> }
->```
+```swift
+func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+  return 250
+}
+```
 
 Run the app to see how it looks 👌
 
@@ -51,18 +51,17 @@ Using Mock Data allows us to easily test our app without having to create an ent
 > [action]
 > Create an array of Posts below your `feedTableView` IBOutlet using a closure.
 >
-> ``` swift
-> ...
+``` swift
+...
 >
-> var mockData: [Post] = {
->     var meTube = Post(id: 0, name: "MeTube", tagline: "Stream videos for free!", votesCount: 25, commentsCount: 4)
->     var boogle = Post(id: 1, name: "Boogle", tagline: "Search anything!", votesCount: 1000, commentsCount: 50)
->     var meTunes = Post(id: 2, name: "meTunes", tagline: "Listen to any song!", votesCount: 25000, commentsCount: 590)
+var mockData: [Post] = {
+   var meTube = Post(id: 0, name: "MeTube", tagline: "Stream videos for free!", votesCount: 25, commentsCount: 4)
+   var boogle = Post(id: 1, name: "Boogle", tagline: "Search anything!", votesCount: 1000, commentsCount: 50)
+   var meTunes = Post(id: 2, name: "meTunes", tagline: "Listen to any song!", votesCount: 25000, commentsCount: 590)
 >
->     return [meTube, boogle, meTunes]
-> }()
-> ```
->
+   return [meTube, boogle, meTunes]
+}()
+```
 
 The data is essentially fake, so you can create whatever product you want!
 
@@ -71,20 +70,20 @@ We can now use this array as a datasource for the table view, allowing us to pro
 > [action]
 > Update the following methods in the `UITableViewDataSource` extension:
 >
-> ```swift
-> func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
->    return mockData.count
-> }
+```swift
+func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  return mockData.count
+}
 >
-> func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
->    let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as! PostTableViewCell
+func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+  let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as! PostTableViewCell
 >
->    let post = mockData[indexPath.row]
->    cell.post = post
+  let post = mockData[indexPath.row]
+  cell.post = post
 >
->    return cell
-> }
-> ```
+  return cell
+}
+```
 
 Because we used a property observer to update the labels, we only need to set the cell's `post` property to give it the data it needs.
 
