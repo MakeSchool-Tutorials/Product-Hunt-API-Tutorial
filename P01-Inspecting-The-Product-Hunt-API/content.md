@@ -27,18 +27,14 @@ From the API Docs page,
 
 > [action]
 > Click the link at top right labeled "API Dashboard" to navigate to the API Dashboard.
-
-> [action]
+>
 > Click on _ADD AN APPLICATION_.
-
-> [action]
+>
 > Give your application a name and the following redirect URI:
 > `https://localhost:3000/users/auth/producthunt/callback`
-
-> [action]
+>
 > Click on _CREATE TOKEN_ to generate the access token you'll use in your application.
-
-> [action]
+>
 > Your dashboard should now look similar to this:
 > ![API dashboard](assets/api-dashboard.png)
 
@@ -57,7 +53,7 @@ Upon opening Postman, you should see this welcome screen:
 > [action]
 > Choose **Request** under building blocks to create a new request called **GET Posts** and save it a new collection called **Product Hunt**.
 
-You can name the request whatever you want and save it whichever collection you choose; for this tutorial I'll be naming the request **Get Posts** and saving it in the **Product Hunt** collection.
+You can name the request whatever you want and save it whichever collection you choose; for this tutorial I'll be naming the request **GET Posts** and saving it in the **Product Hunt** collection.
 
 > [action]
 > Paste this URL into the URL field at the top of the window: `https://api.producthunt.com/v1/posts/all?sort_by=votes_count&order=desc&search[featured]=true&per_page=20`
@@ -70,7 +66,7 @@ Let's break down the URL:
 > - `sort_by=votes_count` and `order=desc` denotes that we want the resulting data to be organized by the number of votes in descending order.
 > - `search[featured]=true` makes it so that we only get featured posts.
 > - `per_page=20` limits the amount of posts we get to only 20. There are thousands of products listed on product hunt, we'll only need to get 20 at a time for our app.
-> - Lastly, we need to include our access token in our request. Under _Authorization_, select **Bearer Token** in the drop down and paste your access token you generated on the API Dashboard on Product Hunt. Be sure to hit _Update Request_.
+> - Lastly, we need to include our access token in our request. Under _Authorization_, select **Bearer Token** in the drop down and paste your access token you generated on the API Dashboard on Product Hunt. Be sure to hit _Preview Request_.
 
 > [action]
 > Hit send. You should receive is the data from Product Hunt as a response to your request. This is what you should see:
