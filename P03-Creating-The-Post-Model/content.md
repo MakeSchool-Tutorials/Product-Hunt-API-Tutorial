@@ -19,9 +19,8 @@ We'll use a `struct` to define the variables we want to get from the Product Hun
 >
 > }
 > ```
-
-> [action]
-> Give `Post` variables to hold a product's id, name, tagline, number of votes, number of comments, and screenshot url.
+>
+> Give `Post` variables that will hold a product's id, name, tagline, number of votes, number of comments, and screenshot url.
 >
 > ```swift
 > struct Post {
