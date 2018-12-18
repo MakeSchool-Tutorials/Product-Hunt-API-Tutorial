@@ -94,7 +94,10 @@ extension FeedViewController: UITableViewDelegate {
 We'll use this later to setup selecting and deleting cells.
 
 > [action]
-> Connect the table view to `FeedViewController`.
+> Change the class of `Feed` to be `FeedViewController`
+> ![Rename Feed Class](assets/rename-feed-class.png)
+>
+> Create a weak `IBOutlet` from the `Feed Table View` to `FeedViewController`.
 > ![Connect outlet](assets/connect-outlet.png)
 
 Because the `FeedViewController` **conforms** to both the `UITableViewDataSource` and `UITableViewDelegate` in the **extensions**, we can set the `feedTableView`'s data source and delegate to be the `FeedViewController`.
