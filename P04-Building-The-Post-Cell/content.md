@@ -36,7 +36,7 @@ Then the **comments label** and **votes label**, which can be grouped together i
 > [action]
 > Pin a horizontal UIStackView to the top and right of the `Container View`
 >
-> Place 2 labels inside and type "Comments: 0" for the left label and "Votes: 0" for the right label.
+> Place 2 labels inside and type "Comments: 0" for the left label and "Votes: 0" for the right label. Name the labels **Comments Count Label** and **Votes Count Label** respectively.
 >
 > Give the labels some spacing by selecting the stack view and setting the **Spacing** to 8.
 
@@ -75,7 +75,7 @@ To be able to use this custom cell in code it needs to have an **identifier**.
 > [action]
 > Set the `Identifier` of the cell to `postCell` in the cell's `Identity Inspector`.
 
-Now we have all the UI built out to display the information we'll be getting from the API.
+Now we have all the UI built out to display the information we'll be getting from the API. Check out the completed custom cell below. Note that your constraints may not exactly match what is shown below. The important thing is that the layout matches, and that you followed the constraints properly as described in this section.
 
 > [solution]
 > ![Completed custom cell](assets/custom-cell.png)
