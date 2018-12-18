@@ -3,7 +3,7 @@ title: "Building the Feed View"
 slug: build-feed-view
 ---
 
-In order to avoid context switching and to reduce development time, we'll be building this app **outside-in**—starting with the UI and layout of the app and then ending with the networking layer.
+In order to avoid context switching and to reduce development time, we'll be building this app **outside-in**—starting with the UI and layout of the app, and then ending with the networking layer.
 
 We will use the Storyboard in order to create the UI with very simple constraints. Try to resist the temptation to make complex or good looking UI this early, it'll only slow you down. You'll get an opportunity later on to polish and upgrade the app to your liking.
 
@@ -31,7 +31,7 @@ A shortcut for adding a navigation controller in storyboard is to **embed** a vi
 > [action]
 > On the menu bar select `Editor`, then `Embed in` and finally `Navigation Controller` to quickly wrap the view controller in a navigation controller.
 > ![Embedded controller](assets/embed-controller.png)
-> [action]
+>
 > Set the view controller's title to `Feed`.
 > ![Set title](assets/set-controller-title.png)
 
@@ -48,9 +48,8 @@ To adhere to good coding conventions, rename the view controller to `FeedViewCon
 > [action]
 > Change the name in the file inspector, for the class, and in the comments at the top of your file.
 > ![Rename view controller](assets/rename-viewcontroller.png)
-We don't have any data yet, but let's add the functions we be using to update cells.
-
-> [action]
+We don't have any data yet, but let's add the functions that we'll be using to update cells.
+>
 > Add an **extension** for UITableViewDataSource at the bottom of `FeedViewController` to seperate code needed to fill the table view with data.
 >
 > ``` swift
@@ -71,6 +70,7 @@ We don't have any data yet, but let's add the functions we be using to update ce
 >    }
 > }
 >  ```
+>
 
 > [info]
 > Extensions add new functionality to an existing `class`, `struct`, `enum`, or `protocol` type.
@@ -103,5 +103,6 @@ Because the `FeedViewController` **conforms** to both the `UITableViewDataSource
 > feedTableView.dataSource = self
 > feedTableView.delegate = self
 > ```
+>
 
 The table view is fully connected and working. You can run the app to see the one cell created thanks to the lines of code we put in the `UITableViewDataSource`.
