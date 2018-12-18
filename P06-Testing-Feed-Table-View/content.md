@@ -10,7 +10,7 @@ With our custom cell setup, we now have all the UI elements we need to see the `
 First let's test things without using any real data from Product Hunt's API.
 
 > [action]
-> Open `FeedViewController.swift` and go to the `UITableViewDataSource` extension to update the following method:
+> Open `FeedViewController.swift` and go to the `UITableViewDataSource` extension to update the body of the **second** `tableView` method using the code below (check the parameters so that you're sure you're updating the right method):
 >
 ```swift
 func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -20,15 +20,14 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
 }
 ```
 
-We dequeue a cell using the "postCell" identifier we provided in Storyboard earlier and simply return it.
+We dequeue a cell using the `postCell` identifier we provided in Storyboard earlier and simply return it.
 
 > [info]
-> The first line in uses the method `dequeueReusableCell(withIdentifier:)`
-> This is used for performance reasons as it **dequeues** any available cells
-and returns it as the table-view cell associated with the identifier provided,
-> skipping a lot of the overhead needed to create an entirely new cell.
+> The first line in the above function uses the method `dequeueReusableCell(withIdentifier:)`
+>
+> This is used for performance reasons as it **dequeues** any available cells and returns it as the table-view cell associated with the identifier provided, skipping a lot of the overhead needed to create an entirely new cell.
 
-We also need to update the size of the cell in code.
+We also need to update the size of the cell in our `FeedViewController`.
 
 > [action]
 > Go to the `UITableViewDelegate` extension and add the following method
@@ -49,7 +48,7 @@ You should see something awesome like this:
 Using Mock Data allows us to easily test our app without having to create an entire networking layer. We'll simply create an array with `Post` objects and provide the data for each post ourselves.
 
 > [action]
-> Create an array of Posts below your `feedTableView` IBOutlet using a closure.
+> Create an array of Posts in `FeedViewController`, below your `IBOutlet feedTableView` using a closure.
 >
 ``` swift
 ...
@@ -65,7 +64,7 @@ var mockData: [Post] = {
 
 The data is essentially fake, so you can create whatever product you want!
 
-We can now use this array as a datasource for the table view, allowing us to provide data for the labels in the custom cell we created.
+We can now use this array as a **datasource** for the table view, allowing us to provide data for the labels in the custom cell we created.
 
 > [action]
 > Update the following methods in the `UITableViewDataSource` extension:
