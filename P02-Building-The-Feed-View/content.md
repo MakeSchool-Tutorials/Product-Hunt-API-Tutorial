@@ -52,41 +52,44 @@ We don't have any data yet, but let's add the functions that we'll be using to u
 >
 > Add an **extension** for UITableViewDataSource at the bottom of `FeedViewController` to seperate code needed to fill the table view with data.
 >
-> ``` swift
-> class FeedViewController: UIViewController {
->    ...
-> }
+``` swift
+class FeedViewController: UIViewController {
+  ...
+}
 >
-> // MARK: UITableViewDataSource
-> extension FeedViewController: UITableViewDataSource {
->     /// Determines how many cells will be shown on the table view.
->     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
->         return 3
->     }
+// MARK: UITableViewDataSource
+extension FeedViewController: UITableViewDataSource {
+   /// Determines how many cells will be shown on the table view.
+   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+       return 3
+   }
 >
->     /// Creates and configures each cell.
->     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
->         return UITableViewCell()
->    }
-> }
->  ```
->
+   /// Creates and configures each cell.
+   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+       return UITableViewCell()
+  }
+}
+```
+
+<!-- -->
 
 > [info]
 > Extensions add new functionality to an existing `class`, `struct`, `enum`, or `protocol` type.
 > This includes the ability to extend types for which you do not have access to the original source code (known as retroactive modeling).
 
+<!-- -->
+
 > [action]
 > Add an **extension** for `UITableViewDelegate` right below that.
 >
-> ``` swift
-> ...
+``` swift
+...
 >
-> // MARK: UITableViewDelegate
-> extension FeedViewController: UITableViewDelegate {
->    // Code to handle cell events goes here...
-> }
-> ```
+// MARK: UITableViewDelegate
+extension FeedViewController: UITableViewDelegate {
+  // Code to handle cell events goes here...
+}
+```
 
 We'll use this later to setup selecting and deleting cells.
 
@@ -99,10 +102,10 @@ Because the `FeedViewController` **conforms** to both the `UITableViewDataSource
 > [action]
 > Set the `delegate` and `dataSource` for the table-view by typing the following code in your `viewDidLoad`:
 >
-> ```swift
-> feedTableView.dataSource = self
-> feedTableView.delegate = self
-> ```
+```swift
+feedTableView.dataSource = self
+feedTableView.delegate = self
+```
 >
 
 The table view is fully connected and working. You can run the app to see the one cell created thanks to the lines of code we put in the `UITableViewDataSource`.
