@@ -38,7 +38,7 @@ A shortcut for adding a navigation controller in storyboard is to **embed** a vi
 A perk of keeping things simple in the beginning is that you don't have to spend a lot of time configuring the UI.
 
 > [action]
-> Add a table view to the view controller and pin it to all 4 sides.
+> Add a table view to the view controller, name it **Feed Table View**, and pin it to all 4 sides.
 > ![Add table view](assets/pin-table-view.png)
 
 ## Prepare the Swift file
