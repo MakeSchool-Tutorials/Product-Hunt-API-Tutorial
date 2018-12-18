@@ -16,7 +16,7 @@ Lets create a new cell in Storyboard that we can customize.
 It's a bit too small at the moment, but we can easily increase the size.
 
 > [action]
-> Increase the size of the cell to 250 in the **Size Inspector**
+> Increase the size of the Table View Cell to 250 in the **Size Inspector**
 > ![Increase Cell Size](assets/cell-size.png)
 
 We'll use the view that comes with the cell, labeled `Content View` in Storyboard, as the cell's **background**; so leave that transparent. We'll add a new UIView which will act as a **container** for all the views that will display information about the product.
@@ -46,27 +46,27 @@ To give the text some room to display information, we can reduce the font size o
 >  Select both labels in the stack view and change their font size to 12 in the `Attribute Inspector`.
 
 
-For names that have a longer names, we have to constraint the right side of the name label to no extend longer than the stack view containing the comment and vote counts.
+For names that have a longer names, we have to constrain the right side of the name label to not extend longer than the stack view containing the comment and vote counts.
 
 > [action]
->  Select the name label and create a right horizontal spacing constraint with a spacing of 12 from the `Add a Constrant` pop over. This will constraint the label to its nearest neighbor which is the horiztonal stack view.
+>  Select the name label and create a right horizontal spacing constraint with a spacing of 12 from the `Add a Constraint` pop over. This will constraint the label to its nearest neighbor which is the horizontal stack view.
 >
 >  Select the name label, go to the **Size Inspector** and scroll down to **Content Hugging Priority** and change the value for **Horizontal** from 251 to 250. This allows the name label to take up the extra horizontal space the comment label and votes label didn't take up.
 
 Next up is the label for the **tagline**.
 
 > [action]
-> Add a label pinned to the left, bottom, and right of the `Container View` and give it some content.
+> Add a label pinned to the left, bottom, and right of the `Container View` and change its Text to say "Tagline".
 >
 > Set the font size of this label to 12.
 
 The last thing we'll add is the UIImageView which will display the product's **screenshot**.
 
 > [action]
-> Add an UIImageView to the center of the cell and pin it to all 4 sides of the `Container View` with the following constraints:
+> Add an UIImageView (name it **Preview Image View**) to the center of the cell and pin it to all 4 sides of the `Container View` with the following constraints:
 > ![Pin Image View](assets/pin-image.png)
 >
-> You can set the image of the image view to whatever you want. Download free placeholder images [here](https://placeholder.com/). Add [this](http://via.placeholder.com/350x160) to your **Assets.xcassets** file in your xcode project and rename the file to **placeholder**
+> You can set the image of the image view to whatever you want. Download free placeholder images [here](https://placeholder.com/). Add [this](http://via.placeholder.com/350x160) to your **Assets.xcassets** file in your Xcode project and rename the file to **placeholder.png**. Finally, select placeholder.png as the Image for the UIImageView under the Attribute Inspector.
 >
 > Lastly, select the image view update the **Content Hugging Priority** value for **Vertical** from 251 to 250. This allows the image view to take up the extra vertical space the Name label and tagline label didn't take up.
 
