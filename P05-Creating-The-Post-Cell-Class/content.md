@@ -81,7 +81,7 @@ func updatePreviewImage() {
 }
 ```
 
-Now the custom cell is ready to be used by a UITableView.
+Now the custom cell is ready to be used by a UITableView. Make sure your variable names match up with your Storyboard!
 
 > [solution]
 >
