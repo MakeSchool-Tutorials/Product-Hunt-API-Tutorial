@@ -1,8 +1,6 @@
 ---
-
 title: "Inspecting The Product Hunt API"
 slug: product-hunt-api
-
 ---
 
 Product Hunt is an amazing platform to discover new apps and projects. We'll be making it much easier to discover the best ones that have been released recently.

@@ -1,8 +1,6 @@
 ---
-
 title: "Finishing Feed View"
 slug: finish-feed-view
-
 ---
 
 Now that the network manager is complete, we can retrieve real data from Product Hunt through their API. The next step would be to tie it with our UI and have the main feature of our app completed.
@@ -58,7 +56,7 @@ Next we'll update the places where `mockData` was used to use our newly created 
 >
 > func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 >   let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as! PostTableViewCell
-> 
+>
 >   let post = posts[indexPath.row]
 >   cell.post = post
 >   return cell

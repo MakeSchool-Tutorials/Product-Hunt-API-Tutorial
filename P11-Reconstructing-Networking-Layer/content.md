@@ -1,8 +1,6 @@
 ---
-
 title: "Reconstructing Networking Layer"
 slug: networking-layer
-
 ---
 
 Now that we have a working `CommentsViewController` the next step will be to build the methods necessary to pull data from the API.

@@ -1,8 +1,6 @@
 ---
-
 title: "Building the Feed View"
 slug: build-feed-view
-
 ---
 
 In order to avoid context switching and to reduce development time, we'll be building this app **outside-in**—starting with the UI and layout of the app and then ending with the networking layer.

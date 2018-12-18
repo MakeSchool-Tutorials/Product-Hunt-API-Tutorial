@@ -1,8 +1,6 @@
 ---
-
 title: "Get Started."
 slug: getting-started
-
 ---
 
 Imagine that you're a developer who is hired to create a Product Hunt reader that shows the currently featured apps on Product Hunt.

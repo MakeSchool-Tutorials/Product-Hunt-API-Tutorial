@@ -1,8 +1,6 @@
 ---
-
 title: "Creating the Post Cell Class"
 slug: create-post-cell-class
-
 ---
 
 In order to access the custom cell's views in code, a custom class is needed.

@@ -1,8 +1,6 @@
 ---
-
 title: "Updating View Controllers"
 slug: update-view-controllers
-
 ---
 
 Now we have everything we need to have the full app working and ready to show to the client.

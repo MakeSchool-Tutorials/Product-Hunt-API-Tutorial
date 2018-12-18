@@ -1,8 +1,6 @@
 ---
-
 title: "Creating The Networking Layer"
 slug: create-networking-layer
-
 ---
 
 With our model prepared, the networking layer will be pretty simple to create.

@@ -1,8 +1,6 @@
 ---
-
 title: "Updating Post Model"
 slug: update-post-model
-
 ---
 
 In order for this model to work well with network requests, we will make it **decodable**.

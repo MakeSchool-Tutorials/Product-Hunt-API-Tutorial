@@ -1,8 +1,6 @@
 ---
-
 title: "Building The Post Cell"
 slug: build-post-cell
-
 ---
 
 The default cell only has room for a string of text. We need it to display more than that.
@@ -52,7 +50,7 @@ For names that have a longer names, we have to constraint the right side of the 
 
 > [action]
 >  Select the name label and create a right horizontal spacing constraint with a spacing of 12 from the `Add a Constrant` pop over. This will constraint the label to its nearest neighbor which is the horiztonal stack view.
-> 
+>
 >  Select the name label, go to the **Size Inspector** and scroll down to **Content Hugging Priority** and change the value for **Horizontal** from 251 to 250. This allows the name label to take up the extra horizontal space the comment label and votes label didn't take up.
 
 Next up is the label for the **tagline**.

@@ -1,8 +1,6 @@
 ---
-
 title: "Creating The Post Model"
 slug: post-model
-
 ---
 
 Let's model the information we will receive for each posting. The properties we need are the product's ID, name, tagline, number of votes, and number of comments.

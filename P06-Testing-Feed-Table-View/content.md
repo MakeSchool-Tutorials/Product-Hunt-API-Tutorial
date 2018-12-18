@@ -1,8 +1,6 @@
 ---
-
 title: "Testing Feed Table View"
 slug: test-feed-view
-
 ---
 
 With our custom cell setup, we now have all the UI elements we need to see the `Feed View` in action. However, we won't be making any network requests just yet; instead we'll use **mock data** to emulate the data that we will receive from an API request.

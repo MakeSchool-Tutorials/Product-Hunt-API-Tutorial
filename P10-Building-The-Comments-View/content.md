@@ -1,8 +1,6 @@
 ---
-
 title: "Building The Comments View"
 slug: comments-view
-
 ---
 
 Now we can move on to the second part of the app. The `CommentsView` which will show the comments of a tapped product.
