@@ -5,7 +5,7 @@ slug: networking-layer
 
 Now that we have a working `CommentsViewController` the next step will be to build the methods necessary to pull data from the API.
 
-Going back to the API documentation you'll find how to send a pull request to retrieve a specific post's comments.
+Going back to the [API documentation](https://api.producthunt.com/v1/docs), you'll find how to send a pull request to retrieve a specific post's comments.
 
 > [action]
 > Open Postman and send a **GET** request with this URL
@@ -30,7 +30,7 @@ struct Comment: Decodable {
 And the `struct` to represent the API response from the pull request.
 
 > [action]
-> Create `CommentApiResponse` that has a list of `Comment` objects to model the JSON we will retrieve from the API.
+> Create the `CommentApiResponse` struct within your `Comment` model that has a list of `Comment` objects to model the JSON we will retrieve from the API. This will need to be `Decodable` as well.
 >
 ```swift
 struct CommentApiResponse: Decodable {
@@ -44,24 +44,27 @@ Because our variables match the properties of the JSON retrieved from the API we
 
 We'll do some major refactoring to the networking layer to improve the overall quality of the code and reduce repetitive code.
 
-Using `enums` is a great way to do this. An enumeration defines a common type for a group of related values and gives us access to those values in a way that is type-safe.
+Using `enums` is a great way to do this. An **enumeration** defines a common type for a group of related values and gives us access to those values in a way that is type-safe.
 
 We'll have a case for each endpoint from the API that we want to access.
 
 > [action]
-> Create enum `EndPoints` with case for `posts` and `comments` inside the `NetworkManager` class
+> Create enum `EndPoints` with cases for `posts` and `comments` inside the `NetworkManager` class
 >
 ```swift
-enum EndPoints {
- case posts
- case comments(postId: Int)
+class NetworkManager {
+...
+  enum EndPoints {
+   case posts
+   case comments(postId: Int)
+  }
 }
 ```
 
-We'll have a method for each part of the `URLRequest` necessary to building the pull request to get posts and comments.
+We'll have a method for each part of the `URLRequest` necessary to build the pull request to get posts and comments.
 
 > [action]
->  Create method to get the **getPath**
+>  Create a method **get the path** of the posts and comments.
 >
 ```swift
 enum EndPoints {
@@ -76,9 +79,8 @@ enum EndPoints {
   }
 }
 ```
-
-> [action]
-> Create method to get the **http method** in a type-safe way.
+>
+> Create a method to get the **http method** in a type-safe way.
 >
 ```swift
 enum EndPoints {
@@ -88,8 +90,7 @@ enum EndPoints {
  }
 }
 ```
-
-> [action]
+>
 > Create method to get **headers**.
 >
 ```swift
@@ -105,8 +106,7 @@ enum EndPoints {
  }
 }
 ```
-
-> [action]
+>
 > Create method to get **parameters**
 >
 ```swift
@@ -135,9 +135,8 @@ enum EndPoints {
  }
 }
 ```
-
-> [action]
-> Create method to convert params array into a connected string.
+>
+> Create method to convert the **params** array into a connected **string**.
 >
 ```swift
 enum EndPoints {
@@ -159,7 +158,7 @@ Now you can use this to quickly and efficiently create a network request to the 
 Now we can clean up the code in `NetworkManager`
 
 > [action]
-> Add private method `makeRequest` to `NetworkManager` class.
+> Add a private method `makeRequest` to the `NetworkManager` class.
 >
 ```swift
 private func makeRequest(for endPoint: EndPoints) -> URLRequest {
@@ -174,10 +173,10 @@ private func makeRequest(for endPoint: EndPoints) -> URLRequest {
 }
 ```
 
-We'll also use an `enum` to create `Result` type that allows use to easily handle different responses from the API.
+We'll also use an `enum` to create a `Result` type that allows us to easily handle different responses from the API.
 
 > [action]
-> Create enum `Result` inside the `NetworkManager` class with `success` case for returning decoded data, and `failure` case for returning error messages from the response.
+> Create an enum `Result` inside the `NetworkManager` class with `success` case for returning decoded data, and `failure` case for returning error messages from the response.
 >
 ```swift
 enum Result<T> {
@@ -186,10 +185,10 @@ enum Result<T> {
 }
 ```
 
-And an enum to define all the errors we wish to handle in code.
+And an `enum` to define all the errors we wish to handle in code.
 
 > [action]
-> Create enum `EndPointError`. Also, add this inside the `NetworkManager` class
+> Create an enum `EndPointError` and add this inside the `NetworkManager` class
 >
 ```swift
 enum EndPointError: Error {
@@ -200,17 +199,16 @@ enum EndPointError: Error {
 
 # Update Get Posts Method
 
-Now we can update the `getPosts` method to use the enums we created to build requests and handle from the API.
+Now we can update the `getPosts` method to use the enums we created to build requests and handle responses from the API.
 
 > [action]
-> Update `getPosts` method parameters to use the `Result` type.
+> Update the `getPosts` method parameters to use the `Result` type.
 >
 ```swift
 func getPosts(_ completion: @escaping (Result<[Post]>) -> Void) {
 ```
-
-> [action]
-> Replace everything above `urlSession.dataTask` and with new `postsRequest` variable and use it in the `dataTask` method call.
+>
+> Replace the body of the `getPosts` method to use the enums we created and reduce the redundancy that it currently has:
 >
 ```swift
 func getPosts(_ completion: @escaping (Result<[Post]>) -> Void) {
@@ -245,10 +243,10 @@ func getPosts(_ completion: @escaping (Result<[Post]>) -> Void) {
 
 # Create Get Comments Method
 
-Now it should be relatively easier to send a request to get a posts comments> [action]
+Now it should be relatively easy to send a request to get a post's comments> [action]
 
 > [action]
-> Create method to get comments for a post.
+> Create method to get comments for a post:
 >
 ```swift
 func getComments(_ postId: Int, completion: @escaping (Result<[Comment]>) -> Void) {
@@ -274,3 +272,5 @@ func getComments(_ postId: Int, completion: @escaping (Result<[Comment]>) -> Voi
   task.resume()
 }
 ```
+
+If we try to build right now, we'll get errors since we still need to update our view controllers to utilize what we've written in `NetworkManager`. Once we do that, we'll have our very own Product Hunt Reader!
