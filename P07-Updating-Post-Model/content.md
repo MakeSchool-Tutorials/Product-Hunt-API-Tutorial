@@ -3,7 +3,7 @@ title: "Updating Post Model"
 slug: update-post-model
 ---
 
-In order for this model to work well with network requests, we will make it **decodable**.
+In order for this model to work well with network requests, we will make it **decodable**. Making our model [decodable](https://developer.apple.com/documentation/foundation/archives_and_serialization/encoding_and_decoding_custom_types) means that we can take information from external resources (such as the Product Hunt API) and transform it into something that works with our models, like our `Post` model!
 
 # Getting Started
 
@@ -23,11 +23,16 @@ This will hold the link to the screenshot of the product and will allow us to do
 Next, let's make `Post` **decodable** by conforming to the `Decodable` protocol.
 
 > [action]
+> Create an `extension` at the bottom of your `Post` model that makes it `decodable`. We're extending it for ease of readability since we're going to be adding more code later.
 >
 ```swift
+struct Post {
+    // current code
+}
+>
 // MARK: Decodable
-struct Post: Decodable {
- ...
+extension Post: Decodable {
+>
 }
 ```
 
@@ -36,16 +41,18 @@ struct Post: Decodable {
 We'll need to define **coding keys** to tell Swift exactly where to find the information to fill the model's variables. However, we actually only need this because the Product Hunt API uses a different naming convention for it's properties.
 
 > [action]
-> Create an `enum` called `PostKeys` with the raw type as `String` and conforms to `CodingKey` and place it inside the `Post` struct.
+> Create an `enum` called `PostKeys` with the raw type as `String` and conforms to `CodingKey` and place it inside the `Post: Decodable` extension.
 >
 ```swift
-enum PostKeys: String, CodingKey {
-   case id
-   case name
-   case tagline
-   case votesCount = "votes_count"
-   case commentsCount = "comments_count"
-   case previewImageURL = "screenshot_url"
+extension Post: Decodable {
+    enum PostKeys: String, CodingKey {
+        case id
+        case name
+        case tagline
+        case votesCount = "votes_count"
+        case commentsCount = "comments_count"
+        case previewImageURL = "screenshot_url"
+    }
 }
 ```
 >
@@ -55,7 +62,7 @@ Note how only `votesCount`, `commentsCount`, and `previewImageUrl` are the only 
 
 In fact, if we did not plan to collect these variables from the JSON, we would not need to create any **coding keys**.
 
-Also, there are cases where you simply what to rename the property differently, such as for the `previewImageUrl`. We'll create a coding key for that as well:
+Also, there are cases where you simply what to rename the property differently, such as for the `previewImageUrl`. We'll create a coding key for that as well and put it in our `Post: Decodable` extension:
 
 > [action]
 > Add a CodingKey for the preview image.
@@ -73,7 +80,7 @@ enum PreviewImageURLKeys: String, CodingKey {
 Now that we have all our necessary coding keys, the next step will be to setup the initializer for our model.
 
 > [action]
-> Add this initializer inside the `Post` struct:
+> Add this initializer inside the `Post: Decodable` extension, below the `enums` you made earlier:
 >
 ```swift
 init(from decoder: Decoder) throws {
@@ -81,19 +88,24 @@ init(from decoder: Decoder) throws {
 }
 ```
 
-We'll first need to _enter_ the post object in order to access its properties. This is done using **containers** which uses `CodingKeys`:
+We'll first need to _enter_ the post object that we get back from the Product Hunt API in order to access its properties. This is done using **containers** which uses `CodingKeys`:
+
+> [info]
+> [Containers](https://developer.apple.com/documentation/swift/decoder/2892621-container) allow the `decoders` to return their data based off of the provided `CodingKeys`
+
+<!-- -->
 
 > [action]
-> Add this to the initializer:
+> Add this to the body of the `init` you just created:
 >
 ```swift
 let postsContainer = try decoder.container(keyedBy: PostKeys.self)
 ```
 
-Now we can grab all the information we need.
+Now that we have stored the `post` object in a container, we can go in and grab all the information we need from it!
 
 > [action]
-> Set the variables of the `Post` using the container.
+> Below the `postsContainer` line, Set the variables of the `Post` using the `postContainer` you just created.
 >
 ```swift
   ...
@@ -107,7 +119,7 @@ Now we can grab all the information we need.
 >
 > ![Posts container](assets/post-container.png)
 
-The screenshot URL is inside an object, so we'll need to access it through a **nested container** using the `PreviewImageURLKeys`:
+Finally, we need to set the `previewImageURL`. The actual URL that we need from `screenshot_url` is nested within the `screenshot_url` object in the API response, so we'll need to access it through a **nested container** (more info on those [here](https://developer.apple.com/documentation/swift/keyeddecodingcontainer/2893204-nestedcontainer)) using the `PreviewImageURLKeys`:
 
 > [action]
 > Add this add the bottom of the initializer:
@@ -127,11 +139,19 @@ Now the model is ready to go! But there's one more thing we need to add to make 
 The products we retrieve from the API are inside the array called "posts". We can model this using a Struct:
 
 > [action]
-> Add this below your `Post` Struct:
+> Add this below your `Post` Struct, and above your `extension Post: Decodable`:
 >
 ```swift
+struct Post {
+...
+}
+>
 struct PostList: Decodable {
    var posts: [Post]
+}
+>
+extension Post: Decodable {
+...
 }
 ```
 
