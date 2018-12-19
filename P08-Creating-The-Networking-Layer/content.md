@@ -8,25 +8,19 @@ With our model prepared, the networking layer will be pretty simple to create.
 # Create Manager Class
 
 > [action]
-Start by creating a new file named `NetworkManager.swift`
+Start by creating a new `Swift` file named `NetworkManager.swift`
 
 We'll keep everything in a class called `NetworkManager`
 
 > [action]
-> Create `NetworkManager` class
+> Create a `NetworkManager` class with the following variables. Remember to replace the value of `token` with your Product Hunt API token!
 >
 ```swift
 class NetworkManager {
->
+    let urlSession = URLSession.shared
+    var baseURL = "https://api.producthunt.com/v1/"
+    var token = "replace-me-with-your-token-from-product-hunt-api-dashboard-🙏"
 }
-```
->
-> And add the following variables
->
-```swift
-let urlSession = URLSession.shared
-var baseURL = "https://api.producthunt.com/v1/"
-var token = "replace-me-with-your-token-from-product-hunt-api-dashboard-🙏"
 ```
 
 This is what we'll use to create the network request.
@@ -36,7 +30,7 @@ This is what we'll use to create the network request.
 Next we'll create the method that handles the request.
 
 > [action]
-> Create `getPosts()` method
+> Create a `getPosts()` method in your new `NetworkManager` class
 >
 ```swift
 func getPosts() {
@@ -44,9 +38,9 @@ func getPosts() {
 }
 ```
 
-Because network request require continues data flow which can result in different speeds depending on the network, we'll use an **escaping closure** as a completion handler in order to return data.
+Because network requests require continuous data flow, this can result in different speeds depending on the network. To account for this, we'll use an **escaping closure** as a completion handler in order to return data.
 
-Using the normal function `return` would result in inconsistent results, as the data retrieved from a request might not always be prepared for before the method returns
+Using the normal function `return` would result in inconsistent results, as the data retrieved from a request might not always be prepared before the method returns. We need to adjust the parameter list for our `getPosts` method.
 
 > [action]
 > Add an **escaping closure** to `getPosts()` as a parameter.
@@ -55,12 +49,12 @@ Using the normal function `return` would result in inconsistent results, as the 
 func getPosts(completion: @escaping ([Post]) -> Void)
 ```
 
-The escaping closure allows the compiler to continue on to other code—**escaping** the method—and return later on when.
+The escaping closure allows the compiler to continue on to other code—**escaping** the method—and return later on when the data is ready to be returned.
 
 ## Constructing The Request
 
 > [action]
-> Add the following lines in `getPosts(completion:)`
+> Add the following lines in the body of `getPosts(completion:)`
 >
 ```swift
 let query = "posts/all?sort_by=votes_count&order=desc&search[featured]=true&per_page=20"
@@ -68,12 +62,12 @@ let fullURL = URL(string: baseURL + query)!
 var request = URLRequest(url: fullURL)
 ```
 
-This using the baseURL of the API and the parameters we established earlier to construct a request instance.
+This uses the `baseURL` of the API in addition to the parameters we established earlier to construct a request instance.
 
 We'll configure the request before we send it off.
 
 > [action]
-> Add these lines to `getPosts(completion:)`
+> Add these lines underneath the previous 3 for `getPosts(completion:)`
 >
 ```swift
 ...
@@ -98,10 +92,10 @@ To send the request we'll use the `dataTask` method on our `urlSession`
   let task = urlSession.dataTask(with: request) { data, response, error in
 >   
   }
-}
+>
 ```
 
-The `dataTask` method executes the request provided and the completion handler returns the result as `data`, a `response` and an `error` if there is any reasons for an incomplete request. This method returns us a `URLSessionDataTask` object which we can invoke `cancel()`, `suspend()` or `resume()`. We can also check its progress.
+The `dataTask` method executes the `request` provided and the completion handler returns the result as `data`, a `response`, and an `error` if there is any reasons for an incomplete request. This method returns us a `URLSessionDataTask` object (`task`) which we can invoke `cancel()`, `suspend()` or `resume()`. We can also check its progress.
 
 We'll check to see if there is an error first and then if there is any data to **decode**.
 
@@ -121,7 +115,7 @@ let task = urlSession.dataTask(with: request) { data, response, error in
 }
 ```
 
-These lines make sure that we have data to work with.
+These lines make sure that we have data to work with and that no error occurred. If either of those are not true, then we return.
 
 Once we get past those checkpoints, we can decode the data.
 
@@ -143,7 +137,7 @@ let task = urlSession.dataTask(with: request) { data, response, error in
 > [info]
 > `JSONDecoder().decode` automatically decodes any `Decodable`.
 
-If the `Post` is modeled correctly, `JSONDecoder().decode(...)` will continue on to the next step; returning the result as an array of posts.
+If the `Post` is modeled correctly, `JSONDecoder().decode(...)` will continue on to the next step: returning the result as an array of posts!
 
 > [action]
 > Add the following to the bottom of the `dataTask` completion Handler
@@ -160,9 +154,9 @@ let task = urlSession.dataTask(with: request) { data, response, error in
 }
 ```
 
-Since our `getPosts(...)` method performs a network call on a separate queue, a background queue, we need to execute our completion handler on the main queue since all UI code must execute on the main queue.
+Since our `getPosts(...)` method performs a network call on a separate queue, a **background queue**, we need to execute our completion handler on the main queue since all UI code must execute on the main queue.
 
-One last thing we need to do is resume the data task. By default, task tasks are paused. We'll have to resume it to start the task.
+One last thing we need to do is resume the `dataTask`. By default, `dataTasks` are paused. We'll have to resume it to start the task:
 
 > [action]
 >
@@ -230,4 +224,4 @@ class NetworkManager {
 }
 ```
 
-We can now use our `getPosts(...)` method in the `FeedViewController`.
+We can now use our `getPosts(...)` method in the `FeedViewController`!
