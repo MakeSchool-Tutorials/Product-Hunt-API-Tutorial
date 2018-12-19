@@ -3,7 +3,9 @@ title: "Finishing Feed View"
 slug: finish-feed-view
 ---
 
-Now that the network manager is complete, we can retrieve real data from Product Hunt through their API. The next step would be to tie it with our UI and have the main feature of our app completed.
+Now that the network manager is complete, we can retrieve real data from Product Hunt through their API!
+
+The next step would be to tie it in with our UI and have the main feature of our app (browsing featured products on Product Hunt) completed.
 
 Let's start by adding a `NetworkManager` to `FeedViewController`
 
@@ -11,7 +13,9 @@ Let's start by adding a `NetworkManager` to `FeedViewController`
 > Open `FeedViewController.swift` and add a `NetworkManager` property below your `mockData` list.
 >
 ```swift
-...
+var mockData: [Post] = {
+    ...
+}()
 >
 var networkManager = NetworkManager()
 ```
@@ -34,7 +38,7 @@ var posts: [Post] = []
 We can use another property observer here to update the `feedTableView` every time the `posts` is updated.
 
 > [action]
-> Add a `didSet` property observer to `posts` to update view.
+> Add a `didSet` property observer to `posts` to update the view.
 >
 ```swift
 var posts: [Post] = [] {
@@ -47,7 +51,7 @@ var posts: [Post] = [] {
 Next we'll update the places where `mockData` was used to use our newly created optional `posts` list.
 
 > [action]
-> Update the the follow methods in `UITableViewDataSource` extenison to use `posts` rather than `mockData` list.
+> Update the the following methods in the `UITableViewDataSource` extension to use `posts` rather than `mockData` list.
 >
 ```swift
 func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -92,8 +96,7 @@ func updateFeed() {
    }
 }
 ```
-
-> [action]
+>
 > Add `updateFeed()` at the bottom of `viewDidLoad()`
 >
 ```swift
@@ -105,9 +108,13 @@ func updateFeed() {
 
 That's it 👏 Run the app to see it in action.
 
-We have completed the first 2 user stories
+![Finished Feed View](assets/finished-feed-view.png)
+
+Notice that we still don't have images for each of the cells. If we look at `PostTableViewCell`, we're still using `placeholder` for our image. We'll revisit updating this towards the end of this tutorial, so don't worry about it for now!
+
+Instead, celebrate the fact that we have now completed the first 2 user stories:
 
 > - I can browse products featured today on Product Hunt by scrolling through the app’s main screen.
 > - I see each product’s name, tagline, number of votes.
 
-Let's move on to the final user story.
+Let's move on to the final user story!
