@@ -114,7 +114,7 @@ Notice that we still don't have images for each of the cells. If we look at `Pos
 
 Instead, celebrate the fact that we have now completed the first 2 user stories:
 
-> - I can browse products featured today on Product Hunt by scrolling through the app’s main screen.
-> - I see each product’s name, tagline, number of votes.
+- I can browse products featured today on Product Hunt by scrolling through the app’s main screen.
+- I see each product’s name, tagline, number of votes.
 
 Let's move on to the final user story!
