@@ -14,67 +14,79 @@ The `CommentsView` is also a view which utilizes a `UITableView` with a custom m
 We'll start by creating both the view and the cell.
 
 > [action]
-> Open Storyboard and add a new `UIViewController` `UITableView` with a `UITableView` pinned to all sides of its view.
+> Open Storyboard and add a new `UIViewController` scene. Rename the `UIViewController` to be `Comments`
+>
+>  Add a `UITableView` to the `Comments UIViewController` and pin it to all sides of its view. Name it `Comments Table View`.
 
 The cell will consist of a single `UITextView` that fills the cell with padding on the sides.
 
 > [action]
 >
-> Add a prototype cell with the **identifier `commentCell`**, a **height of 125**, and a **`UITextView` with 15 points of padding** on all sides.
+> Add a `UITableViewCell` with the **identifier `commentCell`** to the `Comments Table View`. Give it a **row height of 125**
 >
+> Next add a **`UITextView` to `commentCell` with 15 points of padding** on all sides. Name it `Comments Text View`.
+>
+> At this point your Comments View should look like this:
 > ![Comments view with cell](assets/comments-view.png)
 
-We don't want to make comments editable, so let's disable that for the text-view in the cell.
+Lastly, we don't want to make comments editable, so let's disable that for `Comments Text View`.
 
 > [action]
 > Disable `Editable` behavior for the text-view in its `Attribute Inspector`.
+> ![Disable Editable](assets/disable-editable.png)
 
-And that's it!
+And that's it! We've got our comments view! Now let's wire it up.
 
 # Create CommentsViewController
 
-Now we can setup the code.
+Setting up the `CommentsViewController` is going to be very similar to what we've already done for `FeedViewController`. We'll go through what's needed for the setup, but you'll be writing the code yourself based on the instructions. If you get stuck, look at the work you did for `FeedViewController` and see how it can map over to `CommentsViewController`.
 
 > [action]
-> Create a `UIViewController` class called `CommentsViewController`
+> First step is to create a new `UIViewController` class (remember to use a `Cocoa Touch Class` file), and name it `CommentsViewController`
 
 Connect the class to the view-controller.
 
 > [action]
-> Set class of newly added view-controller to `CommentsViewController` and its `Storyboard ID` to `commentsView` in the `Identity Inspector`.
+> Set the class of the `Comments` view controller to `CommentsViewController` and its `Storyboard ID` to `commentsView` in the `Identity Inspector`.
 
 Connect the table-view to the class.
 
 > [action]
-> Create an IBOutlet for the `UITableView` named `commentsTableView` and set its `delegate` and `dataSource` to `self`
+> Create an `IBOutlet` for the `UITableView` named `commentsTableView`, then set its `delegate` and `dataSource` to `self` in the `viewDidLoad` method.
 
 Create an implicitly unwrapped optional array of strings to hold the comments and updates the table-view.
 
 > [action]
-> Add variable `var comments: [String]!` to `CommentsViewController` with a `didSet` property observer to **reload** `commentsTableView`.
+> Add variable `var comments: [String]!` to `CommentsViewController` with a `didSet` property observer. We'll leave this blank for now, but once we add real data, we'll need to have it refresh the `commentsTableView`.
 
 Next we setup the necessary methods for our `commentsTableView` to work.
 
 > [action]
 > Create extensions for `CommentsViewController` which inherit from `UITableViewDataSource` and add the methods to pull information from the `comments` list
 >
-> ```swift
->  // MARK: UITableViewDatasource
->  extension CommentsViewController: UITableViewDataSource {
->  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
->     return comments.count
->   }
+```swift
+// MARK: UITableViewDatasource
+extension CommentsViewController: UITableViewDataSource {
+func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+   return comments.count
+ }
 >
->   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
->     let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath) as! CommentTableViewCell
+ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+   let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath) as! CommentTableViewCell
 >
->     let comment = comments[indexPath.row]
->     cell.commentTextView.text = comment
->     return cell
->   }
-> }
+   let comment = comments[indexPath.row]
+   cell.commentTextView.text = comment
+   return cell
+ }
+}
 >
-> ```
+// MARK: UITableViewDelegate
+extension CommentsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 125
+    }
+}
+```
 
 Next we'll create the `CommentTableViewCell` that will allow the last method to work with a custom cell.
 
@@ -83,13 +95,15 @@ Next we'll create the `CommentTableViewCell` that will allow the last method to 
 This cell is much simpler and requires very little code.
 
 > [action]
-> Create a new `UITableViewCell` class named `CommentTableViewCell` and connect `IBOutlet` with text-view in prototype.
+> Create a new `UITableViewCell` class named `CommentTableViewCell`. Set `commentCell` to this new class.
 >
-> ```swift
-> class CommentTableViewCell: UITableViewCell {
->    @IBOutlet weak var commentTextView: UITextView!
-> }
-> ```
+> Once the class has been updated, Connect an `IBOutlet` from `Comments Text View` to `CommentTableViewCell`.
+>
+```swift
+class CommentTableViewCell: UITableViewCell {
+  @IBOutlet weak var commentTextView: UITextView!
+}
+```
 >
 > All this cell class needs is one line for the `IBOutlet`.
 
@@ -104,31 +118,109 @@ The method that allows us to do this is from the `UITableViewDelegate` which giv
 Navigate to `FeedViewController.swift` and add the following:
 
 > [action]
-> Add `tableView(tableView: didSelectRowAt:)` method to `UITableViewDelegate` extension.
+> Add the `tableView(tableView: didSelectRowAt:)` method to the `UITableViewDelegate` extension in `FeedViewController`.
 >
-> ```swift
-> ...
+```swift
+...
+extension FeedViewController: UITableViewDelegate {
+    ...
 >
-> func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
->     let post = posts[indexPath.row]
-> }
-> ```
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       let post = posts[indexPath.row]
+    }
+}
+```
 
 We don't have the method necessary to get the comments of a post, so instead we'll use mock data to to test how everything looks first.
 
 > [action]
 > Add this to `tableView(tableView: didSelectRowAt:)` method to present a `CommentsViewController` with fake comments.
 >
-> ```swift
->   ...
+```swift
+ ...
 >
->   let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
->   guard let commentsView = storyboard.instantiateViewController(withIdentifier: "commentsView") as? CommentsViewController else {
->     return
->   }
->   commentsView.comments = ["Blah blah blah!", "Good app.", "Wow."]
->   navigationController?.pushViewController(commentsView, animated: true)
-> }
-> ```
+ let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+ guard let commentsView = storyboard.instantiateViewController(withIdentifier: "commentsView") as? CommentsViewController else {
+   return
+ }
+ commentsView.comments = ["Blah blah blah!", "Good app.", "Wow."]
+ navigationController?.pushViewController(commentsView, animated: true)
+}
+```
 
-Run the app and test it out to see how it looks.
+Run the app and test it out to see how it looks!
+![Mock Comments Finished](assets/mock-comments.png)
+
+You can check your implementation with the below solutions for `CommentTableViewCell` and `CommentsViewController`:
+
+>[solution]
+ **CommentTableViewCell**
+>
+ ```swift
+ import UIKit
+>
+class CommentTableViewCell: UITableViewCell {
+    @IBOutlet weak var commentTextView: UITextView!
+>    
+>   // Below functions are not needed, they were auto-generated
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+>
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+>
+        // Configure the view for the selected state
+    }
+>
+}
+```
+>
+>
+> **CommentsViewController**
+>
+```swift
+import UIKit
+>
+class CommentsViewController: UIViewController {
+>
+    @IBOutlet weak var commentsTableView: UITableView!
+>    
+    var comments: [String]! {
+        didSet {
+            // TODO: fill in later when we have real data
+        }
+    }
+>    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        commentsTableView.dataSource = self
+        commentsTableView.delegate = self
+    }
+>
+}
+>
+// MARK: UITableViewDatasource
+extension CommentsViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return comments.count
+    }
+>  
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath) as! CommentTableViewCell
+>        
+        let comment = comments[indexPath.row]
+        cell.commentTextView.text = comment
+        return cell
+    }
+}
+>
+// MARK: UITableViewDelegate
+extension CommentsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 125
+    }
+}
+
+```
