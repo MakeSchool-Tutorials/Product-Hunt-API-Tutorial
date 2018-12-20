@@ -15,11 +15,11 @@ The `FeedView` consists of a table view with custom cells that display informati
 
 The UI itself is simple, with the magic happening in code. For now let's just build the UI and connect it to a Swift file.
 
-By the end of part 4, here's what our storyboard will look like:
+**By the end of Part 4, here's what our storyboard will look like:**
 
 ![Preview FeedView](assets/feedview-preview.png)
 
-This view is intentionally simple to make it quick to make.
+This view is intentionally simple so that we can more easily get up and running.
 
 We'll be using a navigation controller for this app.
 
@@ -32,8 +32,8 @@ A shortcut for adding a navigation controller in storyboard is to **embed** a vi
 > On the menu bar select `Editor`, then `Embed in` and finally `Navigation Controller` to quickly wrap the view controller in a navigation controller.
 > ![Embedded controller](assets/embed-controller.png)
 >
-> Set the view controller's title to `Feed`.
-> ![Set title](assets/set-controller-title.png)
+> Select the `Navigation Item` under the `View Controller Scene` and  set the `Navigation Item`'s title to `Feed`.
+> ![Set title](assets/nav-item-title.png)
 
 A perk of keeping things simple in the beginning is that you don't have to spend a lot of time configuring the UI.
 
@@ -50,7 +50,7 @@ To adhere to good coding conventions, rename the view controller to `FeedViewCon
 > ![Rename view controller](assets/rename-viewcontroller.png)
 We don't have any data yet, but let's add the functions that we'll be using to update cells.
 >
-> Add an **extension** for UITableViewDataSource at the bottom of `FeedViewController` to seperate code needed to fill the table view with data.
+> Add an **extension** for UITableViewDataSource at the bottom of `FeedViewController` to separate code needed to fill the table view with data.
 >
 ``` swift
 class FeedViewController: UIViewController {
@@ -94,10 +94,10 @@ extension FeedViewController: UITableViewDelegate {
 We'll use this later to setup selecting and deleting cells.
 
 > [action]
-> Change the class of `Feed` to be `FeedViewController`
+> Change the class of `View Controller` to be `FeedViewController`. This will change its name from `View Controller` to `Feed`
 > ![Rename Feed Class](assets/rename-feed-class.png)
 >
-> Create a weak `IBOutlet` from the `Feed Table View` to `FeedViewController`.
+> Create an `IBOutlet` from the `Feed Table View` to `FeedViewController`.
 > ![Connect outlet](assets/connect-outlet.png)
 
 Because the `FeedViewController` **conforms** to both the `UITableViewDataSource` and `UITableViewDelegate` in the **extensions**, we can set the `feedTableView`'s data source and delegate to be the `FeedViewController`.

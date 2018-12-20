@@ -80,4 +80,5 @@ Now we have all the UI built out to display the information we'll be getting fro
 Check out the completed custom cell below. Note that your constraints may not exactly match what is shown below. The important thing is that the layout matches, and that you followed the constraints properly as described in this section.
 
 > [solution]
+> Click on the image if you want to see all the information on the Project Navigator:
 > ![Completed custom cell](assets/custom-cell.png)
