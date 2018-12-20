@@ -169,7 +169,7 @@ let task = urlSession.dataTask(with: request) { data, response, error in
 task.resume()
 ```
 
-That's the networking layer completed 👌
+Networking layer is now complete (for now) 👌
 
 > [solution]
 >
