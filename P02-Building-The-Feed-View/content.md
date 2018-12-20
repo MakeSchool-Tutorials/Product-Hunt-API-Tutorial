@@ -112,3 +112,5 @@ feedTableView.delegate = self
 >
 
 The table view is fully connected and working. You can run the app to see the one cell created thanks to the lines of code we put in the `UITableViewDataSource`.
+
+We're going to be working a lot more with these views later on in the tutorial, but now you've got a sense of **how to display data in tableviews with custom UI!**

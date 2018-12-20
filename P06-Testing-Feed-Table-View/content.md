@@ -89,4 +89,4 @@ Because we used a property observer to update the labels, we only need to set th
 Run the app again to see how it looks. You should see the cell's filled with the information provided by our mock data:
 ![Feed with data](assets/feed-with-data.png)
 
-We are now ready to get into networking! But first we need to update our model.
+We've successfully integrated **the use of mock data** into our app! We are now ready to get into networking! But first we need to update our model.

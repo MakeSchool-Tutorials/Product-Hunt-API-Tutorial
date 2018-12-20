@@ -273,4 +273,6 @@ func getComments(_ postId: Int, completion: @escaping (Result<[Comment]>) -> Voi
 }
 ```
 
-If we try to build right now, we'll get errors since we still need to update our view controllers to utilize what we've written in `NetworkManager`. Once we do that, we'll have our very own Product Hunt Reader!
+Well done! We got more practice here in **decoding JSON into Swift models, building out our network layer, and working with an API!**
+
+Unfortunately we have a problem: If we try to build right now, we'll get errors since we still need to update our view controllers to utilize what we've written in `NetworkManager`. Once we do that though, we'll have our very own Product Hunt Reader!

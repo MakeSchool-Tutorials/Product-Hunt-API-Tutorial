@@ -112,7 +112,7 @@ That's it 👏 Run the app to see it in action.
 
 Notice that we still don't have images for each of the cells. If we look at `PostTableViewCell`, we're still using `placeholder` for our image. We'll revisit updating this towards the end of this tutorial, so don't worry about it for now!
 
-Instead, celebrate the fact that we have now completed the first 2 user stories:
+Instead, celebrate the fact that not only did we apply our learning of **how to build a network layer into Swift, decode JSON into Swift models, and work with APIs**, but we also have now completed the first 2 user stories:
 
 - I can browse products featured today on Product Hunt by scrolling through the app’s main screen.
 - I see each product’s name, tagline, number of votes.

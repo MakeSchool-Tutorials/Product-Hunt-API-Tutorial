@@ -224,4 +224,6 @@ class NetworkManager {
 }
 ```
 
-We can now use our `getPosts(...)` method in the `FeedViewController`!
+Alright! We just learned **how to build a network layer in Swift!** Now we can start removing our mock data and put in real data from Product Hunt!
+
+Let's use our `getPosts(...)` method in the `FeedViewController` to do so!

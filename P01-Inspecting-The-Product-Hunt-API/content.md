@@ -88,3 +88,5 @@ The beginning of the JSON response objects is indicated by the opening bracket `
 The `posts` array contains the products that match the parameters given in our request. We asked for 20 of today's featured products in descending order of vote count, so we received an array with the first post being today's featured product with the highest votes.
 
 The properties of the post object also has a hierarchy of objects. We are only concerned with `comments_count`, `id`, `name`, `tagline`, and `screenshot_url`. You can search up these terms in Postman by using the shortcut `CMD + F` and typing the name of the property in the search field that appears.
+
+Take some time to look through Postman and see what's in the API response. This is the very beginning of learning **how to work with APIs**
