@@ -88,7 +88,7 @@ init(from decoder: Decoder) throws {
 }
 ```
 
-We'll first need to _enter_ the post object that we get back from the Product Hunt API in order to access its properties. This is done using **containers** which uses `CodingKeys`:
+We'll first need to _extract the properties_ from the `post` object that we get back from the Product Hunt API. This is done using **containers** which uses `CodingKeys`:
 
 > [info]
 > [Containers](https://developer.apple.com/documentation/swift/decoder/2892621-container) allow the `decoders` to return their data based off of the provided `CodingKeys`

@@ -48,7 +48,7 @@ var posts: [Post] = [] {
 }
 ```
 
-Next we'll update the places where `mockData` was used to use our newly created optional `posts` list.
+Next we'll update the places where `mockData` was used to use our newly created `posts` list.
 
 > [action]
 > Update the the following methods in the `UITableViewDataSource` extension to use `posts` rather than `mockData` list.

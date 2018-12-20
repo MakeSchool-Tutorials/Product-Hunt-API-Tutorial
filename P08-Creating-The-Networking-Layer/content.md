@@ -154,7 +154,10 @@ let task = urlSession.dataTask(with: request) { data, response, error in
 }
 ```
 
-Since our `getPosts(...)` method performs a network call on a separate queue, a **background queue**, we need to execute our completion handler on the main queue since all UI code must execute on the main queue.
+Since our `getPosts(...)` method performs a network call on a separate queue – a **background queue** – we therefore need to execute our completion handler on the **main queue** since all UI code must execute on the main queue.
+
+>[info]
+> We use the **main queue** for UI-related tasks, whereas any other time-consuming tasks should run on **background queues**. This is done so that the UI doesn't freeze up for the user while the app is running other tasks.
 
 One last thing we need to do is resume the `dataTask`. By default, `dataTasks` are paused. We'll have to resume it to start the task:
 

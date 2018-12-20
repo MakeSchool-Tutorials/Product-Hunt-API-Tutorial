@@ -36,12 +36,6 @@ Setting an app up with real data right away is difficult, and also can lead to d
 
 It's much easier to set up mock data (in the format we expect to receive the data) so that we can make sure everything is wired up correctly. It also lets us focus on building out our views before worrying about the data plumbing.
 
-
-## How to use different data types to make your URL composable
-???
-
-
-
 ## How to display data in tableviews with custom UI.
 
 We used **a lot** of `UITableViews` and got a lot of practice tweaking the UI to suit our product's needs.
