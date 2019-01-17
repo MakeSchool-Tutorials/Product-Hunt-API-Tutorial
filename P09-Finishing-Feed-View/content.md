@@ -117,4 +117,12 @@ Instead, celebrate the fact that not only did we apply our learning of **how to 
 - I can browse products featured today on Product Hunt by scrolling through the app’s main screen.
 - I see each product’s name, tagline, number of votes.
 
+# Now Commit
+
+```bash
+$ git add .
+$ git commit -m 'Users can browse products'
+$ git push
+```
+
 Let's move on to the final user story!

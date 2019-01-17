@@ -82,3 +82,11 @@ Check out the completed custom cell below. Note that your constraints may not ex
 > [solution]
 > Click on the image if you want to see all the information on the Project Navigator:
 > ![Completed custom cell](assets/custom-cell.png)
+
+# Now Commit
+
+```bash
+$ git add .
+$ git commit -m 'Completed Post Cell view'
+$ git push
+```

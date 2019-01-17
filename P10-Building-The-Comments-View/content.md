@@ -224,3 +224,11 @@ extension CommentsViewController: UITableViewDelegate {
 ```
 
 We've gotten more practice at **displaying data in tableviews with custom UI** as well as with **using mock data** to stub views out! Let's fix up our network layer to not only make our code more efficient, but also to include pulling in comment data!
+
+# Now Commit
+
+```bash
+$ git add .
+$ git commit -m 'Built Comments view and controller'
+$ git push
+```

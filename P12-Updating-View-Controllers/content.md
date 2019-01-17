@@ -106,4 +106,24 @@ Done! Now you have a completed product ready to show the client 😄
 
 ![Final Comments](assets/final-comments.png)
 
-Let's recap what we learned in the final chapter!
+Congratulations!
+
+# Now Commit
+
+```bash
+$ git add .
+$ git commit -m 'Completed PH Reader'
+$ git push
+```
+
+# Feedback and Review
+
+Please take a moment to rate your understanding of learning outcomes from this tutorial, and how we can improve it via our [tutorial feedback form](https://goo.gl/forms/Lf2pJt1sjfJZF8VZ2)
+
+# Challenges
+
+If you're still hungry for more, here are some extra challenges to improve upon your product:
+
+- We still don't have images being pulled into the app! Replace the `placeholder` image with the actual images of the products from the Product Hunt API
+- Allow users to filter by `topics` (check out the `post` data from the Product Hunt API)
+- For each product, show the `maker` of that product by displaying their name and picture underneath the product `tagline` (Product Hunt API `post` data can help you here too!)

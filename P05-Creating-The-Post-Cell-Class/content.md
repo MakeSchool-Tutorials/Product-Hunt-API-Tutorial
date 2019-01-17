@@ -68,6 +68,8 @@ didSet {
 }
 ```
 
+# Placeholder Images
+
 Next create the `updatePreviewImage()` method. For now it will be very simple and give every post a placeholder image.
 
 > [action]
@@ -108,4 +110,12 @@ class PostTableViewCell: UITableViewCell {
     previewImageView.image = UIImage(named: "placeholder")
   }
 }
+```
+
+# Now Commit
+
+```bash
+$ git add .
+$ git commit -m 'Created custom class for Posts'
+$ git push
 ```

@@ -41,7 +41,7 @@ A perk of keeping things simple in the beginning is that you don't have to spend
 > Add a table view to the view controller, name it **Feed Table View**, and pin it to all 4 sides.
 > ![Add table view](assets/pin-table-view.png)
 
-## Prepare the Swift file
+# Prepare the Swift file
 
 To adhere to good coding conventions, rename the view controller to `FeedViewController` to better reflect what its used for.
 
@@ -114,3 +114,24 @@ feedTableView.delegate = self
 The table view is fully connected and working. You can run the app to see the one cell created thanks to the lines of code we put in the `UITableViewDataSource`.
 
 We're going to be working a lot more with these views later on in the tutorial, but now you've got a sense of **how to display data in tableviews with custom UI!**
+
+# Set up Git/GitHub
+
+>[action]
+> Make your first commit
+>
+```bash
+$ git init
+$ git add .
+$ git commit -m 'project init'
+```
+
+Now go to GitHub and create a public repository called `Product-Hunt-API`, and now associate it as a remote for your local git project and then push to it.
+
+>[action]
+> Push it!
+>
+```bash
+$ git remote add origin GITHUB-REPO-URL
+$ git push origin master -u
+```

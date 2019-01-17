@@ -36,7 +36,7 @@ extension Post: Decodable {
 }
 ```
 
-## Add Coding Keys
+# Add Coding Keys
 
 We'll need to define **coding keys** to tell Swift exactly where to find the information to fill the model's variables. However, we actually only need this because the Product Hunt API uses a different naming convention for it's properties.
 
@@ -158,3 +158,11 @@ extension Post: Decodable {
 We just went through a lot of important stuff! We learned **how to decode JSON into our Swift models**, and also learned a bit more on **how to work with APIs** in order to get data flowing into our app!
 
 We can't get our data flowing just yet though, since we have don't have a way to interface with the Product Hunt API. To do so, we'll need a networking layer, so let's get to it!
+
+# Now Commit
+
+```bash
+$ git add .
+$ git commit -m 'Decodable model'
+$ git push
+```

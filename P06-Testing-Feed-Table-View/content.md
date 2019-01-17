@@ -90,3 +90,11 @@ Run the app again to see how it looks. You should see the cell's filled with the
 ![Feed with data](assets/feed-with-data.png)
 
 We've successfully integrated **the use of mock data** into our app! We are now ready to get into networking! But first we need to update our model.
+
+# Now Commit
+
+```bash
+$ git add .
+$ git commit -m 'Tests with mock data'
+$ git push
+```

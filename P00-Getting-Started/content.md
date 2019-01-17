@@ -34,3 +34,11 @@ By the end of this tutorial, you should know...
 We're going to building this app outside in; starting with the UI of the app and ending with the networking layer that communicated with the Product Hunt API.
 
 This makes it quick and easy to build out the app and test some of its features before making requests to the API.
+
+# Using Git/GitHub
+
+As you go through this tutorial, you will also be making commits after completing milestones. **This is a requirement, you must make a commit whenever the tutorial prompts you**. This not only further enforces best practices for software engineering, but also will help you more easily figure out where a bug originated from if you break your progress up into discrete, trackable chunks.
+
+When prompted to commit, you'll see a sample commit message. Feel free to use your own message, so long as it clearly and concisely covers the work done.
+
+Lastly, the commit prompts in this tutorial should be the **minimum** amount of times you commit. If you want to do more commits, breaking your chunks into even smaller chunks, that is totally fine!

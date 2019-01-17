@@ -33,3 +33,11 @@ struct Post {
 ```
 
 There's more we will need to add to this file to allow it to work effortlessly with network calls. We'll leave it like this for now and move on to create the UI that will show this data.
+
+# Now Commit
+
+```bash
+$ git add .
+$ git commit -m 'Created Post model'
+$ git push
+```
