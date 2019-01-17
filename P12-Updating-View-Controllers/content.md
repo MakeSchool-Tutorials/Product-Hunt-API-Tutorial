@@ -124,6 +124,8 @@ Please take a moment to rate your understanding of learning outcomes from this t
 
 If you're still hungry for more, here are some extra challenges to improve upon your product:
 
+>[challenge]
+>
 - We still don't have images being pulled into the app! Replace the `placeholder` image with the actual images of the products from the Product Hunt API
 - Allow users to filter by `topics` (check out the `post` data from the Product Hunt API)
 - For each product, show the `maker` of that product by displaying their name and picture underneath the product `tagline` (Product Hunt API `post` data can help you here too!)
