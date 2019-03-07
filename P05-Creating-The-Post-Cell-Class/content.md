@@ -58,12 +58,16 @@ Any code we place inside `didSet {}` will execute every time the `post` variable
 > Add the following lines to update the views inside the property observer:
 >
 ```swift
+// Runs every time the post variable is set
 didSet {
+   // make sure we return if post doesn't exist
    guard let post = post else { return }
+   // Assign our UI elements to their post counterparts
    nameLabel.text = post.name
    taglineLabel.text = post.tagline
    commentsCountLabel.text = "Comments: \(post.commentsCount)"
    votesCountLabel.text = "Votes: \(post.votesCount)"
+   // We'll write this next!
    updatePreviewImage()
 }
 ```
@@ -78,7 +82,9 @@ Next create the `updatePreviewImage()` method. For now it will be very simple an
 ...
 >
 func updatePreviewImage() {
+   // make sure we return if post doesn't exist
    guard let post = post else { return }
+   // assign the placeholder image to the UI element
    previewImageView.image = UIImage(named: "placeholder")
 }
 ```
@@ -89,6 +95,7 @@ Now the custom cell is ready to be used by a UITableView. Make sure your variabl
 >
 ```swift
 class PostTableViewCell: UITableViewCell {
+  // All of our UI elements we'll use for our view that relate to properties of a post
   @IBOutlet weak var nameLabel: UILabel!
   @IBOutlet weak var taglineLabel: UILabel!
   @IBOutlet weak var commentsCountLabel: UILabel!
@@ -96,18 +103,25 @@ class PostTableViewCell: UITableViewCell {
   @IBOutlet weak var previewImageView: UIImageView!
 >    
   var post: Post? {
-     didSet {
+    // Runs every time the post variable is set
+    didSet {
+       // make sure we return if post doesn't exist
        guard let post = post else { return }
+       // Assign our UI elements to their post counterparts
        nameLabel.text = post.name
        taglineLabel.text = post.tagline
        commentsCountLabel.text = "Comments: \(post.commentsCount)"
        votesCountLabel.text = "Votes: \(post.votesCount)"
+       // We'll write this next!
        updatePreviewImage()
-     }
+    }
   }
 >
   func updatePreviewImage() {
-    previewImageView.image = UIImage(named: "placeholder")
+     // make sure we return if post doesn't exist
+     guard let post = post else { return }
+     // assign the placeholder image to the UI element
+     previewImageView.image = UIImage(named: "placeholder")
   }
 }
 ```
