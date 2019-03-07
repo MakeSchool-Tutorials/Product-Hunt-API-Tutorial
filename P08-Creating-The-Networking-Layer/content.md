@@ -17,7 +17,9 @@ We'll keep everything in a class called `NetworkManager`
 >
 ```swift
 class NetworkManager {
+    // shared singleton session object used to run tasks. Will be useful later
     let urlSession = URLSession.shared
+>
     var baseURL = "https://api.producthunt.com/v1/"
     var token = "replace-me-with-your-token-from-product-hunt-api-dashboard-🙏"
 }
@@ -49,7 +51,7 @@ Using the normal function `return` would result in inconsistent results, as the 
 func getPosts(completion: @escaping ([Post]) -> Void)
 ```
 
-The escaping closure allows the compiler to continue on to other code—**escaping** the method—and return later on when the data is ready to be returned.
+The escaping closure allows the compiler to continue on to other code—**escaping the method**—and return later on when the data is ready to be returned.
 
 ## Constructing The Request
 
@@ -57,8 +59,11 @@ The escaping closure allows the compiler to continue on to other code—**escapi
 > Add the following lines in the body of `getPosts(completion:)`
 >
 ```swift
+// our API query
 let query = "posts/all?sort_by=votes_count&order=desc&search[featured]=true&per_page=20"
+// Add the baseURL to it
 let fullURL = URL(string: baseURL + query)!
+// Create the request
 var request = URLRequest(url: fullURL)
 ```
 
@@ -72,7 +77,9 @@ We'll configure the request before we send it off.
 ```swift
 ...
 >
+// We're sending a GET request, so we need to specify that
 request.httpMethod = "GET"
+// Add in all the header fields just like we did in Postman
 request.allHTTPHeaderFields = [
    "Accept": "application/json",
    "Content-Type": "application/json",
@@ -81,7 +88,7 @@ request.allHTTPHeaderFields = [
 ]
 ```
 
-To send the request we'll use the `dataTask` method on our `urlSession`
+To send the request we'll use the [dataTask](https://developer.apple.com/documentation/foundation/urlsession/1411554-datatask) method on our `urlSession`
 
 > [action]
 > Add the following to the bottom of `getPosts`
@@ -104,11 +111,13 @@ We'll check to see if there is an error first and then if there is any data to *
 >
 ```swift
 let task = urlSession.dataTask(with: request) { data, response, error in
+   // error check/handling
    if let error = error {
        print(error.localizedDescription)
        return
    }
 >
+   // make sure we get back data
    guard let data = data else {
        return
    }
@@ -126,6 +135,7 @@ Once we get past those checkpoints, we can decode the data.
 let task = urlSession.dataTask(with: request) { data, response, error in
    ...
 >
+   // Decode the API response into our PostList object that we can use/interact with
    guard let result = try? JSONDecoder().decode(PostList.self, from: data) else {
        return
    }
@@ -148,6 +158,7 @@ let task = urlSession.dataTask(with: request) { data, response, error in
 >
    let posts = result.posts
 >
+   // Return the result with the completion handler.
    DispatchQueue.main.async {
        completion(posts)
    }
