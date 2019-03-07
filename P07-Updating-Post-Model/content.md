@@ -45,10 +45,13 @@ We'll need to define **coding keys** to tell Swift exactly where to find the inf
 >
 ```swift
 extension Post: Decodable {
+    // properties within a Post returned from the Product Hunt API that we want to extract the info from.
     enum PostKeys: String, CodingKey {
+        // first three match our variable names for our Post struct
         case id
         case name
         case tagline
+        // these three need to be mapped since they're named differently on the API compared to our struct
         case votesCount = "votes_count"
         case commentsCount = "comments_count"
         case previewImageURL = "screenshot_url"
@@ -69,6 +72,8 @@ Also, there are cases where you simply what to rename the property differently, 
 >
 ```swift
 enum PreviewImageURLKeys: String, CodingKey {
+   // for all posts, we only want the 850px image
+   // Check out the screenshot_url property in our Postman call to see where this livesx
    case imageURL = "850px"
 }
 ```
@@ -99,6 +104,7 @@ We'll first need to _extract the properties_ from the `post` object that we get 
 > Add this to the body of the `init` you just created:
 >
 ```swift
+// Decode the Post from the API call
 let postsContainer = try decoder.container(keyedBy: PostKeys.self)
 ```
 
@@ -109,6 +115,7 @@ Now that we have stored the `post` object in a container, we can go in and grab 
 >
 ```swift
   ...
+  // Decode each of the properties from the API into the appropriate type (string, etc.) for their associated struct variable
   id = try postsContainer.decode(Int.self, forKey: .id)
   name = try postsContainer.decode(String.self, forKey: .name)
   tagline = try postsContainer.decode(String.self, forKey: .tagline)
@@ -127,7 +134,10 @@ Finally, we need to set the `previewImageURL`. The actual URL that we need from 
 ```swift
    ...
 >
+   // First we need to get a container (screenshot_url/previewImageURL) nested within our postsContainer.
+   // If it only had a single value like the other properties, we wouldn't need to use nestedContainer
    let screenshotURLContainer = try postsContainer.nestedContainer(keyedBy: PreviewImageURLKeys.self, forKey: .previewImageURL)
+   // Decode the image and assign it to the variable
    previewImageURL = try screenshotURLContainer.decode(URL.self, forKey: .imageURL)
 }
 ```
@@ -146,6 +156,7 @@ struct Post {
 ...
 }
 >
+// Have a matching decodable array in our struct for the array of posts we get back from the API
 struct PostList: Decodable {
    var posts: [Post]
 }
