@@ -48,7 +48,8 @@ To adhere to good coding conventions, rename the view controller to `FeedViewCon
 > [action]
 > Change the name in the file inspector, for the class, and in the comments at the top of your file.
 > ![Rename view controller](assets/rename-viewcontroller.png)
-We don't have any data yet, but let's add the functions that we'll be using to update cells.
+>
+> We don't have any data yet, but let's add the functions that we'll be using to update cells.
 >
 > Add an **extension** for UITableViewDataSource at the bottom of `FeedViewController` to separate code needed to fill the table view with data.
 >
@@ -103,7 +104,7 @@ We'll use this later to setup selecting and deleting cells.
 Because the `FeedViewController` **conforms** to both the `UITableViewDataSource` and `UITableViewDelegate` in the **extensions**, we can set the `feedTableView`'s data source and delegate to be the `FeedViewController`.
 
 > [action]
-> Set the `delegate` and `dataSource` for the table-view by typing the following code in your `viewDidLoad`:
+> Set the `delegate` and `dataSource` for the table-view by typing the following code in your `viewDidLoad` method:
 >
 ```swift
 feedTableView.dataSource = self
