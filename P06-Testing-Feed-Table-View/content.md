@@ -5,7 +5,7 @@ slug: test-feed-view
 
 With our custom cell setup, we now have all the UI elements we need to see the `Feed View` in action. However, we won't be making any network requests just yet; instead we'll use **mock data** to emulate the data that we will receive from an API request.
 
-# Test Without UI Without Data
+# Test UI Without Data
 
 First let's test things without using any real data from Product Hunt's API.
 
@@ -14,6 +14,7 @@ First let's test things without using any real data from Product Hunt's API.
 >
 ```swift
 func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+   // dequeue and return an available cell, instead of creating a new cell
    let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as! PostTableViewCell
 >
    return cell
@@ -34,6 +35,7 @@ We also need to update the size of the cell in our `FeedViewController`.
 >
 ```swift
 func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+  // provide a fixed size
   return 250
 }
 ```
@@ -53,6 +55,8 @@ Using Mock Data allows us to easily test our app without having to create an ent
 ``` swift
 ...
 >
+// Array of Post objects to simulate real data coming in
+// Make sure each property that we're assigning to a UI element has a value for each mock Post.
 var mockData: [Post] = {
    var meTube = Post(id: 0, name: "MeTube", tagline: "Stream videos for free!", votesCount: 25, commentsCount: 4)
    var boogle = Post(id: 1, name: "Boogle", tagline: "Search anything!", votesCount: 1000, commentsCount: 50)
@@ -70,14 +74,19 @@ We can now use this array as a **datasource** for the table view, allowing us to
 > Update the following methods in the `UITableViewDataSource` extension:
 >
 ```swift
+// Determines how many cells will be shown on the table view.
 func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
   return mockData.count
 }
 >
+// Creates and configures each cell.
 func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+  // Grab an available cell
   let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as! PostTableViewCell
 >
+  // Grab a post from our "data"
   let post = mockData[indexPath.row]
+  // Assign a post to that cell
   cell.post = post
 >
   return cell
