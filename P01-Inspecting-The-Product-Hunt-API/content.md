@@ -53,20 +53,20 @@ Upon opening Postman, you should see this welcome screen:
 > [action]
 > Choose **Request** under building blocks to create a new request called **GET Posts** and save it a new collection called **Product Hunt**.
 
-You can name the request whatever you want and save it whichever collection you choose; for this tutorial I'll be naming the request **GET Posts** and saving it in the **Product Hunt** collection.
+You can name the request whatever you want and save it whichever collection you choose; for this tutorial we'll be naming the request **GET Posts** and saving it in the **Product Hunt** collection.
 
 > [action]
 > Paste this URL into the URL field at the top of the window: `https://api.producthunt.com/v1/posts/all?sort_by=votes_count&order=desc&search[featured]=true&per_page=20`
 
-Let's break down the URL:
+Let's break down the URL into the important pieces so that we know what's actually going on during this call:
 
-> - `api.producthunt.com/v1` is the **base URL** for this API.
-> - `posts/all` is the **endpoint** or **route** which gives you access to every product posted on Product Hunt (as long as you have a valid token!).
-> - Everything after the **_?_** are the **parameters** of our request and each parameter is separated by **_&'s_**.
-> - `sort_by=votes_count` and `order=desc` denotes that we want the resulting data to be organized by the number of votes in descending order.
-> - `search[featured]=true` makes it so that we only get featured posts.
-> - `per_page=20` limits the amount of posts we get to only 20. There are thousands of products listed on product hunt, we'll only need to get 20 at a time for our app.
-> - Lastly, we need to include our access token in our request. Under _Authorization_, select **Bearer Token** in the drop down and paste your access token you generated on the API Dashboard on Product Hunt. Be sure to hit _Preview Request_.
+- `api.producthunt.com/v1` is the **base URL** for this API.  Think of this as the common prefix to use while navigating throughout the API.
+- `posts/all` is the **endpoint** or **route** which gives you access to every product posted on Product Hunt (as long as you have a valid token!).
+- Everything after the **_?_** are the **parameters** of our request and each parameter is separated by an **_&_**.
+- `sort_by=votes_count` and `order=desc` denotes that we want the resulting data to be organized by the number of votes in descending order.
+- `search[featured]=true` makes it so that we only get featured posts.
+- `per_page=20` limits the amount of posts we get to only 20. There are thousands of products listed on product hunt, we'll only need to get 20 at a time for our app.
+- Lastly, we need to include our access token in our request. Under _Authorization_, select **Bearer Token** in the drop down and paste your access token you generated on the API Dashboard on Product Hunt. Be sure to hit _Preview Request_.
 
 > [action]
 > Hit send. You should receive is the data from Product Hunt as a response to your request. This is what you should see:
