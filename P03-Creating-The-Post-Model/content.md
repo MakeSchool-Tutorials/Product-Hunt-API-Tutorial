@@ -23,7 +23,9 @@ struct Post {
 > Give `Post` variables that will hold a product's id, name, tagline, number of votes, number of comments, and screenshot url.
 >
 ```swift
+/// A product retrieved from the Product Hunt API.
 struct Post {
+   // Various properties of a post that we either need or want to display
    let id: Int
    let name: String
    let tagline: String
