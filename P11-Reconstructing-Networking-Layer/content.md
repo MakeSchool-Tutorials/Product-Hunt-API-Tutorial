@@ -46,7 +46,7 @@ We'll do some major refactoring to the networking layer to improve the overall q
 
 Using `enums` is a great way to do this. An **enumeration** defines a common type for a group of related values and gives us access to those values in a way that is type-safe.
 
->[info]
+> [info]
 > Something is considered **type-safe** if an operation checks that it can be performed on a specific data type before it attempts to do so. For example, preventing a function from calling the `append` method on an `Int` before it actually executes the call.
 
 We'll have a case for each endpoint from the API that we want to access.

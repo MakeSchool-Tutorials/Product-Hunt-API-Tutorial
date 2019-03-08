@@ -141,10 +141,13 @@ We don't have the method necessary to get the comments of a post, so instead we'
 ```swift
  ...
 >
+// Get the storyboard
  let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+// Get the commentsView from the storyboard
  guard let commentsView = storyboard.instantiateViewController(withIdentifier: "commentsView") as? CommentsViewController else {
    return
  }
+ // add mock comments
  commentsView.comments = ["Blah blah blah!", "Good app.", "Wow."]
  navigationController?.pushViewController(commentsView, animated: true)
 }
