@@ -36,6 +36,7 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
    guard let commentsView = storyboard.instantiateViewController(withIdentifier: "commentsView") as? CommentsViewController else {
      return
    }
+   // set the post id for the comments
    commentsView.postID = post.id
    navigationController?.pushViewController(commentsView, animated: true)
 }
@@ -67,6 +68,7 @@ var comments: [Comment] = [] {
 >
 ```swift
 func updateComments() {
+   // Similar to what we did for posts
    networkManager.getComments(postID) { result in
        switch result {
        case let .success(comments):
