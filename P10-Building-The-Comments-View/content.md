@@ -65,6 +65,8 @@ Next we setup the necessary methods for our `commentsTableView` to work.
 > Create extensions for `CommentsViewController` which inherit from `UITableViewDataSource` and add the methods to pull information from the `comments` list
 >
 ```swift
+// All methods here operate the same way we did for Posts
+>
 // MARK: UITableViewDatasource
 extension CommentsViewController: UITableViewDataSource {
 func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
