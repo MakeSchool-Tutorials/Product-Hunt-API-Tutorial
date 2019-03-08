@@ -36,6 +36,12 @@ extension Post: Decodable {
 }
 ```
 
+<!-- -->
+
+> [info]
+>
+> This tutorial describes `Decodable` at a high level. If you want to dive deeper into the inner workings of what's going on, Greg Heo's [JSON to Swift with Decoder and Decodable](https://swiftunboxed.com/stdlib/json-decoder-decodable/) article does a fantastic job of explaining the inner workings!
+
 # Add Coding Keys
 
 We'll need to define **coding keys** to tell Swift exactly where to find the information to fill the model's variables. However, we actually only need this because the Product Hunt API uses a different naming convention for it's properties.
