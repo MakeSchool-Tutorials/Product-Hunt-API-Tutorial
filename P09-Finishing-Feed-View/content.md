@@ -55,12 +55,14 @@ Next we'll update the places where `mockData` was used to use our newly created 
 >
 ```swift
 func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+ // return the actual number of posts we receive
  return posts.count
 }
 >
 func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
  let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as! PostTableViewCell
 >
+ // retrieve from the actual posts, and not mock data
  let post = posts[indexPath.row]
  cell.post = post
  return cell
@@ -91,6 +93,7 @@ All we have to do is update the `posts` list with the data retrieved from a requ
 >
 ```swift
 func updateFeed() {
+  // call our network manager's getPosts method to update our feed with posts
    networkManager.getPosts() { result in
        self.posts = result
    }
