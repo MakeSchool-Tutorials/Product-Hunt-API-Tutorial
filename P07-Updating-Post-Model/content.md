@@ -172,6 +172,12 @@ extension Post: Decodable {
 }
 ```
 
+<!-- -->
+
+> [info]
+>
+> What if we want to decode a nested JSON file? See answer in *Code Different's* [Stack Overflow](https://stackoverflow.com/questions/44549310/how-to-decode-a-nested-json-struct-with-swift-decodable-protocol)
+
 We just went through a lot of important stuff! We learned **how to decode JSON into our Swift models**, and also learned a bit more on **how to work with APIs** in order to get data flowing into our app!
 
 We can't get our data flowing just yet though, since we have don't have a way to interface with the Product Hunt API. To do so, we'll need a networking layer, so let's get to it!
