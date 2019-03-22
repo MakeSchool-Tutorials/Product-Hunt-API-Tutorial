@@ -27,13 +27,13 @@ The cell will consist of a single `UITextView` that fills the cell with padding 
 > Next add a **`UITextView` to `commentCell` with 15 points of padding** on all sides. Name it `Comments Text View`.
 >
 > At this point your Comments View should look like this:
-> ![Comments view with cell](assets/comments-view.png)
+> ![Comments view with cell](assets/01_building-the-ui_comments-view.png)
 
 Lastly, we don't want to make comments editable, so let's disable that for `Comments Text View`.
 
 > [action]
 > Disable `Editable` behavior for the text-view in its `Attribute Inspector`.
-> ![Disable Editable](assets/disable-editable.png)
+> ![Disable Editable](assets/02_building-the-ui_disable-editable.png)
 
 And that's it! We've got our comments view! Now let's wire it up.
 
@@ -154,7 +154,7 @@ We don't have the method necessary to get the comments of a post, so instead we'
 ```
 
 Run the app and test it out to see how it looks!
-![Mock Comments Finished](assets/mock-comments.png)
+![Mock Comments Finished](assets/03_connect-the-views_mock-comments.png)
 
 You can check your implementation with the below solutions for `CommentTableViewCell` and `CommentsViewController`:
 

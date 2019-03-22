@@ -65,7 +65,7 @@ extension Post: Decodable {
 }
 ```
 >
-> ![Post Keys](assets/post-coding-keys.png)
+> ![Post Keys](assets/01_add-coding-keys_post-coding-keys.png)
 
 Note how only `votesCount`, `commentsCount`, and `previewImageUrl` are the only variables that are set to a string. This is because in the JSON we receive from the request, these variables are named differently (using **snake_case**, rather than **camelCase** which is the recommended practice for Swift).
 
@@ -84,7 +84,7 @@ enum PreviewImageURLKeys: String, CodingKey {
 }
 ```
 >
-> ![Preview Keys](assets/preview-coding-keys.png)
+> ![Preview Keys](assets/02_add-coding-keys_preview-coding-keys.png)
 
 # Initializing A Decodable
 
@@ -130,7 +130,7 @@ Now that we have stored the `post` object in a container, we can go in and grab 
 }
 ```
 >
-> ![Posts container](assets/post-container.png)
+> ![Posts container](assets/03_initializing-a_post-container.png)
 
 Finally, we need to set the `previewImageURL`. The actual URL that we need from `screenshot_url` is nested within the `screenshot_url` object in the API response, so we'll need to access it through a **nested container** (more info on those [here](https://developer.apple.com/documentation/swift/keyeddecodingcontainer/2893204-nestedcontainer)) using the `PreviewImageURLKeys`:
 
@@ -148,7 +148,7 @@ Finally, we need to set the `previewImageURL`. The actual URL that we need from 
 }
 ```
 >
-> ![Screenshot container](assets/screenshot-container.png)
+> ![Screenshot container](assets/04_initializing-a_screenshot-container.png)
 
 Now the model is ready to go! But there's one more thing we need to add to make things easier.
 

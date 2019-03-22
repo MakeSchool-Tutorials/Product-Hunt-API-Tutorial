@@ -7,6 +7,10 @@ Imagine that you're a developer who is hired to create a Product Hunt reader tha
 
 The first feature the client wants you to implement is the feed, which displays all of today's featured products on the Product Hunt. Build a quick prototype to shows the client all the core features in action.
 
+# Why is this important?
+
+If you ever want the app you're building to interact with APIs, or be able to communicate with them, then you need to know how to build a network layer, as well as how to code/decode data from APIs to your app and vice versa. This is common functionality that iOS engineers should expect to do in their careers, so learning the fundamentals around it now will make you that much more prepared for that upcoming gig.
+
 # Learning Outcomes
 
 By the end of this tutorial, you should know...
@@ -19,7 +23,7 @@ By the end of this tutorial, you should know...
 
 # What We're Building
 
-![Preview final product](assets/final-product.png)
+![Preview final product](assets/01_what-were-building_final-product.png)
 
 ## User Stories
 

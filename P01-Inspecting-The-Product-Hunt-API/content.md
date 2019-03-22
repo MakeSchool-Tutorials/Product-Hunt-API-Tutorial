@@ -36,7 +36,7 @@ From the API Docs page,
 > Click on _CREATE TOKEN_ to generate the access token you'll use in your application.
 >
 > Your dashboard should now look similar to this:
-> ![API dashboard](assets/api-dashboard.png)
+> ![API dashboard](assets/01_create-an-app_api-dashboard.png)
 
 # Make a GET Request with Postman
 
@@ -48,7 +48,7 @@ Postman is an API Development Environment (ADE) and an awesome tool for any deve
 > Download the [Postman desktop app](https://www.getpostman.com/) from their website if you don't have it already. You don't need an account to use it.
 
 Upon opening Postman, you should see this welcome screen:
-![Postman welcome screen](assets/postman-welcome-screen.png)
+![Postman welcome screen](assets/02_make-a-get_postman-welcome.png)
 
 > [action]
 > Choose **Request** under building blocks to create a new request called **GET Posts** and save it a new collection called **Product Hunt**.
@@ -71,7 +71,7 @@ Let's break down the URL into the important pieces so that we know what's actual
 > [action]
 > Hit send. You should receive is the data from Product Hunt as a response to your request. This is what you should see:
 >
-> ![JSON response](assets/postman-get-request.png)
+> ![JSON response](assets/03_make-a-get_postman-get.png)
 
 # Analyze Response
 
@@ -81,7 +81,7 @@ How the data in the JSON response is organized is extremely important, especiall
 
 **See if you can find a product's name, tagline, number of votes, and screenshot URL.** Take note of where these are located:
 
-![Structure of response](assets/response-structure.png)
+![Structure of response](assets/04_analyze-response_structure.png)
 
 The beginning of the JSON response objects is indicated by the opening bracket `{` and ends with the closing bracket `}` on the same level. This object only contains one object which is an array of `posts`, where we will get all the information we need to display today's featured posts on our app.
 

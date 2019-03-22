@@ -14,7 +14,7 @@ Start by creating the file.
 >
 > Select `UITableViewCell` from the `Subclass of` dropdown and prepend `Post` to the class name to make the `Class` field say, `PostTableViewCell`.
 >
-> ![Create post cell](assets/post-table-view-cell.png)
+> ![Create post cell](assets/01_creating-the-post_view-cell.png)
 
 In the new file we just created, we won't be needing the `awakeFromNib()` and `setSelected(:, animated:)` methods. So, you can delete those (or keep them, there's no harm done).
 

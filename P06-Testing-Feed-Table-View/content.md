@@ -43,7 +43,7 @@ func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) ->
 Run the app to see how it looks 👌
 
 You should see something awesome like this:
-![Feed without data](assets/feed-without-data.png)
+![Feed without data](assets/01_test-ui-without_feed-without-data.png)
 
 # Use Mock Data To Display Information
 
@@ -96,7 +96,7 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
 Because we used a property observer to update the labels, we only need to set the cell's `post` property to give it the data it needs.
 
 Run the app again to see how it looks. You should see the cell's filled with the information provided by our mock data:
-![Feed with data](assets/feed-with-data.png)
+![Feed with data](assets/02_use-mock-data_feed-with-data.png)
 
 We've successfully integrated **the use of mock data** into our app! We are now ready to get into networking! But first we need to update our model.
 

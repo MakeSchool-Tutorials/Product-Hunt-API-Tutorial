@@ -11,13 +11,13 @@ Lets create a new cell in Storyboard that we can customize.
 
 > [action]
 > Open storyboard and open the table view's `Attribute Inspector` to give it a Dynamic Prototype Cell.
-> ![Prototype Cell](assets/dynamic-prototype-cell.png)
+> ![Prototype Cell](assets/01_building-the-post_dynamic-prototype-cell.png)
 
 It's a bit too small at the moment, but we can easily increase the size.
 
 > [action]
 > Increase the size of the Table View Cell to 250 in the **Size Inspector**
-> ![Increase Cell Size](assets/cell-size.png)
+> ![Increase Cell Size](assets/02_building-the-post_cell-size.png)
 
 We'll use the view that comes with the cell, labeled `Content View` in Storyboard, as the cell's **background**; so leave that transparent. We'll add a new UIView which will act as a **container** for all the views that will display information about the product.
 
@@ -64,7 +64,7 @@ The last thing we'll add is the UIImageView which will display the product's **s
 
 > [action]
 > Add an UIImageView (name it **Preview Image View**) to the center of the cell and pin it to all 4 sides of the `Container View` with the following constraints:
-> ![Pin Image View](assets/pin-image.png)
+> ![Pin Image View](assets/03_building-the-post_pin-image.png)
 >
 > You can set the image of the image view to whatever you want. Download free placeholder images [here](https://placeholder.com/). Add [this](http://via.placeholder.com/350x160) to your **Assets.xcassets** file in your Xcode project and rename the file to **placeholder.png**. Finally, select placeholder.png as the Image for the UIImageView under the Attribute Inspector.
 >
@@ -81,7 +81,7 @@ Check out the completed custom cell below. Note that your constraints may not ex
 
 > [solution]
 > Click on the image if you want to see all the information on the Project Navigator:
-> ![Completed custom cell](assets/custom-cell.png)
+> ![Completed custom cell](assets/04_building-the-post_custom-cell.png)
 
 # Now Commit
 

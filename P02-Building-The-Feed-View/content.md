@@ -17,7 +17,7 @@ The UI itself is simple, with the magic happening in code. For now let's just bu
 
 **By the end of Part 4, here's what our storyboard will look like:**
 
-![Preview FeedView](assets/feedview-preview.png)
+![Preview FeedView](assets/01_creating-the-main_feedview-preview.png)
 
 This view is intentionally simple so that we can more easily get up and running.
 
@@ -30,16 +30,16 @@ A shortcut for adding a navigation controller in storyboard is to **embed** a vi
 
 > [action]
 > On the menu bar select `Editor`, then `Embed in` and finally `Navigation Controller` to quickly wrap the view controller in a navigation controller.
-> ![Embedded controller](assets/embed-controller.png)
+> ![Embedded controller](assets/02_creating-the-main_embed-controller.png)
 >
 > Select the `Navigation Item` under the `View Controller Scene` and  set the `Navigation Item`'s title to `Feed`.
-> ![Set title](assets/nav-item-title.png)
+> ![Set title](assets/03_creating-the-main_nav-item-title.png)
 
 A perk of keeping things simple in the beginning is that you don't have to spend a lot of time configuring the UI.
 
 > [action]
 > Add a table view to the view controller, name it **Feed Table View**, and pin it to all 4 sides.
-> ![Add table view](assets/pin-table-view.png)
+> ![Add table view](assets/04_creating-the-main_pin-table-view.png)
 
 # Prepare the Swift file
 
@@ -47,7 +47,7 @@ To adhere to good coding conventions, rename the view controller to `FeedViewCon
 
 > [action]
 > Change the name in the file inspector, for the class, and in the comments at the top of your file.
-> ![Rename view controller](assets/rename-viewcontroller.png)
+> ![Rename view controller](assets/05_prepare-the-swift_rename-viewcontroller.png)
 >
 > We don't have any data yet, but let's add the functions that we'll be using to update cells.
 >
@@ -96,10 +96,10 @@ We'll use this later to setup selecting and deleting cells.
 
 > [action]
 > Change the class of `View Controller` to be `FeedViewController`. This will change its name from `View Controller` to `Feed`
-> ![Rename Feed Class](assets/rename-feed-class.png)
+> ![Rename Feed Class](assets/06_prepare-the-swift_rename-feed.png)
 >
 > Create an `IBOutlet` from the `Feed Table View` to `FeedViewController`.
-> ![Connect outlet](assets/connect-outlet.png)
+> ![Connect outlet](assets/07_prepare-the-swift_connect-outlet.png)
 
 Because the `FeedViewController` **conforms** to both the `UITableViewDataSource` and `UITableViewDelegate` in the **extensions**, we can set the `feedTableView`'s data source and delegate to be the `FeedViewController`.
 

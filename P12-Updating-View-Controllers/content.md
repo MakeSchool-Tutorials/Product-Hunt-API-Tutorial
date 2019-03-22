@@ -104,11 +104,11 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
 
 Done! Now you have a completed product ready to show the client 😄
 
-![Final Feed](assets/final-product.png)
+![Final Feed](assets/01_Update-CommentsViewController_final-product.png)
 
-![Final Comments](assets/final-comments.png)
+![Final Comments](assets/02_Update-CommentsViewController_final-comments.png)
 
-Congratulations!
+Congratulations! As you go through this MOB course, see how you can relate what you've learned here to the material in class!
 
 # Now Commit
 
@@ -118,13 +118,15 @@ $ git commit -m 'Completed PH Reader'
 $ git push
 ```
 
-# Feedback and Review
+# Feedback and Review - 2 minutes
+
+**We promise this won't take longer than 2 minutes!**
 
 Please take a moment to rate your understanding of learning outcomes from this tutorial, and how we can improve it via our [tutorial feedback form](https://goo.gl/forms/Lf2pJt1sjfJZF8VZ2)
 
-# Challenges
+# Stretch Challenges
 
-If you're still hungry for more, here are some extra challenges to improve upon your product:
+If you're still hungry for more, here are some stretch challenges to improve upon your product:
 
 >[challenge]
 >

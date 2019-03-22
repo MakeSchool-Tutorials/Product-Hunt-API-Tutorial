@@ -111,7 +111,7 @@ func updateFeed() {
 
 That's it 👏 Run the app to see it in action.
 
-![Finished Feed View](assets/finished-feed-view.png)
+![Finished Feed View](assets/01_update-posts-with_finished-feed-view.png)
 
 Notice that we still don't have images for each of the cells. If we look at `PostTableViewCell`, we're still using `placeholder` for our image. We'll revisit updating this towards the end of this tutorial, so don't worry about it for now!
 
