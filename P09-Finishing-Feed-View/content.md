@@ -109,6 +109,8 @@ func updateFeed() {
 }
 ```
 
+# Product So Far
+
 That's it 👏 Run the app to see it in action.
 
 ![Finished Feed View](assets/01_update-posts-with_finished-feed-view.png)

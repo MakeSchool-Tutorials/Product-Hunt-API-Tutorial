@@ -75,6 +75,8 @@ To be able to use this custom cell in code it needs to have an **identifier**.
 > [action]
 > Set the `Identifier` of the cell to `postCell` in the cell's `Identity Inspector`.
 
+# Product So Far
+
 Now we have all the UI built out to display the information we'll be getting from the API. We're getting more comfortable with **displaying data in tableviews with custom UI** as well as beginning to learn **how to take advantage of mock data** through using the `placeholder` image. We'll keep working on each of those as we continue.
 
 Check out the completed custom cell below. Note that your constraints may not exactly match what is shown below. The important thing is that the layout matches, and that you followed the constraints properly as described in this section.

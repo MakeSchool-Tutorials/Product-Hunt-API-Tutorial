@@ -95,6 +95,8 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
 
 Because we used a property observer to update the labels, we only need to set the cell's `post` property to give it the data it needs.
 
+# Product So Far
+
 Run the app again to see how it looks. You should see the cell's filled with the information provided by our mock data:
 ![Feed with data](assets/02_use-mock-data_feed-with-data.png)
 

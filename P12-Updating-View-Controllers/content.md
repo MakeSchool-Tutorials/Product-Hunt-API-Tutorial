@@ -102,6 +102,8 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
 }
 ```
 
+# Product So Far
+
 Done! Now you have a completed product ready to show the client 😄
 
 ![Final Feed](assets/01_Update-CommentsViewController_final-product.png)

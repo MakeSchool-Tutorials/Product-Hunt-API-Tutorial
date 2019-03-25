@@ -153,6 +153,8 @@ We don't have the method necessary to get the comments of a post, so instead we'
 }
 ```
 
+# Product So Far
+
 Run the app and test it out to see how it looks!
 ![Mock Comments Finished](assets/03_connect-the-views_mock-comments.png)
 
