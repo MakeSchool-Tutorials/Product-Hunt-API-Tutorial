@@ -3,6 +3,21 @@ title: "Finishing Feed View"
 slug: finish-feed-view
 ---
 
+1. ~~Look at the Product Hunt API~~
+1. ~~Build the Feed View~~
+1. ~~Create the Post Model~~
+1. ~~Build the Post Cell~~
+1. ~~Create the Post Cell Class~~
+1. ~~Test the Feed Table View~~
+1. ~~Allow the Post Model to work with network requests~~
+1. ~~Create the network layer~~
+1. **Retrieve data from the PH API**
+    1. **Replace the mock data with real data**
+    1. **Update Posts List With NetworkManager**
+1. Build the Comments View
+1. Pull Comments data from the API
+1. Update the view controllers to hook everything up
+
 Now that the network manager is complete, we can retrieve real data from Product Hunt through their API!
 
 The next step would be to tie it in with our UI and have the main feature of our app (browsing featured products on Product Hunt) completed.

@@ -3,6 +3,23 @@ title: "Building The Comments View"
 slug: comments-view
 ---
 
+1. ~~Look at the Product Hunt API~~
+1. ~~Build the Feed View~~
+1. ~~Create the Post Model~~
+1. ~~Build the Post Cell~~
+1. ~~Create the Post Cell Class~~
+1. ~~Test the Feed Table View~~
+1. ~~Allow the Post Model to work with network requests~~
+1. ~~Create the network layer~~
+1. ~~Retrieve data from the PH API~~
+1. **Build the Comments View**
+    1. **Build the UI**
+    1. **Create the view controller**
+    1. **Create the CommentTableViewCell**
+    1. **Connect the views**
+1. Pull Comments data from the API
+1. Update the view controllers to hook everything up
+
 Now we can move on to the second part of the app. The `CommentsView` which will show the comments of a tapped product.
 
 This view is much simpler than the `FeedView` and doesn't require much work to get it setup with the API, but we will be refactoring some of our code to improve its quality and reduce repetitive code.

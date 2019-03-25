@@ -3,6 +3,24 @@ title: "Reconstructing Networking Layer"
 slug: networking-layer
 ---
 
+1. ~~Look at the Product Hunt API~~
+1. ~~Build the Feed View~~
+1. ~~Create the Post Model~~
+1. ~~Build the Post Cell~~
+1. ~~Create the Post Cell Class~~
+1. ~~Test the Feed Table View~~
+1. ~~Allow the Post Model to work with network requests~~
+1. ~~Create the network layer~~
+1. ~~Retrieve data from the PH API~~
+1. ~~Build the Comments View~~
+1. **Pull Comments data from the API**
+    1. **Create the comment model**
+    1. **Create an Endpoints enum to make things more DRY**
+    1. **Construct requests using the enum**
+    1. **Update the Get Posts Method to follow this construct**
+    1. **Create a Get Comments Method**
+1. Update the view controllers to hook everything up
+
 Now that we have a working `CommentsViewController` the next step will be to build the methods necessary to pull data from the API.
 
 Going back to the [API documentation](https://api.producthunt.com/v1/docs), you'll find how to send a pull request to retrieve a specific post's comments.

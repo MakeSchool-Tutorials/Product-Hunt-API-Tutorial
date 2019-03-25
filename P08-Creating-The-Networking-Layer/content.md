@@ -3,6 +3,22 @@ title: "Creating The Networking Layer"
 slug: create-networking-layer
 ---
 
+1. ~~Look at the Product Hunt API~~
+1. ~~Build the Feed View~~
+1. ~~Create the Post Model~~
+1. ~~Build the Post Cell~~
+1. ~~Create the Post Cell Class~~
+1. ~~Test the Feed Table View~~
+1. ~~Allow the Post Model to work with network requests~~
+1. **Create the network layer**
+    1. **Create a `NetworkManager` class**
+    1. **Build a method to handle the GET Request for Posts**
+    1. **Use `dataTask` to correctly handle requests**
+1. Retrieve data from the PH API
+1. Build the Comments View
+1. Pull Comments data from the API
+1. Update the view controllers to hook everything up
+
 With our model prepared, the networking layer will be pretty simple to create.
 
 # Create Manager Class

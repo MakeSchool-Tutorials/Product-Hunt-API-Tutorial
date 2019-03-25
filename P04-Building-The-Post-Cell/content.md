@@ -3,6 +3,23 @@ title: "Building The Post Cell"
 slug: build-post-cell
 ---
 
+1. ~~Look at the Product Hunt API~~
+1. ~~Build the Feed View~~
+1. ~~Create the Post Model~~
+1. **Build the Post Cell**
+    1. **Build the UIView**
+    1. **Add the necessary labels**
+    1. **Add constraints**
+    1. **Add a tagline**
+1. Create the Post Cell Class
+1. Test the Feed Table View
+1. Allow the Post Model to work with network requests
+1. Create the network layer
+1. Retrieve data from the PH API
+1. Build the Comments View
+1. Pull Comments data from the API
+1. Update the view controllers to hook everything up
+
 The default cell only has room for a string of text. We need it to display more than that.
 
 We will need 4 labels, for the _name_, _tagline_, _number of votes_, and _comments_, which will be grouped together in a stack view. We'll also add an image view to display the product's screenshot.

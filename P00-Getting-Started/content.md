@@ -21,6 +21,23 @@ By the end of this tutorial, you should know...
 1. How to take advantage of mock data.
 1. How to display data in tableviews with custom UI.
 
+# Technical Planning
+
+Here's what we need to do to get this feed up and running:
+
+1. Look at the Product Hunt API
+1. Build the Feed View
+1. Create the Post Model
+1. Build the Post Cell
+1. Create the Post Cell Class
+1. Test the Feed Table View
+1. Allow the Post Model to work with network requests
+1. Create the network layer
+1. Retrieve data from the PH API
+1. Build the Comments View
+1. Pull Comments data from the API
+1. Update the view controllers to hook everything up
+
 # What We're Building
 
 ![Preview final product](assets/01_what-were-building_final-product.png)

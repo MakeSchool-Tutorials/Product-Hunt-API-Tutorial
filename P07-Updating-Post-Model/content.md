@@ -3,6 +3,22 @@ title: "Updating Post Model"
 slug: update-post-model
 ---
 
+1. ~~Look at the Product Hunt API~~
+1. ~~Build the Feed View~~
+1. ~~Create the Post Model~~
+1. ~~Build the Post Cell~~
+1. ~~Create the Post Cell Class~~
+1. ~~Test the Feed Table View~~
+1. **Allow the Post Model to work with network requests**
+    1. **Make our `Post` model decodable**
+    1. **Add coding keys**
+    1. **Initialize the decodable**
+1. Create the network layer
+1. Retrieve data from the PH API
+1. Build the Comments View
+1. Pull Comments data from the API
+1. Update the view controllers to hook everything up
+
 In order for this model to work well with network requests, we will make it **decodable**. Making our model [decodable](https://developer.apple.com/documentation/foundation/archives_and_serialization/encoding_and_decoding_custom_types) means that we can take information from external resources (such as the Product Hunt API) and transform it into something that works with our models, like our `Post` model!
 
 # Getting Started

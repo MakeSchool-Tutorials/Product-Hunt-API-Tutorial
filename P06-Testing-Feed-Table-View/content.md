@@ -3,6 +3,21 @@ title: "Testing Feed Table View"
 slug: test-feed-view
 ---
 
+1. ~~Look at the Product Hunt API~~
+1. ~~Build the Feed View~~
+1. ~~Create the Post Model~~
+1. ~~Build the Post Cell~~
+1. ~~Create the Post Cell Class~~
+1. **Test the Feed Table View**
+    1. **Test the UI without data**
+    1. **Build out Mock Data to display info**
+1. Allow the Post Model to work with network requests
+1. Create the network layer
+1. Retrieve data from the PH API
+1. Build the Comments View
+1. Pull Comments data from the API
+1. Update the view controllers to hook everything up
+
 With our custom cell setup, we now have all the UI elements we need to see the `Feed View` in action. However, we won't be making any network requests just yet; instead we'll use **mock data** to emulate the data that we will receive from an API request.
 
 # Test UI Without Data

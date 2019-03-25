@@ -3,6 +3,21 @@ title: "Building the Feed View"
 slug: build-feed-view
 ---
 
+1. ~~Look at the Product Hunt API~~
+1. **Build the Feed View**
+    1. **Build a basic view**
+    1. **Update the view controller to better reflect its use**
+1. Create the Post Model
+1. Build the Post Cell
+1. Create the Post Cell Class
+1. Test the Feed Table View
+1. Allow the Post Model to work with network requests
+1. Create the network layer
+1. Retrieve data from the PH API
+1. Build the Comments View
+1. Pull Comments data from the API
+1. Update the view controllers to hook everything up
+
 In order to avoid context switching and to reduce development time, we'll be building this app **outside-in**—starting with the UI and layout of the app, and then ending with the networking layer.
 
 We will use the Storyboard in order to create the UI with very simple constraints. Try to resist the temptation to make complex or good looking UI this early, it'll only slow you down. You'll get an opportunity later on to polish and upgrade the app to your liking.

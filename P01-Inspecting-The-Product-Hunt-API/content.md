@@ -3,6 +3,21 @@ title: "Inspecting The Product Hunt API"
 slug: product-hunt-api
 ---
 
+1. **Look at the Product Hunt API**
+    1. **Make a request using Postman**
+    1. **Review the JSON response to get a sense of what you'll be building**
+1. Build the Feed View
+1. Create the Post Model
+1. Build the Post Cell
+1. Create the Post Cell Class
+1. Test the Feed Table View
+1. Allow the Post Model to work with network requests
+1. Create the network layer
+1. Retrieve data from the PH API
+1. Build the Comments View
+1. Pull Comments data from the API
+1. Update the view controllers to hook everything up
+
 Product Hunt is an amazing platform to discover new apps and projects. We'll be making it much easier to discover the best ones that have been released recently.
 
 # Checkout Product Hunt
