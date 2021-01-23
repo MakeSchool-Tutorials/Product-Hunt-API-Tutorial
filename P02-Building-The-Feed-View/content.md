@@ -20,9 +20,22 @@ slug: build-feed-view
 
 In order to avoid context switching and to reduce development time, we'll be building this app **outside-in**—starting with the UI and layout of the app, and then ending with the networking layer.
 
+**Your first goal should be to get a working prototype**. The client wants the feed screen working first, so let's start with that.
+
+# Project Setup with Xcode
+
+Create a new Single View App. Check that the Language is set to Swift and the User Interface is set to Storyboard.
+
 We will use the Storyboard in order to create the UI with very simple constraints. Try to resist the temptation to make complex or good looking UI this early, it'll only slow you down. You'll get an opportunity later on to polish and upgrade the app to your liking.
 
-**Your first goal should be to get a working prototype**. The client wants the feed screen working first, so let's start with that.
+For now you do not need to check any of the boxes like Core Data or UITests for this tutorial.
+
+![Preview Create New Project](assets/00_new-project.png)
+
+We'll name the project **Product Hunt Example** but feel free to name it as you please.
+
+![Preview New Project Details](assets/00_project-details.png)
+
 
 # Creating the Main Screen
 
