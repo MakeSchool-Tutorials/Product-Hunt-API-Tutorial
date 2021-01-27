@@ -24,7 +24,7 @@ In order to avoid context switching and to reduce development time, we'll be bui
 
 # Project Setup with Xcode
 
-Create a new Single View App. Check that the Language is set to Swift and the User Interface is set to Storyboard.
+Create a new Single View App. Check that the **Language** is set to Swift and the **User Interface** is set to Storyboard.
 
 We will use the Storyboard in order to create the UI with very simple constraints. Try to resist the temptation to make complex or good looking UI this early, it'll only slow you down. You'll get an opportunity later on to polish and upgrade the app to your liking.
 
@@ -49,10 +49,18 @@ The UI itself is simple, with the magic happening in code. For now let's just bu
 
 This view is intentionally simple so that we can more easily get up and running.
 
-We'll be using a navigation controller for this app.
+We'll be using a navigation controller for this app. 
+
+<!-- -->
+
+> [info]
+> A navigation controller is a container view controller that manages one or more child view controllers in a navigation interface.
+> You'll get more exposure to this 
+
+<!-- -->
 
 > [action]
-> Open `Main.storyboard` and click on the view-controller.
+> Open `Main.storyboard` and click on the View Controller located within the View Controller Scene.
 
 A shortcut for adding a navigation controller in storyboard is to **embed** a view-controller in one.
 
@@ -71,7 +79,7 @@ A perk of keeping things simple in the beginning is that you don't have to spend
 
 # Prepare the Swift file
 
-To adhere to good coding conventions, rename the view controller to `FeedViewController` to better reflect what its used for.
+To adhere to good coding conventions, rename the `ViewController.swift` to `FeedViewController.swift` to better reflect what its used for.
 
 > [action]
 > Change the name in the file inspector, for the class, and in the comments at the top of your file.
