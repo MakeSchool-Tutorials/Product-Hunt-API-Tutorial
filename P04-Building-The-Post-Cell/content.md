@@ -30,16 +30,17 @@ Lets create a new cell in Storyboard that we can customize.
 > Open storyboard and open the table view's `Attribute Inspector` to give it a Dynamic Prototype Cell.
 > ![Prototype Cell](assets/01_building-the-post_dynamic-prototype-cell.png)
 
-It's a bit too small at the moment, but we can easily increase the size.
+The Table View Cell is a bit too small at the moment, but we can easily increase the size. 
 
 > [action]
-> Increase the size of the Table View Cell to 250 in the **Size Inspector**
+> Click on the Table View Cell on the storyboard or in the file structure. Increase the size of the Table View Cell to 250 in the **Size Inspector**
 > ![Increase Cell Size](assets/02_building-the-post_cell-size.png)
 
 We'll use the view that comes with the cell, labeled `Content View` in Storyboard, as the cell's **background**; so leave that transparent. We'll add a new UIView which will act as a **container** for all the views that will display information about the product.
 
 > [action]
-> Drag a UIView into the prototype cell and Pin it on all 4 sides of the `Content View`.
+> Drag a UIView into the prototype cell and Pin it on all 4 sides of the `Content View`. You can make sure it's constaining to the `Content View` by clicking the down arrow in the Add New Constraints window.
+> ![Constraints](assets/00_constraints-to-uiview.png)
 
 Now we can add the necessary labels. Let's start with the **name label**
 
@@ -48,12 +49,12 @@ Now we can add the necessary labels. Let's start with the **name label**
 >
 > Give the label the text "Name" so we can see it better in Storyboard.
 
-Then the **comments label** and **votes label**, which can be grouped together in a `UIStackView`.
+Then the add 2 more labels: one **comments label** named "Comments: 0" and one **votes label** named "Votes: 0".
 
 > [action]
 > Pin a horizontal UIStackView to the top and right of the `Container View`
 >
-> Place 2 labels inside and type "Comments: 0" for the left label and "Votes: 0" for the right label. Name the labels **Comments Count Label** and **Votes Count Label** respectively.
+> Place the comments and votes labels inside and make comments the left label and votes the right label.
 >
 > Give the labels some spacing by selecting the stack view and setting the **Spacing** to 8.
 
