@@ -29,7 +29,7 @@ Start by creating the file.
 > [action]
 > Create a new file using the `Cocoa Touch Class` template.
 >
-> Select `UITableViewCell` from the `Subclass of` dropdown and prepend `Post` to the class name to make the `Class` field say, `PostTableViewCell`.
+> Name the Class `PostTableViewCell` and make it a Subclass of `UITableViewCell` from the dropdown menu. 
 >
 > ![Create post cell](assets/01_creating-the-post_view-cell.png)
 
@@ -46,6 +46,7 @@ Now we can connect the `IBOutlets` to the class we created.
 
 > [action]
 > Create weak `IBOutlets` for the labels and image view inside `PostTableViewCell.swift`
+> Name them `nameLabel`, `taglineLabel`, `commentsCountLabel`, `votesCountLabel`, and `previewImageView`
 
 To make updating these views quick and easy, we'll use a **property observer** on a `Post` object.
 
