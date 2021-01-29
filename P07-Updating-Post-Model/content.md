@@ -26,7 +26,7 @@ In order for this model to work well with network requests, we will make it **de
 First, let's add a variable for the preview image url:
 
 > [action]
-> Add previewImageUrl variable at the bottom of `Post` model.
+> Add previewImageUrl variable at the bottom of `Post` model located in the `Post.swift` file.
 >
 ```swift
  ...
@@ -83,14 +83,14 @@ extension Post: Decodable {
 >
 > ![Post Keys](assets/01_add-coding-keys_post-coding-keys.png)
 
-Note how only `votesCount`, `commentsCount`, and `previewImageUrl` are the only variables that are set to a string. This is because in the JSON we receive from the request, these variables are named differently (using **snake_case**, rather than **camelCase** which is the recommended practice for Swift).
+Note how `votesCount`, `commentsCount`, and `previewImageUrl` are the only variables that are set to a string. This is because in the JSON we receive from the request, these variables are named differently (using **snake_case**, rather than **camelCase** which is the recommended practice for Swift).
 
 In fact, if we did not plan to collect these variables from the JSON, we would not need to create any **coding keys**.
 
-Also, there are cases where you simply what to rename the property differently, such as for the `previewImageUrl`. We'll create a coding key for that as well and put it in our `Post: Decodable` extension:
+Also, there are cases where you simply want to rename the property differently, such as for the `previewImageUrl`. We'll create a coding key for that as well and put it in our `Post: Decodable` extension:
 
 > [action]
-> Add a CodingKey for the preview image.
+> Add a CodingKey for the preview image in the same file. 
 >
 ```swift
 enum PreviewImageURLKeys: String, CodingKey {
