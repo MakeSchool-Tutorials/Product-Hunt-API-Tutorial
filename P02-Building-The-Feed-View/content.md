@@ -131,10 +131,10 @@ extension FeedViewController: UITableViewDelegate {
 We'll use this later to setup selecting and deleting cells.
 
 > [action]
-> Change the class of `View Controller` to be `FeedViewController`. This will change its name from `View Controller` to `Feed`
+> Open your `Main.storyboard` file and locate the Feed View within the Feed Scene of your file structure. In the identity inspector, update the view's class from `View Controller` to `FeedViewController`. 
 > ![Rename Feed Class](assets/06_prepare-the-swift_rename-feed.png)
 >
-> Create an `IBOutlet` from the `Feed Table View` to `FeedViewController`.
+> Using `CTRL` + drag, create an `IBOutlet` from the `Feed Table View` to `FeedViewController`. Name the IBOutlet **feedTableView**.
 > ![Connect outlet](assets/07_prepare-the-swift_connect-outlet.png)
 
 Because the `FeedViewController` **conforms** to both the `UITableViewDataSource` and `UITableViewDelegate` in the **extensions**, we can set the `feedTableView`'s data source and delegate to be the `FeedViewController`.
@@ -170,5 +170,6 @@ Now go to GitHub and create a public repository called `Product-Hunt-API`, and n
 >
 ```bash
 $ git remote add origin GITHUB-REPO-URL
-$ git push origin main -u
+$ git branch -M main
+$ git push -u origin main
 ```
