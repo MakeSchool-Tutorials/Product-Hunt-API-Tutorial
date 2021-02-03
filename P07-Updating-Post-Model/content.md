@@ -133,7 +133,7 @@ let postsContainer = try decoder.container(keyedBy: PostKeys.self)
 Now that we have stored the `post` object in a container, we can go in and grab all the information we need from it!
 
 > [action]
-> Below the `postsContainer` line, Set the variables of the `Post` using the `postContainer` you just created.
+> Below the `postsContainer` line, set the variables of the `Post` using the `postContainer` you just created.
 >
 ```swift
   ...
