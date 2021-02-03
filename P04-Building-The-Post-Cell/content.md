@@ -24,6 +24,8 @@ The default cell only has room for a string of text. We need it to display more 
 
 We will need 4 labels, for the _name_, _tagline_, _number of votes_, and _comments_, which will be grouped together in a stack view. We'll also add an image view to display the product's screenshot.
 
+# Updating Storyboard with Custom Cell 
+
 Lets create a new cell in Storyboard that we can customize.
 
 > [action]
@@ -38,9 +40,13 @@ The Table View Cell is a bit too small at the moment, but we can easily increase
 
 We'll use the view that comes with the cell, labeled `Content View` in Storyboard, as the cell's **background**; so leave that transparent. We'll add a new UIView which will act as a **container** for all the views that will display information about the product.
 
+# Add UIView to Cell
+
 > [action]
-> Drag a UIView into the prototype cell and Pin it on all 4 sides of the `Content View`. You can make sure it's constaining to the `Content View` by clicking the down arrow in the Add New Constraints window.
+> Drag a UIView into the prototype cell and pin it on all 4 sides of the `Content View`. You can make sure it's constaining to the `Content View` by clicking the down arrow in the Add New Constraints window.
 > ![Constraints](assets/00_constraints-to-uiview.png)
+
+# Add Labels & Constraints to Cell 
 
 Now we can add the necessary labels. Let's start with the **name label**
 
@@ -50,6 +56,8 @@ Now we can add the necessary labels. Let's start with the **name label**
 > Give the label the text "Name" so we can see it better in Storyboard.
 
 Then the add 2 more labels: one **comments label** named "Comments: 0" and one **votes label** named "Votes: 0".
+
+## Implement Constraints
 
 > [action]
 > Pin a horizontal UIStackView to the top and right of the `Container View`
@@ -62,7 +70,6 @@ To give the text some room to display information, we can reduce the font size o
 
 > [action]
 >  Select both labels in the stack view and change their font size to 12 in the `Attribute Inspector`.
-
 
 For names that have a longer names, we have to constrain the right side of the name label to not extend longer than the stack view containing the comment and vote counts.
 
@@ -79,6 +86,8 @@ Next up is the label for the **tagline**.
 > Set the font size of this label to 12.
 
 The last thing we'll add is the UIImageView which will display the product's **screenshot**.
+
+# Add UIImageView to Cell 
 
 > [action]
 > Add an UIImageView (name it **Preview Image View**) to the center of the cell and pin it to all 4 sides of the `Container View` with the following constraints:

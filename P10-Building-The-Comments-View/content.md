@@ -63,7 +63,7 @@ Setting up the `CommentsViewController` is going to be very similar to what we'v
 > [action]
 > First step is to create a new `UIViewController` class (remember to use a `Cocoa Touch Class` file), and name it `CommentsViewController`
 
-# Connect the storyboard items to the view-controller.
+## Connect the storyboard items to the view-controller.
 
 > [action]
 > Set the class of the `Comments` view controller to `CommentsViewController` and its `Storyboard ID` to `commentsView` in the `Identity Inspector`.
@@ -78,7 +78,7 @@ Create an implicitly unwrapped optional array of strings to hold the comments an
 > [action]
 > Add variable `var comments: [String]!` to `CommentsViewController` with a `didSet` property observer. We'll leave this blank for now, but once we add real data, we'll need to have it refresh the `commentsTableView`.
 
-# Make TableView Functional 
+## Make TableView Functional 
 
 Next we setup the necessary methods for our `commentsTableView` to work.
 
