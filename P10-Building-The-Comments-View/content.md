@@ -31,7 +31,7 @@ The `CommentsView` is also a view which utilizes a `UITableView` with a custom m
 We'll start by creating both the view and the cell.
 
 > [action]
-> Open Storyboard and add a new `UIViewController` scene. Rename the `UIViewController` to be `Comments`
+> Open Storyboard and add a new `UIViewController` scene from the Object Library. Rename the `UIViewController` to be `Comments`
 >
 >  Add a `UITableView` to the `Comments UIViewController` and pin it to all sides of its view. Name it `Comments Table View`.
 
@@ -39,7 +39,9 @@ The cell will consist of a single `UITextView` that fills the cell with padding 
 
 > [action]
 >
-> Add a `UITableViewCell` with the **identifier `commentCell`** to the `Comments Table View`. Give it a **row height of 125**
+> Add a `UITableViewCell` with the **identifier `commentCell`** to the `Comments Table View`. Go to the **Size Inspector** and give the cell a **row height of 125** 
+>
+> If you need a refresher on building and customizing a cell, review chapter 5 of this tutorial 
 >
 > Next add a **`UITextView` to `commentCell` with 15 points of padding** on all sides. Name it `Comments Text View`.
 >
@@ -49,7 +51,7 @@ The cell will consist of a single `UITextView` that fills the cell with padding 
 Lastly, we don't want to make comments editable, so let's disable that for `Comments Text View`.
 
 > [action]
-> Disable `Editable` behavior for the text-view in its `Attribute Inspector`.
+> Disable `Editable` behavior for the text-view in its **Attribute Inspector**.
 > ![Disable Editable](assets/02_building-the-ui_disable-editable.png)
 
 And that's it! We've got our comments view! Now let's wire it up.
@@ -61,12 +63,12 @@ Setting up the `CommentsViewController` is going to be very similar to what we'v
 > [action]
 > First step is to create a new `UIViewController` class (remember to use a `Cocoa Touch Class` file), and name it `CommentsViewController`
 
-Connect the class to the view-controller.
+# Connect the storyboard items to the view-controller.
 
 > [action]
 > Set the class of the `Comments` view controller to `CommentsViewController` and its `Storyboard ID` to `commentsView` in the `Identity Inspector`.
 
-Connect the table-view to the class.
+## Connect the table-view to the class.
 
 > [action]
 > Create an `IBOutlet` for the `UITableView` named `commentsTableView`, then set its `delegate` and `dataSource` to `self` in the `viewDidLoad` method.
@@ -75,6 +77,8 @@ Create an implicitly unwrapped optional array of strings to hold the comments an
 
 > [action]
 > Add variable `var comments: [String]!` to `CommentsViewController` with a `didSet` property observer. We'll leave this blank for now, but once we add real data, we'll need to have it refresh the `commentsTableView`.
+
+# Make TableView Functional 
 
 Next we setup the necessary methods for our `commentsTableView` to work.
 
