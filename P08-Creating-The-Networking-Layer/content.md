@@ -21,7 +21,32 @@ slug: create-networking-layer
 
 With our model prepared, the networking layer will be pretty simple to create.
 
+# Introduction to Network Managers 
+In this section, we'll be creating the network layer of the app. You may be wondering what a network manager is or even what networking in general is. Lets take a closer look before diving into code. 
+
+![Networking Diagram](assets/00_networking.png)
+
+Networking (aka computer networking) is how information and data get transported and exchanged between various information systems. 
+
+Looking at the diagram, the client (in our case, the iphone or simulator) makes a request of some sort (typially some sort of information like text, images, videos, etc) to a server, the server then takes in the request and handles its response before sending the information to the client. 
+
+Here are a few note-worthy key-terms to help you understand the parts of the networking proccess better: 
+
+**Client**: a computer in a network that uses the services provided by a server.
+
+**Server**: a piece of computer hardware or software (computer program) that provides functionality for other programs or devices (ie clients)
+
+**API**: part of the server that receives requests and sends responses.
+
+**Network Manager / Networking Layer**: a well-structured chunk of code used to make API requests and handle its responses from an external server.
+
+What we'll be doing moving forward in this section is creating a custon networking layer that communicates with the Product Hunt API. In doing so, this is how we will be populating data in our storyboard instead of having mock data. 
+
+The information you take away from this section will be especially helpful the further you grow in tech as majority of apps eventually communicate with the internet in some way and **this** is where it all starts. 
+
+
 # Create Manager Class
+Now that you're a master of the fundamentals of networking, let's get started! 
 
 > [action]
 Start by creating a new `Swift` file named `NetworkManager.swift`
