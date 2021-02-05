@@ -215,7 +215,16 @@ enum Result<T> {
 }
 ```
 
-And an `enum` to define all the errors we wish to handle in code.
+**HOLD UP** What is `<T>`? What is `< >` and what is this `T`? 
+
+The generic version of the function uses a placeholder type name (called `T` , in this case) instead of an actual type name (such as Int , String , or Double). The `< >` are what makes the class generic. 
+
+> [info]
+> Generic code enables you to write flexible, reusable functions and types that can work with any type, subject to requirements that you define. You can write code that avoids duplication and expresses its intent in a clear, abstracted manner.
+>
+> You can read more about generics [here](https://docs.swift.org/swift-book/LanguageGuide/Generics.html)
+
+And an `enum` to define all the errors we wish to handle in code. 
 
 > [action]
 > Create an enum `EndPointError` and add this inside the `NetworkManager` class
