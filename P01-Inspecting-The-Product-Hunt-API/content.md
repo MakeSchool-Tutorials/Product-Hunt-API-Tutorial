@@ -24,12 +24,15 @@ Product Hunt is an amazing platform to discover new apps and projects. We'll be 
 
 You will need to sign up for Product Hunt, register an application, and generate the token needed to use the API in our app.
 
-Explore the Product Hunt for cool projects and ideas.
+When you get the chance, explore the Product Hunt for cool projects and ideas.
 
 > [action]
-> Go to [Product Hunt](https://www.producthunt.com/) and create an account.
+> Go to [Product Hunt](https://www.producthunt.com/) and create an account. 
+> 
+> If you already have a Product Hunt account then navigate to the `API Dashboard` from the drop-down menu under your account tab. 
 
 With an account created you can now register an application, which will allow us to access the API.
+
 
 > [action]
 > Read the [API docs](https://api.producthunt.com/v1/docs/); this gives you all the information you need to use the API.
