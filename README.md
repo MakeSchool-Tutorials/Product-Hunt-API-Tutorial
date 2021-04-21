@@ -4,10 +4,6 @@ Imagine that you're a developer who is hired to create a Product Hunt reader tha
 
 The first feature the client wants you to implement is the feed, which displays all of today's featured products on the Product Hunt. The client wants to keep the project lean and asks you explicitly not to use any dependencies or third party libraries.
 
-# What We're Building
-
-![Preview final product](assets/final-product.png)
-
 ## User Stories
 
 **As a user...**
