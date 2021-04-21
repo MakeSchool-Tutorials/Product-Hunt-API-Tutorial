@@ -3,22 +3,6 @@ title: "Building The Comments View"
 slug: comments-view
 ---
 
-1. ~~Look at the Product Hunt API~~
-1. ~~Build the Feed View~~
-1. ~~Create the Post Model~~
-1. ~~Build the Post Cell~~
-1. ~~Create the Post Cell Class~~
-1. ~~Test the Feed Table View~~
-1. ~~Allow the Post Model to work with network requests~~
-1. ~~Create the network layer~~
-1. ~~Retrieve data from the PH API~~
-1. **Build the Comments View**
-    1. **Build the UI**
-    1. **Create the view controller**
-    1. **Create the CommentTableViewCell**
-    1. **Connect the views**
-1. Pull Comments data from the API
-1. Update the view controllers to hook everything up
 
 Now we can move on to the second part of the app. The `CommentsView` which will show the comments of a tapped product.
 
@@ -39,9 +23,9 @@ The cell will consist of a single `UITextView` that fills the cell with padding 
 
 > [action]
 >
-> Add a `UITableViewCell` with the **identifier `commentCell`** to the `Comments Table View`. Go to the **Size Inspector** and give the cell a **row height of 125** 
+> Add a `UITableViewCell` with the **identifier `commentCell`** to the `Comments Table View`. Go to the **Size Inspector** and give the cell a **row height of 125**
 >
-> If you need a refresher on building and customizing a cell, review chapter 5 of this tutorial 
+> If you need a refresher on building and customizing a cell, review chapter 5 of this tutorial
 >
 > Next add a **`UITextView` to `commentCell` with 15 points of padding** on all sides. Name it `Comments Text View`.
 >
@@ -78,7 +62,7 @@ Create an implicitly unwrapped optional array of strings to hold the comments an
 > [action]
 > Add variable `var comments: [String]!` to `CommentsViewController` with a `didSet` property observer. We'll leave this blank for now, but once we add real data, we'll need to have it refresh the `commentsTableView`.
 
-## Make TableView Functional 
+## Make TableView Functional
 
 Next we setup the necessary methods for our `commentsTableView` to work.
 

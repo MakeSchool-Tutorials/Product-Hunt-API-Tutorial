@@ -3,36 +3,19 @@ title: "Building The Post Cell"
 slug: build-post-cell
 ---
 
-1. ~~Look at the Product Hunt API~~
-1. ~~Build the Feed View~~
-1. ~~Create the Post Model~~
-1. **Build the Post Cell**
-    1. **Build the UIView**
-    1. **Add the necessary labels**
-    1. **Add constraints**
-    1. **Add a tagline**
-1. Create the Post Cell Class
-1. Test the Feed Table View
-1. Allow the Post Model to work with network requests
-1. Create the network layer
-1. Retrieve data from the PH API
-1. Build the Comments View
-1. Pull Comments data from the API
-1. Update the view controllers to hook everything up
-
 The default cell only has room for a string of text. We need it to display more than that.
 
 We will need 4 labels, for the _name_, _tagline_, _number of votes_, and _comments_, which will be grouped together in a stack view. We'll also add an image view to display the product's screenshot.
 
-# Updating Storyboard with Custom Cell 
+# Updating Storyboard with Custom Cell
 
-Lets create a new cell in Storyboard that we can customize.
+Lets create a new cell in the Storyboard that we can customize.
 
 > [action]
 > Open storyboard and open the table view's `Attribute Inspector` to give it a Dynamic Prototype Cell.
 > ![Prototype Cell](assets/01_building-the-post_dynamic-prototype-cell.png)
 
-The Table View Cell is a bit too small at the moment, but we can easily increase the size. 
+The Table View Cell is a bit too small at the moment, but we can easily increase the size.
 
 > [action]
 > Click on the Table View Cell on the storyboard or in the file structure. Increase the size of the Table View Cell to 250 in the **Size Inspector**
@@ -46,14 +29,14 @@ We'll use the view that comes with the cell, labeled `Content View` in Storyboar
 > Drag a UIView into the prototype cell and pin it on all 4 sides of the `Content View`. You can make sure it's constaining to the `Content View` by clicking the down arrow in the Add New Constraints window.
 > ![Constraints](assets/00_constraints-to-uiview.png)
 
-# Add Labels & Constraints to Cell 
+# Add Labels & Constraints to Cell
 
 Now we can add the necessary labels. Let's start with the **name label**
 
 > [action]
 > Add a UILabel pinned to the top and left of the newly added `Container View`.
 >
-> Give the label the text "Name" so we can see it better in Storyboard.
+> Give the label the text "Name" so we can see it better in the Storyboard.
 
 Then the add 2 more labels: one **comments label** named "Comments: 0" and one **votes label** named "Votes: 0".
 
@@ -87,7 +70,7 @@ Next up is the label for the **tagline**.
 
 The last thing we'll add is the UIImageView which will display the product's **screenshot**.
 
-# Add UIImageView to Cell 
+# Add UIImageView to Cell
 
 > [action]
 > Add an UIImageView (name it **Preview Image View**) to the center of the cell and pin it to all 4 sides of the `Container View` with the following constraints:
