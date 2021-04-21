@@ -3,21 +3,6 @@ title: "Updating View Controllers"
 slug: update-view-controllers
 ---
 
-1. ~~Look at the Product Hunt API~~
-1. ~~Build the Feed View~~
-1. ~~Create the Post Model~~
-1. ~~Build the Post Cell~~
-1. ~~Create the Post Cell Class~~
-1. ~~Test the Feed Table View~~
-1. ~~Allow the Post Model to work with network requests~~
-1. ~~Create the network layer~~
-1. ~~Retrieve data from the PH API~~
-1. ~~Build the Comments View~~
-1. ~~Pull Comments data from the API~~
-1. **Update the view controllers to hook everything up**
-    1. **Update FeedViewController**
-    1. **Update CommentsViewController**
-
 Now we have everything we need to have the full app working and ready to show to the client.
 
 First let's update the `FeedViewController` to use the refactored networking methods.

@@ -3,20 +3,6 @@ title: "Inspecting The Product Hunt API"
 slug: product-hunt-api
 ---
 
-1. **Look at the Product Hunt API**
-    1. **Make a request using Postman**
-    1. **Review the JSON response to get a sense of what you'll be building**
-1. Build the Feed View
-1. Create the Post Model
-1. Build the Post Cell
-1. Create the Post Cell Class
-1. Test the Feed Table View
-1. Allow the Post Model to work with network requests
-1. Create the network layer
-1. Retrieve data from the PH API
-1. Build the Comments View
-1. Pull Comments data from the API
-1. Update the view controllers to hook everything up
 
 Product Hunt is an amazing platform to discover new apps and projects. We'll be making it much easier to discover the best ones that have been released recently.
 
@@ -27,15 +13,15 @@ You will need to sign up for Product Hunt, register an application, and generate
 When you get the chance, explore the Product Hunt for cool projects and ideas.
 
 > [action]
-> Go to [Product Hunt](https://www.producthunt.com/) and create an account. 
-> 
-> If you already have a Product Hunt account then navigate to the `API Dashboard` from the drop-down menu under your account tab. 
+> Go to [Product Hunt](https://www.producthunt.com/) and create an account.
+>
+> If you already have a Product Hunt account then navigate to the `API Dashboard` from the drop-down menu under your account tab.
 
 With an account created you can now register an application, which will allow us to access the API.
 
 
 > [action]
-> Read the [API docs](https://api.producthunt.com/v1/docs/); this gives you all the information you need to use the API.
+> Check out the [API docs](https://api.producthunt.com/v1/docs/); this gives you all the information you need to use the API.
 
 # Create An Application
 
@@ -51,9 +37,9 @@ From the API Docs page,
 > Give your application a name and the following redirect URI:
 > `https://localhost:3000/users/auth/producthunt/callback`
 >
-> Click on _CREATE APPLICATION_ to create the application 
+> Click on _CREATE APPLICATION_ to create the application
 >
-> On the same page click _CREATE TOKEN_ to generate the access token you'll use later in this tutorial. Keep this page open for later use. 
+> On the same page click _CREATE TOKEN_ to generate the access token you'll use later in this tutorial. Keep this page open for later use.
 >
 > Your dashboard should now look similar to this:
 > ![API dashboard](assets/01_create-an-app_api-dashboard.png)
@@ -74,10 +60,6 @@ If you don't immediately see this screen, you can navigate to it by clicking on 
 
 > [action]
 > Choose **Request** under building blocks to create a new request called **GET Posts** and save it a new collection called **Product Hunt**.
-
-You can name the request whatever you want and save it whichever collection you choose; for this tutorial we'll be naming the request **GET Posts** and saving it in the **Product Hunt** collection. 
-
-> [action]
 > After clicking _+ SAVE_ you'll be brought to the homepage. Paste this URL into the URL field at the top of the window: `https://api.producthunt.com/v1/posts/all?sort_by=votes_count&order=desc&search[featured]=true&per_page=20`
 
 Let's break down the URL into the important pieces so that we know what's actually going on during this call:
@@ -98,7 +80,7 @@ Under _Authorization_, select **Bearer Token** in the drop down and paste your a
 >
 > ![JSON response](assets/03_make-a-get_postman-get.png)
 
-# Analyze Response
+# Analyzing the Response
 
 What you received from your request is known as **JSON (Javascript Object Notation)**, a text format that is completely language independent and easy to read.
 
@@ -112,6 +94,6 @@ The beginning of the JSON response objects is indicated by the opening bracket `
 
 The `posts` array contains the products that match the parameters given in our request. We asked for 20 of today's featured products in descending order of vote count, so we received an array with the first post being today's featured product with the highest votes.
 
-The properties of the post object also has a hierarchy of objects. We are only concerned with `comments_count`, `id`, `name`, `tagline`, and `screenshot_url`. You can search up these terms in Postman by using the shortcut `CMD + F` and typing the name of the property in the search field that appears.
+The properties of the post object also have a hierarchy of objects. We are only interested in `comments_count`, `id`, `name`, `tagline`, and `screenshot_url`. You can search up these terms in Postman by using the shortcut `CMD + F` and typing the name of the property in the search field that appears.
 
 Take some time to look through Postman and see what's in the API response. This is the very beginning of learning **how to work with APIs**

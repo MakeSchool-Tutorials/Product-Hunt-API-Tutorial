@@ -3,23 +3,6 @@ title: "Creating the Post Cell Class"
 slug: create-post-cell-class
 ---
 
-1. ~~Look at the Product Hunt API~~
-1. ~~Build the Feed View~~
-1. ~~Create the Post Model~~
-1. ~~Build the Post Cell~~
-1. **Create the Post Cell Class**
-    1. **Create the class**
-    1. **Set the prototype cell to use this class**
-    1. **Connect the `IBOutlets`**
-    1. **Implement functions to build out cell data**
-1. Test the Feed Table View
-1. Allow the Post Model to work with network requests
-1. Create the network layer
-1. Retrieve data from the PH API
-1. Build the Comments View
-1. Pull Comments data from the API
-1. Update the view controllers to hook everything up
-
 In order to access the custom cell's views in code, a custom class is needed.
 
 We'll call this custom class `PostTableViewCell` and place all the methods related to keeping the cell up-to-date in here.
@@ -29,7 +12,7 @@ Start by creating the file.
 > [action]
 > Create a new file using the `Cocoa Touch Class` template.
 >
-> Name the Class `PostTableViewCell` and make it a Subclass of `UITableViewCell` from the dropdown menu. 
+> Name the Class `PostTableViewCell` and make it a Subclass of `UITableViewCell` from the dropdown menu.
 >
 > ![Create post cell](assets/01_creating-the-post_view-cell.png)
 

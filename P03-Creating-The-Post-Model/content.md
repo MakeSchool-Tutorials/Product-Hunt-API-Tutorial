@@ -3,22 +3,7 @@ title: "Creating The Post Model"
 slug: post-model
 ---
 
-1. ~~Look at the Product Hunt API~~
-1. ~~Build the Feed View~~
-1. **Create the Post Model**
-    1. **Implement the struct**
-    1. **Implement the properties needed**
-1. Build the Post Cell
-1. Create the Post Cell Class
-1. Test the Feed Table View
-1. Allow the Post Model to work with network requests
-1. Create the network layer
-1. Retrieve data from the PH API
-1. Build the Comments View
-1. Pull Comments data from the API
-1. Update the view controllers to hook everything up
-
-Let's model the information we will receive for each posting. The properties we need are the product's ID, name, tagline, number of votes, and number of comments.
+Let's model the information we will receive for each post. The properties we need are the product's ID, name, tagline, number of votes, and number of comments.
 
 > [action]
 > Create a new Swift file and call it `Post.swift`.

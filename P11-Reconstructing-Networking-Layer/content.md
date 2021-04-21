@@ -3,24 +3,6 @@ title: "Reconstructing Networking Layer"
 slug: networking-layer
 ---
 
-1. ~~Look at the Product Hunt API~~
-1. ~~Build the Feed View~~
-1. ~~Create the Post Model~~
-1. ~~Build the Post Cell~~
-1. ~~Create the Post Cell Class~~
-1. ~~Test the Feed Table View~~
-1. ~~Allow the Post Model to work with network requests~~
-1. ~~Create the network layer~~
-1. ~~Retrieve data from the PH API~~
-1. ~~Build the Comments View~~
-1. **Pull Comments data from the API**
-    1. **Create the comment model**
-    1. **Create an Endpoints enum to make things more DRY**
-    1. **Construct requests using the enum**
-    1. **Update the Get Posts Method to follow this construct**
-    1. **Create a Get Comments Method**
-1. Update the view controllers to hook everything up
-
 Now that we have a working `CommentsViewController` the next step will be to build the methods necessary to pull data from the API.
 
 Going back to the [API documentation](https://api.producthunt.com/v1/docs), you'll find how to send a pull request to retrieve a specific post's comments.
@@ -215,16 +197,16 @@ enum Result<T> {
 }
 ```
 
-**HOLD UP** What is `<T>`? What is `< >` and what is this `T`? 
+**HOLD UP** What is `<T>`? What is `< >` and what is this `T`?
 
-The generic version of the function uses a placeholder type name (called `T` , in this case) instead of an actual type name (such as Int , String , or Double). The `< >` are what makes the class generic. 
+The generic version of the function uses a placeholder type name (called `T` , in this case) instead of an actual type name (such as Int , String , or Double). The `< >` are what makes the class generic.
 
 > [info]
 > Generic code enables you to write flexible, reusable functions and types that can work with any type, subject to requirements that you define. You can write code that avoids duplication and expresses its intent in a clear, abstracted manner.
 >
 > You can read more about generics [here](https://docs.swift.org/swift-book/LanguageGuide/Generics.html)
 
-And an `enum` to define all the errors we wish to handle in code. 
+And an `enum` to define all the errors we wish to handle in code.
 
 > [action]
 > Create an enum `EndPointError` and add this inside the `NetworkManager` class
